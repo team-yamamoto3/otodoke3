@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sales_status: MyString
+  price: 1
+  consumption_tax: 9.99
+  stock: 1
+
+two:
+  sales_status: MyString
+  price: 1
+  consumption_tax: 9.99
+  stock: 1
