@@ -15,3 +15,11 @@
 # Artist.create(artist: "アーティスト")
 # 配列でまとめて作成
 # users = User.create([{name: "hanako"}, {name: "misa"}])
+
+Cd.create!
+  ([{title: 'title',}, 
+    {song:  'song',}, 
+    {label: 'label',}, 
+    {jacket: 'jacket',}, 
+    {disc: 'disc',}, 
+    {artist: 'artist',}])
