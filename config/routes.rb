@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'cds/index'
+  get 'cds/show'
   get 'arrivals/new'
   get 'arrivals/index'
   devise_for :admins, controllers: {
