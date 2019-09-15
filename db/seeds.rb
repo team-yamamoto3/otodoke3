@@ -8,8 +8,20 @@
 
 # 1件ずつ作成
 Cd.create!(
-  label: "レーベル",
-  genre: "ジャンル",
+  sales_status: "販売中",
+  price: 1500,
+  consumption_tax: 500,
+  stock: 50,
+  label: "キングレコード",
+  genre: "J=POP",
+)
+Cd.create!(
+  sales_status: "販売中",
+  price: 2000,
+  consumption_tax: 500,
+  stock: 100,
+  label: "闇営業",
+  genre: "erro",
 )
 # Songs.create(songs: "ソングス")
 # Disc.create(disc: "ディスク")
