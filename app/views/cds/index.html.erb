@@ -1,2 +1,24 @@
 <h1>CD一覧</h1>
+
 <%= @cd.title %>
+
+
+<!-- ログアウト機能 -->
+<%= link_to "ログアウト", destroy_enduser_session_path, method: :delete %>
+
+
+<div id="container">
+	<div id="theTarget">
+		<div class="image1"></div>
+		<div class="image2"></div>
+		<div class="image3"></div>
+	</div>
+</div>
+
+
+<% @cds.each do |cd| %>
+<h4>label</h4>
+<%= cd.label %>
+<h4>genre</h4>
+<%= cd.genre %>
+<% end %>

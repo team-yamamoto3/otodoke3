@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'cds#index'
   get 'cds/index'
   get 'cds/show'
   get 'arrivals/new'

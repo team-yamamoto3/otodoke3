@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_15_060833) do
+ActiveRecord::Schema.define(version: 2019_09_15_090340) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "tell"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_060833) do
     t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_060833) do
     t.datetime "arrival_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cd_id"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -49,6 +51,8 @@ ActiveRecord::Schema.define(version: 2019_09_15_060833) do
     t.integer "cartnumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "cd_id"
   end
 
   create_table "cds", force: :cascade do |t|
@@ -93,6 +97,8 @@ ActiveRecord::Schema.define(version: 2019_09_15_060833) do
     t.boolean "unsubscribe"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_name_kana"
+    t.string "first_name_kana"
     t.index ["email"], name: "index_endusers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_endusers_on_reset_password_token", unique: true
   end
@@ -115,10 +121,30 @@ ActiveRecord::Schema.define(version: 2019_09_15_060833) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "order_number"
+    t.integer "cd_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "receipts", force: :cascade do |t|
+    t.string "order_status", default: "準備中"
+    t.text "payment", default: "代引き"
+    t.integer "postage", default: 500
+    t.integer "sum_price"
+    t.integer "user_id"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string "song"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "songorder"
+    t.integer "disc_id"
   end
 
   create_table "titles", force: :cascade do |t|
