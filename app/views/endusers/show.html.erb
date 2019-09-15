@@ -1,2 +1,43 @@
-<h1>Endusers#show</h1>
-<p>Find me in app/views/endusers/show.html.erb</p>
+<h2>お客様情報</h2>
+
+  <table class="table">
+
+    <tbody>
+      <tr>
+	      <th><p>name</p></th>
+	      <th><p class="user_name"><%= enduser.last_name %></p></th>
+          <th><p class="user_name"><%= enduser.first_name %></p></th>
+          <th><p class="user_name"><%= enduser.last_name_kana %></p></th>
+          <th><p class="user_name"><%= enduser.first_name_kana %></p></th>
+      </tr>
+
+      <tr>
+	      <th><p>郵便番号</p></th>
+	      <th><p class="postal_code"><%= enduser.postal_code %></p></th>
+      </tr>
+
+      <tr>
+      	  <th><p>住所</p></th>
+      	  <th><p class="user_address"><%= enduser.user_address %></p></th>
+      </tr>
+
+      <tr>
+      	  <th><p>電話番号</p></th>
+      	  <th><p class="user_tell"><%= enduser.user_tell %></p></th>
+      </tr>
+
+      <tr>
+      	  <th><p>メールアドレス</p></th>
+      	  <th><p class="user_email"><%= enduser.email %></p></th>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+
+      <% if @user.id == current_user.id %>
+        <%= link_to edit_enduser_path(@user), class: 'btn-default' do %>
+        <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+        <% end %>
+      <% end %>

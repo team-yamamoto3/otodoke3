@@ -1,5 +1,5 @@
 class EndusersController < ApplicationController
-before_action :authenticate_user!
+# before_action :authenticate_user!
 
   def edit
   	  @enduser = Enduser.find(params[:id])
@@ -12,14 +12,8 @@ before_action :authenticate_user!
 
   def show
   	  @Cd = Cd.new
-      @enduser = Endser.find(params[:id])
+      @enduser = Enduser.find(params[:id])
       @cds = @enduser.cds.all
-  end
-
-  def index
-      @Cd = Cd.new
-  	  @endusers = Enduser.all.order(created_at: :desc)
-      @enduser = current_enduser
   end
 
   def new
@@ -34,12 +28,16 @@ before_action :authenticate_user!
       else
       	render :edit
       end
+  end
 
+  def destroy
+      Enduser.find(params[:id]).destroy
+      flash[:success] = "User deleted"
+      redirect_to users_url
   end
 
   private
-
   def user_params
-      params.require(:enduser).permit(:firstnamekanji, :lastnamekanji, :firstnamekana, :lastnamekana, :profile_image, :introduction)
+      params.require(:enduser).permit(:first_name, :last_name, :first_name_kana, :last_name_kana)
   end
 end
