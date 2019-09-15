@@ -22,4 +22,5 @@ Cd.create!
     {label: 'label',}, 
     {jacket: 'jacket',}, 
     {disc: 'disc',}, 
+    {price: 1000000,}, 
     {artist: 'artist',}])

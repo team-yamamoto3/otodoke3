@@ -1,2 +1,3 @@
 class Cd < ApplicationRecord
+
 end
