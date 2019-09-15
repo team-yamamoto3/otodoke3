@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_status: MyString
+  payment: MyText
+  postage: 1
+  sum_price: 1
+  user_id: 1
+  order_id: 1
+
+two:
+  order_status: MyString
+  payment: MyText
+  postage: 1
+  sum_price: 1
+  user_id: 1
+  order_id: 1
