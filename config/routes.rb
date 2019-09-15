@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'cds/index'
+  get 'cds/show'
   get 'arrivals/new'
   get 'arrivals/index'
   devise_for :admins, controllers: {
@@ -20,5 +21,6 @@ Rails.application.routes.draw do
   get 'carts/show'
   get 'endusers/edit'
   get 'endusers/show'
+  get 'admins/home', as: 'home'
   # For detailss on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
