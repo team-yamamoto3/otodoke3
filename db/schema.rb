@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_035040) do
+ActiveRecord::Schema.define(version: 2019_09_15_060833) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "tell"
@@ -58,6 +58,12 @@ ActiveRecord::Schema.define(version: 2019_09_14_035040) do
     t.integer "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "genre"
+    t.string "jacket"
+    t.string "label"
+    t.integer "artist_id"
+    t.integer "song_id"
   end
 
   create_table "discs", force: :cascade do |t|
