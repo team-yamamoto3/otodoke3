@@ -1,4 +1,8 @@
-<h1>CD</h1>
+<h1>CD一覧</h1>
+
+<!-- ログアウト機能 -->
+<%= link_to "ログアウト", destroy_enduser_session_path, method: :delete %>
+
 
 <% @cds.each do |cd| %>
 <h4>label</h4>

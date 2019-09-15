@@ -28,3 +28,19 @@ Cd.create!(
 # Artist.create(artist: "アーティスト")
 # 配列でまとめて作成
 # users = User.create([{name: "hanako"}, {name: "misa"}])
+
+
+Cd.create!
+  ([{title: 'title',}, 
+    {song:  'song',}, 
+    {label: 'label',}, 
+    {jacket: 'jacket',}, 
+    {disc: 'disc',}, 
+    {artist: 'artist',}])
+
+#初期adminの作成
+Admin.find_or_create_by(id: 1) do |admin|
+  admin.email = 'admin@example.com'
+  admin.password = 'admin123'
+end
+
