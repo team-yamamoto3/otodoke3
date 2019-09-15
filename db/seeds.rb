@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # 1件ずつ作成
-# CD.create(price: 500)
-# Label.create(label: "レーベル")
-# Genre.create(genre: "ジャンル")
+Cd.create(price: 500)
+Cd.create(label: "レーベル")
+Cd.create(genre: "ジャンル")
 # Songs.create(songs: "ソングス")
 # Disc.create(disc: "ディスク")
 # Artist.create(artist: "アーティスト")
