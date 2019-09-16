@@ -1,6 +1,5 @@
 class CdsController < ApplicationController
   def index
-  	@cd = Cd.create!
     @cds = Cd.all
   end
 
@@ -27,9 +26,4 @@ class CdsController < ApplicationController
     params.require(:cd).permit(:sale_status, :price, :consumption_tax, :stock, :title, :jacket, :label)
   end
 
-  private
-  def cd_params
-  	params.require(:cd).permit(:price)
-  	
-  end
 end
