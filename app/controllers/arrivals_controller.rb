@@ -2,6 +2,8 @@ class ArrivalsController < ApplicationController
   def new
     @cd = Cd.new
     @sales_status = ["販売中", "販売停止中"]
+    @selectjenre = ["J-Pop", "K-Pop", "洋楽", "邦楽", "アニメ", "R&B", "ロック", "ハードロック", "パンク",
+       "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
   end
 
 # これはarrivalsのテーブルにCDを保存しているためコメントアウト
@@ -16,6 +18,6 @@ class ArrivalsController < ApplicationController
 
   private
   def cd_params
-    params.require(:cd).permit(:sale_status, :price, :consumption_tax, :stock, :title, :jacket, :label, :genre)
+    params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label, :genre)
   end
 end

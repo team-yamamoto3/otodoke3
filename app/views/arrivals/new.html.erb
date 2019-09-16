@@ -5,7 +5,7 @@
 <h4>レーベル</h4>
 <%= f.text_field :label %>
 <h4>ジャンル</h4>
-<%= f.text_field :genre %>
+<%= f.select :genre, @selectjenre %>
 <h4>販売ステータス</h4>
 <%= f.select :sales_status, @sales_status %>
 <h4>価格</h4>
@@ -15,6 +15,6 @@
 <h4>タイトル</h4>
 <%= f.text_field :title %>
 <h4>ジャケット</h4>
-<p>ジャケットはまだ</p>
+<%= f.attachment_field :jacket %>
 <%= f.submit 'CD追加' %>
 <% end %>

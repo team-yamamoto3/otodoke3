@@ -1,6 +1,5 @@
 class CdsController < ApplicationController
   def index
-  	@cd = Cd.create!
     @cds = Cd.all
   end
 
@@ -20,12 +19,17 @@ class CdsController < ApplicationController
     p @cd
   end
 
-  def cartin
+  def index
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true)
+  end
 
+  def cartin
   end
 
   private
   def cd_params
-    params.require(:cd).permit(:sale_status, :price, :consumption_tax, :stock, :title, :jacket, :label)
+    params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label)
   end
+
 end

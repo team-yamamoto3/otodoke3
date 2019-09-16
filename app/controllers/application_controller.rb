@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
   # before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+# 検索機能
+  def set_search
+    @search = Article.ransack(params[:q])
+    @search_articles = @search.result.page(params[:page])
+  end
+
+
   protected
 	 def configure_permitted_parameters
 	   devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :email, :user_tell, :user_address, :postal_code])

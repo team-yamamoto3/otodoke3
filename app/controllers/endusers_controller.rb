@@ -11,9 +11,7 @@ class EndusersController < ApplicationController
 
 
   def show
-  	  @Cd = Cd.new
-      @enduser = Enduser.find(params[:id])
-      @cds = @enduser.cds.all
+      @enduser = current_enduser
   end
 
   def new
@@ -32,8 +30,8 @@ class EndusersController < ApplicationController
 
   def destroy
       Enduser.find(params[:id]).destroy
-      flash[:success] = "User deleted"
-      redirect_to users_url
+      flash[:success] = "Enduser deleted"
+      redirect_to cds_index_path
   end
 
   private
