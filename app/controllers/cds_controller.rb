@@ -1,10 +1,11 @@
 class CdsController < ApplicationController
   def index
-    @cds = Cd.all
+    @cds = Cd.all.includes(:artists)
   end
 
   def new
     @cd = Cd.new
+    2.times {@cd.artists.build}
   end
 
   # def create
@@ -23,7 +24,8 @@ class CdsController < ApplicationController
 
   private
   def cd_params
-    params.require(:cd).permit(:sale_status, :price, :consumption_tax, :stock, :title, :jacket, :label)
+    params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label,
+        artists_attributes:[:artist])
   end
 
 end
