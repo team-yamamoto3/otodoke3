@@ -3,12 +3,6 @@
 
 <%= @cd.title %>
 
-<!-- 退会機能　＊テスト -->
-<% if @enduser == current_enduser %>
-	<td><%= link_to "Destroy", @enduser, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-denger", class: "btn btn-danger btn-xs" %></td>
-    </tr>
-<% end %>
-
 <a href="https://itunes.apple.com/lookup?id=402060584&country=jp">lookup</a>
 <a href="https://itunes.apple.com/search?term=aimyon&country=ja&media=music&entity=musicTrack&album&song&country=jp">検索</a>
 
