@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'cds/index'
-  get 'cds/show'
+  resources :cds, only: [:index, :show, :create]
   get 'arrivals/new'
+  post '/arrivals/', to: 'arrivals#create'
   get 'arrivals/index'
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',

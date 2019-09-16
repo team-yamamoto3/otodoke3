@@ -1,2 +1,19 @@
-<h1>Arrivals#new</h1>
-<p>Find me in app/views/arrivals/new.html.erb</p>
+<h1>新規商品追加画面</h1>
+
+<%= form_for(@cd, url: arrivals_path) do |f| %>
+<h4>レーベル</h4>
+<%= f.text_field :label %>
+<h4>ジャンル</h4>
+<%= f.text_field :genre %>
+<h4>販売ステータス</h4>
+<%= f.select :sales_status, @sales_status %>
+<h4>価格</h4>
+<%= f.number_field :price %>
+<h4>消費税</h4>
+<%= f.number_field :consumption_tax %>
+<h4>タイトル</h4>
+<%= f.text_field :title %>
+<h4>ジャケット</h4>
+<p>ジャケットはまだ</p>
+<%= f.submit 'CD追加' %>
+<% end %>
