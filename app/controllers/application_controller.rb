@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
   # ログインご画面についてはまた考える
 	def after_sign_in_path_for(resource)
 	  case resource
@@ -14,9 +15,9 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_out_path_for(resource)
-      cds_path
-    end
 
+      cds_index_path
+  end
 
   protected
 	 def configure_permitted_parameters
