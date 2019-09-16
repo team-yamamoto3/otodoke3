@@ -14,7 +14,7 @@ class CdsController < ApplicationController
   # end
 
   def show
-    # @cd = Cd.find(params[:id])
+    @cd = Cd.find(params[:id])
   end
 
   def cartin
