@@ -1,5 +1,11 @@
 <h1>CD一覧</h1>
 
+
+<%= @cd.title %>
+
+
+<!-- ログアウト機能 -->
+
 <!-- ログアウト機能 *テスト -->
 <%= link_to "ログアウト", destroy_enduser_session_path, method: :delete %>
 
@@ -11,6 +17,15 @@
 
 <a href="https://itunes.apple.com/lookup?id=402060584&country=jp">lookup</a>
 <a href="https://itunes.apple.com/search?term=aimyon&country=ja&media=music&entity=musicTrack&album&song&country=jp">検索</a>
+
+<div id="container">
+	<div id="theTarget">
+		<div class="image1"></div>
+		<div class="image2"></div>
+		<div class="image3"></div>
+	</div>
+</div>
+
 
 <% @cds.each do |cd| %>
 <h4>label</h4>

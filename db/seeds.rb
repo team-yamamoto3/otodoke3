@@ -36,6 +36,8 @@ Cd.create!
     {label: 'label',}, 
     {jacket: 'jacket',}, 
     {disc: 'disc',}, 
+    {price: 1000000,}, 
+    {artist: 'artist',}])
     {artist: 'artist',}])
 
 #初期adminの作成
@@ -43,4 +45,5 @@ Admin.find_or_create_by(id: 1) do |admin|
   admin.email = 'admin@example.com'
   admin.password = 'admin123'
 end
+
 
