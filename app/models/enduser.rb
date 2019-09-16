@@ -3,6 +3,11 @@ class Enduser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :postal_code, presence: true
+  validates :user_address, presence: true
+  validates :user_tell, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   acts_as_paranoid
 end
