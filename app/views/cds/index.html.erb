@@ -4,6 +4,20 @@
 <a href="https://itunes.apple.com/lookup?id=402060584&country=jp">lookup</a>
 <a href="https://itunes.apple.com/search?term=aimyon&country=ja&media=music&entity=musicTrack&album&song&country=jp">検索</a>
 
+
+
+<p>CDタイトル検索</p>
+<table>
+	<%= search_form_for @q do |f| %>
+    <%= f.label :title_cont %>
+    <%= f.search_field :title_cont %>
+ 
+    <%= f.submit %>
+<% end %>
+</table>
+
+
+
 <div id="container">
 	<div id="theTarget">
 		<div class="image1"></div>
@@ -28,4 +42,9 @@
 <%= cd.consumption_tax %>
 <h4>タイトル</h4>
 <%= cd.title %>
+
+
+<%= link_to "aaa", cd_path(cd.id) %>
 <% end %>
+
+
