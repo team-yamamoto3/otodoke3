@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_15_112442) do
+ActiveRecord::Schema.define(version: 2019_09_16_045138) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "tell"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_112442) do
     t.string "label"
     t.integer "artist_id"
     t.integer "song_id"
+    t.text "jacket_id"
   end
 
   create_table "discs", force: :cascade do |t|
