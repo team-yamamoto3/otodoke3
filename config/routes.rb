@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :cds, only: [:index, :show, :create]
   get 'arrivals/new'
   post '/arrivals/', to: 'arrivals#create'
@@ -21,5 +22,6 @@ Rails.application.routes.draw do
   get 'carts/show'
   get 'endusers/edit'
   get 'endusers/show'
+  get 'admins/home', as: 'home'
   # For detailss on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
