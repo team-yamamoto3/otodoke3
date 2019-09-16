@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'cds#index'
   resources :cds, only: [:index, :show, :create]
   get 'arrivals/new'
   post '/arrivals/', to: 'arrivals#create'

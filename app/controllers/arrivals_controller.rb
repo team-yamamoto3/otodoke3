@@ -4,6 +4,7 @@ class ArrivalsController < ApplicationController
     @sales_status = ["販売中", "販売停止中"]
   end
 
+# これはarrivalsのテーブルにCDを保存しているためコメントアウト
   def create
     @cd = Cd.new(cd_params)
     @cd.save
@@ -15,6 +16,6 @@ class ArrivalsController < ApplicationController
 
   private
   def cd_params
-    params.require(:cd).permit(:sale_status, :price, :consumption_tax, :stock, :title, :jacket, :label)
+    params.require(:cd).permit(:sale_status, :price, :consumption_tax, :stock, :title, :jacket, :label, :genre)
   end
 end

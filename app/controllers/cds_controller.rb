@@ -8,14 +8,16 @@ class CdsController < ApplicationController
     @cd = Cd.new
   end
 
-  # def create
-  #   @cd = Cd.new(cd_params)
-  #   @cd.save
-  #   redirect_to 'cds/index'
-  # end
+  def create
+    @cd = Cd.new(cd_params)
+    @cd.save
+    redirect_to 'cds/index'
+    # リダイレクト先をpashで表示する
+  end
 
   def show
-    # @cd = Cd.find(params[:id])
+    @cd = Cd.find(params[:id])
+    p @cd
   end
 
   def cartin
@@ -25,11 +27,5 @@ class CdsController < ApplicationController
   private
   def cd_params
     params.require(:cd).permit(:sale_status, :price, :consumption_tax, :stock, :title, :jacket, :label)
-  end
-
-  private
-  def cd_params
-  	params.require(:cd).permit(:price)
-  	
   end
 end
