@@ -30,7 +30,7 @@
                     </li>
                   <li><%= link_to sanitize('<i class="glyphicon glyphicon-log-out"></i> ') + ' Logout', destroy_enduser_session_path, method: :delete %>
                   </li>
-                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-trash"></i> ') + "退会", @enduser, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-denger", class: "btn btn-danger btn-xs" %>
+                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-trash"></i> ') + "退会", enduser_registration_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-denger", class: "btn btn-danger btn-xs" %>
                   </li>
                 </ul>
               <% else %>
