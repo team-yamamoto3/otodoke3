@@ -11,9 +11,7 @@ class EndusersController < ApplicationController
 
 
   def show
-  	  @Cd = Cd.new
-      @enduser = Enduser.find(params[:id])
-      @cds = @enduser.cds.all
+      @enduser = current_enduser
   end
 
   def new
