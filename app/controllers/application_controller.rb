@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   protected
 	 def configure_permitted_parameters
-	   devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :email, :user_tell, :user_address, :postal_code])
+	   devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :email, :user_tell, :user_address, :postal_code,:last_name_kana,:first_name_kana])
 	 end
 
  #   # ログインご画面についてはまた考える
@@ -19,3 +19,5 @@ class ApplicationController < ActionController::Base
 	# end
 end
 
+
+ 
