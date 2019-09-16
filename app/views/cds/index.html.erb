@@ -28,8 +28,16 @@
 
 
 <% @cds.each do |cd| %>
-<h4>label</h4>
+<h4>レーベル</h4>
 <%= cd.label %>
-<h4>genre</h4>
+<h4>ジャンル</h4>
 <%= cd.genre %>
+<h4>販売ステータス</h4>
+<%= cd.sales_status %>
+<h4>値段</h4>
+<%= cd.price %>
+<h4>消費税</h4>
+<%= cd.consumption_tax %>
+<h4>タイトル</h4>
+<%= cd.title %>
 <% end %>
