@@ -1,10 +1,9 @@
 class ArrivalsController < ApplicationController
   def new
     @cd = Cd.new
-    @discs = Disc.new
     2.times {@cd.artists.build}
-    2.times {@cd.songs.build}
-    # 2.times {.discs.build}
+    2.times {@cd.discs.build}
+    3.times {@cd.songs.build}
     @sales_status = ["販売中", "販売停止中"]
     @selectjenre = ["J-Pop", "K-Pop", "洋楽", "邦楽", "アニメ", "R&B", "ロック", "ハードロック", "パンク",
        "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
