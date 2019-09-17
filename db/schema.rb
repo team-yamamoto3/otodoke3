@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_045138) do
+ActiveRecord::Schema.define(version: 2019_09_17_045247) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "tell"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_045138) do
     t.string "artist"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cd_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_045138) do
     t.integer "disc_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cd_id"
   end
 
   create_table "endusers", force: :cascade do |t|
@@ -148,6 +150,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_045138) do
     t.datetime "updated_at", null: false
     t.integer "songorder"
     t.integer "disc_id"
+    t.integer "cd_id"
   end
 
   create_table "titles", force: :cascade do |t|
