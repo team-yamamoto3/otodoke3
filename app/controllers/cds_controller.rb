@@ -16,7 +16,7 @@ class CdsController < ApplicationController
 
   def show
     @cd = Cd.find(params[:id])
-    p @cd
+    @price = @cd.price *  @cd.consumption_tax
   end
 
   def index
