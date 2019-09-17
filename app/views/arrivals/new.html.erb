@@ -16,5 +16,11 @@
 <%= f.text_field :title %>
 <h4>ジャケット</h4>
 <%= f.attachment_field :jacket %>
+
+<%= f.fields_for :artists do |artist_field| %>
+<h4>アーティスト</h4>
+<%= artist_field.text_field :artist %>
+<% end %>
+<br>
 <%= f.submit 'CD追加' %>
 <% end %>
