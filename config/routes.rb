@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 }
 
   resources :endusers, only: [:edit, :show, :update]
+  resources :admin_cds, only: [:index, :show, :edit, :destroy, :update]
 
 
   get 'orders/index'
