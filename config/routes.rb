@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'cds#index'
-  resources :cds, only: [:index, :show, :create]
+  resources :cds, only: [:index, :show, :create] do
+
+    collection do
+      get 'thanks'
+    end
+  end
+  
   get 'arrivals/new'
   post '/arrivals/', to: 'arrivals#create'
   get 'arrivals/index'
@@ -14,6 +20,10 @@ Rails.application.routes.draw do
   passwords:     'endusers/passwords',
   registrations: 'endusers/registrations'
 }
+
+  resources :endusers, only: [:edit, :show, :update]
+
+
   get 'orders/index'
   get 'orders/show'
   get 'users/edit'
@@ -21,8 +31,6 @@ Rails.application.routes.draw do
   get 'admin_cds/index'
   get 'carts/index'
   get 'carts/show'
-  get 'endusers/edit'
-  get 'endusers/show'
   get 'admins/home', as: 'home'
   get 'admins/index'
   # For detailss on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

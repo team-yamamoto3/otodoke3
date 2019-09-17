@@ -24,7 +24,7 @@ f<!DOCTYPE html>
                 <ul class="list-inline">
                   <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + ' Home', home_path %>
                   </li>
-                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-user"></i> ') + ' My Page', endusers_show_path %>
+                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-user"></i> ') + ' My Page', enduser_path(current_enduser.id) %>
                   </li>
                   <li><%= link_to sanitize('<i class="glyphicon glyphicon-cd"></i> ') + ' Cart', carts_index_path %>
                     </li>
