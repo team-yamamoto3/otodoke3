@@ -22,5 +22,18 @@
 <%= artist_field.text_field :artist %>
 <% end %>
 <br>
+<%= f.fields_for :discs do |disc_field| %>
+<h4>ディスク</h4>
+<%= disc_field.text_field :disc_name %>
+<%= disc_field.number_field :include %>
+<%= disc_field.number_field :disc_number %>
+<% end %>
+<br>
+<%= f.fields_for :songs do |songs_field| %>
+<h4>曲名</h4>
+<%= songs_field.text_field :song %>
+<%= songs_field.number_field :songorder %>
+<% end %>
+<br>
 <%= f.submit 'CD追加' %>
 <% end %>
