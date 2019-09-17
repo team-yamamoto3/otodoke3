@@ -9,6 +9,7 @@ class ArrivalsController < ApplicationController
        "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
   end
 
+# これはarrivalsのテーブルにCDを保存しているためコメントアウト
   def create
     @cd = Cd.new(cd_params)
     @cd.save
@@ -25,5 +26,4 @@ class ArrivalsController < ApplicationController
          songs_attributes:[:songs],
         discs_attributes:[:discs])
   end
-
 end
