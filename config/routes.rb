@@ -15,11 +15,11 @@ Rails.application.routes.draw do
   registrations: 'endusers/registrations'
 }
   resources :endusers, only: [:edit, :show, :update]
+  resources :admin_cds, only: [:index, :show, :edit, :destroy, :update]
 
   get 'orders/index'
   get 'orders/show'
   get 'users/edit'
-  get 'admin_cds/index'
   get 'carts/index'
   get 'carts/show'
   get 'admins/home', as: 'home'
