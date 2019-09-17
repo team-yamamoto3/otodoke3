@@ -5,7 +5,7 @@
 	<%= search_form_for @q do |f| %>
     <%= f.label :title_cont %>
     <%= f.search_field :title_cont %>
- 
+
     <%= f.submit %>
 <% end %>
 </table>
@@ -40,8 +40,21 @@
 <%= cd.price %>
 <h4>消費税</h4>
 <%= cd.consumption_tax %>
+<h4>ディスク</h4>
+<% cd.discs.each do |disc| %>
+<%= disc.disc_name %>
+<%= disc.include %>
+<%= disc.disc_number %>
+<% disc.songs.each do |song| %>
+<%= song.song %>
+<%= song.songorder %>
+<% end %>
+<% end %>
+<h4>曲</h4>
+<% cd.songs.each do |song| %>
+<%= song.song %>
+<%= song.songorder %>
+<% end %>
 <div class="between"></div>
 <%= link_to "aaa", cd_path(cd.id) %>
 <% end %>
-
-
