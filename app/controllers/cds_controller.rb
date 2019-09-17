@@ -1,6 +1,10 @@
 class CdsController < ApplicationController
   def index
-    @cds = Cd.all.includes(:artists)
+
+    @cds = Cd.all
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true)
+
   end
 
   def new
@@ -20,12 +24,10 @@ class CdsController < ApplicationController
     @price = @cd.price *  @cd.consumption_tax
   end
 
-  def index
-    @q = Cd.ransack(params[:q])
-    @cds = @q.result(distinct: true)
+  def cartin
   end
 
-  def cartin
+  def thanks
   end
 
   private
