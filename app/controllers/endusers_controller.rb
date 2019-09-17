@@ -18,11 +18,11 @@ class EndusersController < ApplicationController
 
   def update
       @enduser = Enduser.find(params[:id])
-      @enduser.update(enduser_params)
-      if @enduser.save
+      if @enduser.update(enduser_params)
         flash[:notice] = "You have updated user successfully."
         redirect_to enduser_path(@enduser.id)
       else
+        flash[:notice] = "更新失敗しました。"
       	render :edit
       end
   end
@@ -35,6 +35,6 @@ class EndusersController < ApplicationController
 
   private
   def enduser_params
-      params.require(:enduser).permit(:first_name, :last_name, :last_name_kana,:first_name_kana)
+      params.require(:enduser).permit(:first_name, :last_name, :last_name_kana,:first_name_kana, :postal_code, :user_address, :user_tell, :email)
   end
 end
