@@ -33,6 +33,14 @@ f<!DOCTYPE html>
                   <li><%= link_to sanitize('<i class="glyphicon glyphicon-trash"></i> ') + "退会", enduser_registration_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-denger", class: "btn btn-danger btn-xs" %>
                   </li>
                 </ul>
+              <% elsif admin_signed_in? %>
+                <ul class="list-inline">
+                  <li><%= link_to "ユーザー情報", admins_index_path %></li>
+                  <li><%= link_to "商品情報", cds_search_path %></li>
+                  <li><%= link_to "注文内容", orders_index_path %></li>
+                  <li><%= link_to "新規商品追加", arrivals_new_path %></li>
+                  <li><%= link_to "入荷履歴確認", arrivals_index_path %></li>
+                </ul>
               <% else %>
                 <ul class="list-inline">
                   <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + ' Home', root_path %>

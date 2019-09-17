@@ -8,6 +8,10 @@ class Enduser < ApplicationRecord
   validates :user_tell, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  
+  def full_name
+    self.first_name + self.last_name
+  end
 
   acts_as_paranoid
 end
