@@ -1,6 +1,7 @@
 class EndusersController < ApplicationController
 # before_action :authenticate_user!
 
+
   def edit
   	  @enduser = Enduser.find(params[:id])
       if @enduser == current_enduser
@@ -34,8 +35,11 @@ class EndusersController < ApplicationController
       redirect_to cds_index_path
   end
 
+  
+
   private
   def user_params
       params.require(:enduser).permit(:first_name, :last_name, :first_name_kana, :last_name_kana)
   end
+
 end

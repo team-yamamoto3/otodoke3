@@ -17,11 +17,13 @@ Rails.application.routes.draw do
   get 'orders/index'
   get 'orders/show'
   get 'users/edit'
+  get 'admin_cds/search', as: 'cds_search'
   get 'admin_cds/index'
   get 'carts/index'
   get 'carts/show'
   get 'endusers/edit'
   get 'endusers/show'
   get 'admins/home', as: 'home'
+  get 'admins/index'
   # For detailss on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
