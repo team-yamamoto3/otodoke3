@@ -1,1 +1,10 @@
-<h1>fujita</h1>
+<div class="container">
+	<h1>管理者用ホーム</h1>
+		<div class="row">
+			<h3><%= link_to "ユーザー情報編集", admins_index_path %></h3>
+			<h3><%= link_to "商品情報編集", cds_search_path %></h3>
+			<h3><%= link_to "注文内容確認", orders_index_path %></h3>
+			<h3><%= link_to "新規商品追加", arrivals_new_path %></h3>
+			<h3><%= link_to "入荷履歴確認", arrivals_index_path %></h3>
+		</div>
+</div>

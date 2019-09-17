@@ -1,6 +1,7 @@
 class EndusersController < ApplicationController
 # before_action :authenticate_user!
 
+
   def show
       @enduser = current_enduser
   end
@@ -33,8 +34,11 @@ class EndusersController < ApplicationController
       redirect_to cds_index_path
   end
 
+  
+
   private
   def enduser_params
       params.require(:enduser).permit(:first_name, :last_name, :last_name_kana,:first_name_kana, :postal_code, :user_address, :user_tell, :email)
   end
+
 end

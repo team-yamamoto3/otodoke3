@@ -74,3 +74,5 @@ gem 'paranoia'
 gem 'itunes-search-api', github: 'rlivsey/itunes-search-api'
 gem 'cocoon'
 gem 'ransack'
+gem 'pry-byebug'
+

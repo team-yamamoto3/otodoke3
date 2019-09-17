@@ -47,4 +47,8 @@ class AdminCdsController < ApplicationController
     params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label,
         artists_attributes:[:artist])
   end
+
+  def search
+  end
+  
 end

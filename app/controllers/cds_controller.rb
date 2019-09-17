@@ -1,6 +1,8 @@
 class CdsController < ApplicationController
   def index
-    @cds = Cd.all.includes(:artists)
+    @cds = Cd.all.includes(:artists, :discs, :songs)
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true)
   end
 
   def new
@@ -17,20 +19,20 @@ class CdsController < ApplicationController
 
   def show
     @cd = Cd.find(params[:id])
-    p @cd
-  end
-
-  def index
-    @q = Cd.ransack(params[:q])
-    @cds = @q.result(distinct: true)
+    @price = @cd.price *  @cd.consumption_tax
   end
 
   def cartin
   end
 
+  def thanks
+  end
+
   private
   def cd_params
-    params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label,
-        artists_attributes:[:artist])
+    params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label, :genre,
+        artists_attributes:[:artist],
+        discs_attributes:[:id, :disc_name, :include, :disc_number, :_destroy,
+        songs_attributes:[:id, :song, :songorder, :_destroy]])
   end
 end
