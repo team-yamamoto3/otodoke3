@@ -10,52 +10,52 @@
 # Songs.create(songs: "ソングス")
 # Disc.create(disc: "ディスク")
 # Artist.create(artist: "アーティスト")
-# 配列でまとめて作成
-# users = User.create([{name: "hanako"}, {name: "misa"}])
+
 
 #CD情報
 Cd.create!(
   [
     {
       title: '月が食べてしまった',
-      jenre: 'J-Pop',
+      genre: 'J-Pop',
       label: 'キングレコード',
-      priice: 1200,
-      jacket: File.open("./app/assets/images/hujitaena2.jpeg"))
+      price: 1200,
+      jacket: File.open("./app/assets/images/hujitaena2.jpeg")
     },
     {
       title: 'アビイ・ロード【50周年記念2CDエディション】＜期間限定盤＞',
-      jenre: '洋楽',
+      genre: '洋楽',
       label: 'ユニバーサルミュージック',
-      priice: 12800,
-      jacket: File.open("./app/assets/images/アヴィロード.jpg"))
+      price: 12800,
+      jacket: File.open("./app/assets/images/アヴィロード.jpg")
     },
     {
       title: 'Vampire ［CD+DVD］＜通常盤Type A/初回限定仕様＞',
-      jenre: 'K-Pop',
+      genre: 'K-Pop',
       label: 'ユニバーサルミュージック',
-      priice: 1555,
-      jacket: File.open("./app/assets/images/izone.jpeg"))
+      price: 1555,
+      jacket: File.open("./app/assets/images/izone.jpeg")
     },
     {
       title: '馬と鹿',
-      jenre: 'J-Pop',
+      genre: 'J-Pop',
       label: 'Sony Music',
-      priice: 1900,
-      jacket: File.open("./app/assets/images/馬と鹿.jpeg"))
+      price: 1900,
+      jacket: File.open("./app/assets/images/馬と鹿.jpeg")
     },
     {
       title: '色者',
-      jenre: 'J-Pop',
+      genre: 'J-Pop',
       label: 'キングレコード',
-      priice: 3300,
-      jacket: File.open("./app/assets/images/fujitaena1.jpeg"))
+      price: 3300,
+      jacket: File.open("./app/assets/images/fujitaena1.jpeg")
     }
-  ]
-)
+  ])
+
 
 #初期adminの作成
-Admin.find_or_create_by(id: 1) do |admin|
-  admin.email = 'admin@example.com'
-  admin.password = 'admin123'
-end
+Admin.create(email: "admin@example.com",password: "admin123")
+
+# 配列でまとめて作成user
+endusers = Enduser.create([{first_name: "hanano", last_name: "hanako", user_tell: "0725-551-6969", postal_code: "551-1156" },
+  {first_name: "藤田", last_name: "恵名", user_tell: "0725-56-6565", postal_code: "551-3955", user_address: "アメリカ合衆国オハイオ州サーモンピンク市709"}])
