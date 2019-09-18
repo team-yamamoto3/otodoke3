@@ -1,10 +1,10 @@
 <div class="container">
 	<h1>ユーザー一覧</h1>
 		<div class="row">
-			<%= search_form_for @q, url: admins_index_path do |f| %>
-  			<%= f.label :last_name_cont_and_first_name_cont, "名前" %>
-  			<%= f.search_field :last_name_cont_and_first_name_cont %>
-  			<%= f.submit "検索" %>
+			<%= form_tag admins_index_path, :method => 'get' do %>
+				<p>検索</p>
+  					<%= text_field_tag :search, params[:search] %>
+  					<%= submit_tag "ユーザーを検索する", :name => nil %>
 			<% end %>
 		</div>
 		<div class="row">

@@ -1,11 +1,11 @@
+#検索機能はできていないです
 class AdminsController < ApplicationController
 	before_action :authenticate_admin!
 	def home
 	end
 	
 	def index
-      @q = Enduser.ransack(params[:q])
-      @endusers = @q.result(distinct: true)
+	 @endusers = Enduser.search(params[:search])
       #binding.pry
     end
 end
