@@ -5,7 +5,7 @@ class Enduser < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   # カート機能 has_many
-  has_many :cds, dependent: :destroy
+  # has_many :cds, dependent: :destroy
   has_many :carts, dependent: :destroy
 
 

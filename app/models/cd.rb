@@ -1,7 +1,7 @@
 class Cd < ApplicationRecord
 
   # カート機能
-  belongs_to :enduser
+  # belongs_to :enduser
   has_many :carts
   def carted_by?(enduser)
     carts.where(enduser_id: enduser.id).exists?
