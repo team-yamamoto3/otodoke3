@@ -26,6 +26,12 @@ class AdminCdsController < ApplicationController
 
   def edit
     @cd = Cd.find(params[:id])
+    @disc = @cd.discs.build
+    @song = @disc.songs.build
+    2.times {@cd.artists.build}
+    @sales_status = ["販売中", "販売停止中"]
+    @selectjenre = ["J-Pop", "K-Pop", "洋楽", "邦楽", "アニメ", "R&B", "ロック", "ハードロック", "パンク",
+       "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
   end
 
   def update
@@ -40,13 +46,18 @@ class AdminCdsController < ApplicationController
      end
   end
 
-  def destory
+  def destroy
+    @cd = Cd.find(params[:id])
+    @cd.destroy
+    redirect_to admin_cds_path
   end
 
   private
   def cd_params
-    params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label,
-        artists_attributes:[:artist])
+    params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label, :genre,
+        artists_attributes:[:artist],
+        discs_attributes:[:id, :disc_name, :include, :disc_number, :_destroy,
+        songs_attributes:[:id, :song, :songorder, :_destroy]])
   end
 
   def search

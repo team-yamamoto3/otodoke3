@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
       cds_path
   end
 
-   
 
   protected
 	 def configure_permitted_parameters
