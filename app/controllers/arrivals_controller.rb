@@ -13,6 +13,7 @@ class ArrivalsController < ApplicationController
   def create
     @cd = Cd.new(cd_params)
     @cd.save
+    puts @cd.errors.full_messages
     redirect_to cds_path
   end
 
