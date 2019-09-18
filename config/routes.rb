@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get 'thanks'
     end
   end
-  
+
   get 'arrivals/new'
   post '/arrivals/', to: 'arrivals#create'
   get 'arrivals/index'
@@ -31,7 +31,6 @@ Rails.application.routes.draw do
   get 'orders/show'
   get 'users/edit'
   get 'admin_cds/search', as: 'cds_search'
-  get 'admin_cds/index'
   get 'carts/index'
   get 'carts/show'
   get 'admins/home', as: 'home'
