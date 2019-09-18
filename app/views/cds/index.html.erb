@@ -1,31 +1,58 @@
-<h1>CD一覧</h1>
+	<h1>CD一覧</h1>
+	 <h2>CDタイトル検索</h2>
+	<table>
+	 <%= search_form_for @q do |f| %>
+	  <%= f.label :title_cont %>
+	  <%= f.search_field :title_cont %>
+   <%= f.submit %>
+	<% end %>
+ </table>
 
-
-<a href="https://itunes.apple.com/lookup?id=402060584&country=jp">lookup</a>
-<a href="https://itunes.apple.com/search?term=aimyon&country=ja&media=music&entity=musicTrack&album&song&country=jp">検索</a>
-
-<div id="container">
-	<div id="theTarget">
-		<div class="image1"></div>
-		<div class="image2"></div>
-		<div class="image3"></div>
+ <div id="container">
+  <div id="theTarget">
+	 <div class="image1"></div>
+	 <div class="image2"></div>
+	 <div class="image3"></div>
 	</div>
-</div>
-
-
-<% @cds.each do |cd| %>
-<h4>ジャケット</h4>
-<%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
-<h4>レーベル</h4>
-<%= cd.label %>
-<h4>ジャンル</h4>
-<%= cd.genre %>
-<h4>販売ステータス</h4>
-<%= cd.sales_status %>
-<h4>値段</h4>
-<%= cd.price %>
-<h4>消費税</h4>
-<%= cd.consumption_tax %>
-<h4>タイトル</h4>
-<%= cd.title %>
-<% end %>
+ </div>
+ <div class="center-cd">
+	 <% @cds.each do |cd| %>
+	  <h4>ジャケット</h4>
+		 <%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
+		<h4>タイトル</h4>
+		 <%= cd.title %>
+		<h4>アーティスト</h4>
+		<% cd.artists.each do |artist| %>
+		 <%= artist.artist %>
+		<% end %>
+		<h4>レーベル</h4>
+		 <%= cd.label %>
+		<h4>ジャンル</h4>
+		 <%= cd.genre %>
+		<h4>販売ステータス</h4>
+		 <%= cd.sales_status %>
+		<h4>値段</h4>
+		 <%= cd.price %>
+		<h4>消費税</h4>
+		 <%= cd.consumption_tax %>
+		<h4>ディスク</h4>
+		 <% cd.discs.each do |disc| %>
+		  <%= disc.disc_name %>
+		  <%= disc.include %>
+		  <%= disc.disc_number %>
+		 <% disc.songs.each do |song| %>
+		  <%= song.song %>
+		  <%= song.songorder %>
+		 <% end %>
+		<% end %>
+	  <h4>曲</h4>
+		 <% cd.songs.each do |song| %>
+		  <%= song.song %>
+		  <%= song.songorder %>
+		 <% end %>
+		 <%= link_to "CD詳細へ", cd_path(cd.id) %>
+		<div class="between"></div>
+		<% end %>
+		<br>
+		<%= paginate(@cds) %>
+   </div>

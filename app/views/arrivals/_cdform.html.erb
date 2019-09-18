@@ -1,0 +1,33 @@
+  <%= form_with(model: cd, url: arrivals_path) do |s| %>
+   <div class="field">
+    <h4>アーティスト（二人まで登録可能）</h4>
+     <%= s.fields_for :artiss do |artist| %>
+      <%= artist.text_field :artist %>
+     <% end %>
+    <h4>レーベル</h4>
+     <%= s.text_field :label %>
+    <h4>ジャンル</h4>
+     <%= s.select :genre, @selectjenre %>
+    <h4>販売ステータス</h4>
+     <%= s.select :sales_status, @sales_status %>
+    <h4>価格</h4>
+     <%= s.number_field :price %>
+    <h4>消費税</h4>
+     <%= s.number_field :consumption_tax, step: :any %>
+    <h4>タイトル</h4>
+     <%= s.text_field :title %>
+    <h4>ジャケット</h4>
+     <%= s.attachment_field :jacket %>
+   </div>
+   <div id="parents">
+    <%= s.fields_for :discs do |disc| %>
+     <%= render 'disc_fields', f: disc %>
+    <% end %>
+   </div>
+   <div id="links">
+    <%= link_to_add_association 'add disc', s, :discs %>
+   </div>
+   <div class="actions">
+    <%= s.submit 'CD追加' %>
+   </div>
+  <% end %>

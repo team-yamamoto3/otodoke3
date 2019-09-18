@@ -1,3 +1,3 @@
 class Artist < ApplicationRecord
-  belongs_to :cd
+  belongs_to :cd, inverse_of: :artists
 end

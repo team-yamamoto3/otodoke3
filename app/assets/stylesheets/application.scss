@@ -16,7 +16,13 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-
+.between{
+  height:20px;
+  background-color: #f71f657a;
+}
+.center-cd{
+  text-align: center;
+}
 
 #container{
   height: 500px;
