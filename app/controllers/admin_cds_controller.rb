@@ -30,9 +30,10 @@ class AdminCdsController < ApplicationController
 
   def update
   	@cd = Cd.find(params[:id])
-    if  @cd.update(sales_status: params[:name])
+    @cd.update(cd_params)
+    if  @cd.save
+        redirect_to admin_cd_path(@cd)
         flash[:notice] = "You have updated user successfully."
-        redirect_to admin_cd_path(@cd.id)
     else
         flash[:notice] = "更新失敗しました。"
         render :edit
@@ -50,5 +51,4 @@ class AdminCdsController < ApplicationController
 
   def search
   end
-  
 end

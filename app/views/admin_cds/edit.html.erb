@@ -1,17 +1,21 @@
 <h1>CD 編集画面</h1>
 
-<%= form_for(@cd) do |f| %>
-  <div class="form-group has-icon">
+<%= form_for(@cd, url:admin_cd_path(@cd), method: :patch) do |f| %>
 
 
 　<div class="field">
       <%= f.label :タイトル %><br />
-      <%= f.text_field :title_id, autofocus: true %>
+      <%= f.text_field :title, autofocus: true %>
   </div>
 
   <div class="field">
       <%= f.label :アーティスト %><br />
-      <%= f.text_field :artist_id, autofocus: true %>
+      <%= f.text_field :artists, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :曲名 %><br />
+      <%= f.text_field :songs, autofocus: true %>
   </div>
 
   <div class="field">
@@ -25,11 +29,6 @@
   </div>
 
   <div class="field">
-      <%= f.label :曲名 %><br />
-      <%= f.text_field :song_id, autofocus: true %>
-  </div>
-
-  <div class="field">
       <%= f.label :価格 %><br />
       <%= f.text_field :price, autofocus: true %>
   </div>
@@ -37,6 +36,11 @@
   <div class="field">
       <%= f.label :在庫 %><br />
       <%= f.text_field :stock, autofocus: true %>
+  </div>
+
+  <div class="form-group">
+      <%= @cd.sales_status %>
+      <%= select_tag 'name', options_for_select({販売中: "販売中", 販売停止中: "販売停止中"}, 1) %>
   </div>
 
   <div class="actions">

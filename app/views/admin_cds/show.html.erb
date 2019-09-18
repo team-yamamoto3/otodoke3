@@ -4,21 +4,21 @@
 
 <h3>タイトル</h3>
 <%= @cd.title %>
+<h3>アーティスト</h3>
+<%= @cd.artists %>
+<h3>曲名</h3>
+<%= @cd.songs %>
+<h3>レーベル</h3>
+<%= @cd.label %>
+<h3>ジャンル</h3>
+<%= @cd.genre %>
 <h3>価格</h3>
 <%= @cd.price %>
-<h3>アーティスト</h3>
-<%= @cd.artist_id %>
-
+<h3>在庫</h3>
+<%= @cd.stock %>
+<h3>販売ステータス</h3>
+<%= @cd.sales_status %>
 
 
 <td><%= link_to "編集", edit_admin_cd_path(@cd), class: "btn btn-success btn-xs" %></td>
 <td><%= link_to "削除", @cd, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-denger", class: "btn btn-danger btn-xs" %></td>
-
-<h3>販売ステータス</h3>
-  <%= @cd.sales_status %>
-	<%= form_tag("/admin_cds/#{@cd.id}", method: :patch) do %>
-		<div class="form-group">
-			<%= select_tag 'name', options_for_select({販売中: "販売中", 販売停止中: "販売停止中"}, 1) %>
-			<%= submit_tag 'ok', class:"btn btn-primary" %>
-		</div>
-	<% end %>
