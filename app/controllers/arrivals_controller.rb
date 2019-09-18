@@ -1,4 +1,10 @@
 class ArrivalsController < ApplicationController
+  # before_action :authenticate_admin!
+
+  def index
+    @cds = Cd.all.includes(:artists, :discs, :songs)
+  end
+
   def new
     @cd = Cd.new
     @disc = @cd.discs.build
@@ -12,6 +18,7 @@ class ArrivalsController < ApplicationController
 # これはarrivalsのテーブルにCDを保存しているためコメントアウト
   def create
     @cd = Cd.new(cd_params)
+    binding.pry
     @cd.save
     redirect_to cds_path
   end
