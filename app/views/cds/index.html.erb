@@ -45,12 +45,7 @@
 		  <%= song.songorder %>
 		 <% end %>
 		<% end %>
-	  <h4>曲</h4>
-		 <% cd.songs.each do |song| %>
-		  <%= song.song %>
-		  <%= song.songorder %>
-		 <% end %>
-		 <%= link_to "CD詳細へ", cd_path(cd.id) %>
+		<%= link_to "CD詳細へ", cd_path(cd.id) %>
 		<div class="between"></div>
 		<% end %>
 		<br>

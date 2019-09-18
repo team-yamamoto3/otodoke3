@@ -1,7 +1,7 @@
   <%= form_with(model: cd, url: arrivals_path) do |s| %>
    <div class="field">
     <h4>アーティスト（二人まで登録可能）</h4>
-     <%= s.fields_for :artiss do |artist| %>
+     <%= s.fields_for :artists do |artist| %>
       <%= artist.text_field :artist %>
      <% end %>
     <h4>レーベル</h4>
