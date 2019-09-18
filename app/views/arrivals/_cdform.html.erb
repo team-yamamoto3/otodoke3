@@ -1,7 +1,7 @@
-  <%= form_with(model: cd, url: arrivals_path) do |s| %>
+<%= form_with(model: cd, url: arrivals_path) do |s| %>
    <div class="field">
     <h4>アーティスト（二人まで登録可能）</h4>
-     <%= s.fields_for :artists do |artist| %>
+    <%= s.fields_for :artists do |artist| %>
       <%= artist.text_field :artist %>
      <% end %>
     <h4>レーベル</h4>
@@ -28,6 +28,6 @@
     <%= link_to_add_association 'add disc', s, :discs %>
    </div>
    <div class="actions">
-    <%= s.submit 'CD追加' %>
+     <%= s.submit 'CD追加' %>
    </div>
-  <% end %>
+   <% end %>
