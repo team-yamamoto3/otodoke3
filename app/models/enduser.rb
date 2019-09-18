@@ -14,10 +14,15 @@ class Enduser < ApplicationRecord
   validates :user_tell, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  
-  def full_name
-    self.first_name + self.last_name
+
+  def self.search(search,kennsaku)
+      if search
+        Enduser.where(['last_name LIKE ?', "%#{search}%"])
+        Enduser.where(['first_name LIKE ?', "%#{kennsaku}%"])
+      else
+      end
   end
+
 
   acts_as_paranoid
 end

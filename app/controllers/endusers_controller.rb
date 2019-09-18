@@ -3,7 +3,7 @@ class EndusersController < ApplicationController
 
 
   def show
-      @enduser = current_enduser
+      @enduser = Enduser.find(params[:id])
   end
 
   def edit
