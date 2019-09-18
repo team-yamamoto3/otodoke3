@@ -1,17 +1,23 @@
 <div class="container">
-	<h1>ユーザー一覧</h1>
+	<h1>ユーザ検索</h1>
 		<div class="row">
+			<p>姓</p>
 			<%= form_tag admins_index_path, :method => 'get' do %>
-				<p>検索</p>
+				<p>ユーザー検索</p>
   					<%= text_field_tag :search, params[:search] %>
+			<p>名</p>
+				<p>ユーザー検索</p>
+  					<%= text_field_tag :kennsaku, params[:kennsaku] %>
   					<%= submit_tag "ユーザーを検索する", :name => nil %>
 			<% end %>
 		</div>
 		<div class="row">
+			<% if @endusers %>
 			<% @endusers.each do |enduser| %>
 			<tr>
-				<td><%= enduser.last_name %><%= enduser.first_name %></td>
+				<td><%= enduser.last_name %><%= enduser.first_name %><%= link_to "ユーザー詳細", enduser_path(enduser.id) %></td>
 			</tr>
+			<% end %>
 			<% end %>
 		</div>
 </div>

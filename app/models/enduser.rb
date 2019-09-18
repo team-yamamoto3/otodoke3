@@ -9,10 +9,14 @@ class Enduser < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  def self.search(search)
-        return Enduser.all unless search
-        Enduser.where(['last_name ? OR first_name LIKE ?', "%#{search}%", "%#{search}%"])
+  def self.search(search,kennsaku)
+      if search
+        Enduser.where(['last_name LIKE ?', "%#{search}%"])
+        Enduser.where(['first_name LIKE ?', "%#{kennsaku}%"])
+      else
+      end
   end
+
 
   acts_as_paranoid
 end

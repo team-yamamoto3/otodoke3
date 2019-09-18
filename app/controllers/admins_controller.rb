@@ -5,7 +5,6 @@ class AdminsController < ApplicationController
 	end
 	
 	def index
-	 @endusers = Enduser.search(params[:search])
-      #binding.pry
+	 @endusers = Enduser.search(params[:search],params[:kennsaku])
     end
 end
