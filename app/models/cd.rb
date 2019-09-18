@@ -16,6 +16,7 @@ class Cd < ApplicationRecord
   has_many :songs, dependent: :destroy
   accepts_nested_attributes_for :songs
   paginates_per 2
+  has_many :orders
 
   def self.search(search)
   	return Cd.all unless search
