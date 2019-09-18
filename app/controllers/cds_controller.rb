@@ -1,13 +1,17 @@
 class CdsController < ApplicationController
+  # before_action :authenticate_user!, except:[:index, :show, :search, :thanks]
+  # before_action :check_account
+
   def index
-    @cds = Cd.all.includes(:artists, :discs, :songs)
+    # @cds = Cd.all.includes(:artists, :discs, :songs)
+    # @cds = Cd.page(params[:page]).per(2)
     @q = Cd.ransack(params[:q])
-    @cds = @q.result(distinct: true)
+    @cds = @q.result(distinct: true).page(params[:page]).per(2).reverse_order
   end
 
   def new
     @cd = Cd.new
-    2.times {@cd.artists.build}
+    # 2.times {@cd.artists.build}
   end
 
   def create
