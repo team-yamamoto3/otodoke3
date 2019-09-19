@@ -7,6 +7,7 @@ class Cd < ApplicationRecord
   end
 
   has_many :arrivals, dependent: :destroy
+  accepts_nested_attributes_for :arrivals
   has_many :artists, dependent: :destroy, inverse_of: :cd
   accepts_nested_attributes_for :artists
   attachment :jacket
@@ -15,7 +16,9 @@ class Cd < ApplicationRecord
   has_many :songs, dependent: :destroy
   accepts_nested_attributes_for :songs
   paginates_per 2
+
   has_many :orders
+  # attachment :jacket
 
   def self.search(search)
   	return Cd.all unless search
