@@ -1,24 +1,26 @@
 
 <h1>商品詳細</h1>
-<%= attachment_image_tag @cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
+  <%= attachment_image_tag @cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
 
 <h3>タイトル</h3>
-<%= @cd.title %>
+  <%= @cd.title %>
 <h3>アーティスト</h3>
-<%= @cd.artists %>
+  <%= @cd.artist_id %>
 <h3>曲名</h3>
-<%= @cd.songs %>
+  <%= @cd.songs %>
 <h3>レーベル</h3>
-<%= @cd.label %>
+  <%= @cd.label %>
 <h3>ジャンル</h3>
-<%= @cd.genre %>
-<h3>価格</h3>
-<%= @cd.price %>
+  <%= @cd.genre %>
+<h3>値段</h3>
+  <%= @cd.price %>
+<h4>消費税</h4>
+  <%= @cd.consumption_tax %>
 <h3>在庫</h3>
-<%= @cd.stock %>
+  <%= @cd.stock %>
 <h3>販売ステータス</h3>
-<%= @cd.sales_status %>
+  <%= @cd.sales_status %>
 
 
 <td><%= link_to "編集", edit_admin_cd_path(@cd), class: "btn btn-success btn-xs" %></td>
-<td><%= link_to "削除", @cd, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-denger", class: "btn btn-danger btn-xs" %></td>
+<td><%= link_to "削除", admin_cd_path(@cd), method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-denger", class: "btn btn-danger btn-xs" %></td>

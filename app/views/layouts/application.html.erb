@@ -15,16 +15,17 @@
 
       <div class="container">
         <div class="row">
-          <div class="col-xs-6">
-            <h3><p class="text-light">Otodoke</p></h3>
-          </div>
 
-          <div class="col-xs-6">
+              <div class="col-xs-6">
+                <h3><p class="text-light">Otodoke</p></h3>
+              </div>
+                <div class="col-xs-6">
+
               <% if enduser_signed_in? %>
                 <ul class="list-inline">
                   <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + ' Home', home_path %>
                   </li>
-                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-user"></i> ') + ' My Page', endusers_show_path %>
+                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-user"></i> ') + ' My Page', enduser_path(current_enduser.id) %>
                   </li>
                   <li><%= link_to sanitize('<i class="glyphicon glyphicon-cd"></i> ') + ' Cart', carts_index_path %>
                     </li>
@@ -36,10 +37,11 @@
               <% elsif admin_signed_in? %>
                 <ul class="list-inline">
                   <li><%= link_to "ユーザー情報", admins_index_path %></li>
-                  <li><%= link_to "商品情報", cds_search_path %></li>
+                  <li><%= link_to "商品情報", search_admin_cds_path %></li>
                   <li><%= link_to "注文内容", orders_index_path %></li>
-                  <li><%= link_to "新規商品追加", arrivals_new_path %></li>
-                  <li><%= link_to "入荷履歴確認", arrivals_index_path %></li>
+                  <li><%= link_to "新規商品追加",  new_admin_cd_path %></li>
+                  <li><%= link_to "入荷履歴確認", admin_cds_path %></li>
+                  <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
                 </ul>
               <% else %>
                 <ul class="list-inline">
@@ -51,10 +53,10 @@
                   </li>
                 </ul>
               <% end %>
-            </nav>
           </div>
         </div>
       </div>
+    </nav>
       </header>
     <%= yield %>
       <footer>

@@ -6,7 +6,7 @@ class Enduser < ApplicationRecord
   
   # カート機能 has_many
   # has_many :cds, dependent: :destroy
-  has_many :carts, dependent: :destroy
+  has_many :carts
 
 
 

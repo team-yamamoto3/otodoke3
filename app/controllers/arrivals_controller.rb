@@ -1,4 +1,10 @@
 class ArrivalsController < ApplicationController
+  # before_action :authenticate_admin!
+
+  def index
+    @cds = Cd.all.includes(:artists, :discs, :songs)
+  end
+
   def new
     @cd = Cd.new
     @disc = @cd.discs.build
@@ -9,16 +15,13 @@ class ArrivalsController < ApplicationController
        "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
   end
 
-# これはarrivalsのテーブルにCDを保存しているためコメントアウト
+
   def create
     @cd = Cd.new(cd_params)
     @cd.save
-    puts @cd.errors.full_messages
     redirect_to cds_path
   end
 
-  def index
-  end
 
   private
   def cd_params

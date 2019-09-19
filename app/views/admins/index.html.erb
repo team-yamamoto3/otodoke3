@@ -15,7 +15,8 @@
 				<% if @endusers %>
 				<% @endusers.each do |enduser| %>
 				<tr>
-					<td><%= enduser.last_name %><%= enduser.first_name %><%= link_to "ユーザー詳細", enduser_path(enduser.id) %></td>
+					<td><%= enduser.last_name %><%= enduser.first_name %></td>
+					<td><%= link_to "ユーザー詳細", enduser_path(enduser.id) %></td>
 				</tr>
 				<% end %>
 				<% end %>
