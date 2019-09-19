@@ -10,12 +10,11 @@ class ApplicationController < ActionController::Base
     @search_articles = @search.result.page(params[:page])
   end
 
+private
 
-  protected
-	 def configure_permitted_parameters
-	   devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :email, :user_tell, :user_address, :postal_code,:last_name_kana,:first_name_kana])
-	 end
-
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
+  end
 
   # ログインご画面についてはまた考える
 	def after_sign_in_path_for(resource)
@@ -28,11 +27,12 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_out_path_for(resource)
-        cds_path
+      cds_path
   end
 
+
   protected
-	 def configure_permitted_parameters
-	   devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :email, :user_tell, :user_address, :postal_code])
-	 end
+   def configure_permitted_parameters
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :email, :user_tell, :user_address, :postal_code,:last_name_kana,:first_name_kana])
+   end
 end

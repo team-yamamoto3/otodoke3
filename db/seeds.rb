@@ -55,6 +55,8 @@ Cd.create!(
 
 #初期adminの作成
 Admin.create(email: "admin@example.com",password: "admin123")
+#確認のため購入済み商品作成
+Receipt.create(created_at: now, order_status: 準備中, payment: 代引き, postage: 500, )
 
 # 配列でまとめて作成user
 endusers = Enduser.create([{first_name: "hanano", last_name: "hanako", user_tell: "0725-551-6969", postal_code: "551-1156" },
