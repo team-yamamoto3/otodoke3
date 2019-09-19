@@ -4,10 +4,8 @@
     <%= s.fields_for :artists do |artist| %>
       <%= artist.text_field :artist %>
      <% end %>
-    <h4>入荷数量</h4>
-    <%= s.fields_for :arrivals do |arrival| %>
-      <%= arrival.number_field :arrival_new %>
-     <% end %>
+     <h4>在庫数量</h4>
+      <%= s.number_field :stock %>
     <h4>レーベル</h4>
      <%= s.text_field :label %>
     <h4>ジャンル</h4>

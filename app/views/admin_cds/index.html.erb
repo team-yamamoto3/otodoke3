@@ -31,10 +31,8 @@
 	 <% cd.artists.each do |artist| %>
 	  <%= artist.artist %>
 	 <% end %>
-   <h4>入荷数量</h4>
-	  <% cd.arrivals.each do |arrival| %>
-	   <%= arrival.arrival_new %>
-	  <% end %>
+   <h4>在庫</h4>
+	   <%= cd.stock %>
 	  <h4>レーベル</h4>
 	   <%= cd.label %>
 	  <h4>ジャンル</h4>
