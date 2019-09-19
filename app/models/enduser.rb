@@ -3,9 +3,8 @@ class Enduser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   # カート機能 has_many
-  # has_many :cds, dependent: :destroy
   has_many :carts
 
 
