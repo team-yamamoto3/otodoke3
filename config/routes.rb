@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :cds, only: [:index, :show, :create] do
     # カート機能
     resources :carts, only:[:create, :destroy, :update]
-
+  end
 
   resources :cds, only: [:index, :show, :create, :edit, :update] do
 
