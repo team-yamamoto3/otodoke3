@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'cds#index'
   resources :cds, only: [:index, :show, :create] do
     # カート機能
-    resource :carts, only:[:create, :destroy]
+    resources :carts, only:[:create, :destroy, :update]
 
     collection do
       get 'thanks'
