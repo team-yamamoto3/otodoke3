@@ -19,6 +19,7 @@
 	</div>
 
 
+ <div class="center-cd">
 	<% @cds.each do |cd| %>
 	 <h4>ジャケット</h4>
 	<%= link_to admin_cd_path(cd.id) do %>
@@ -48,3 +49,4 @@
 	  <div class="between"></div>
 	  <% end %>
 	 <%= paginate(@cds) %>
+  </div>

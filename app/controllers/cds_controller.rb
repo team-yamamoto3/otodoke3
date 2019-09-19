@@ -23,6 +23,8 @@ class CdsController < ApplicationController
   def show
     @cd = Cd.find(params[:id])
     @price = @cd.price *  @cd.consumption_tax
+    @cart = Cart.new
+    
   end
 
   def cartin
