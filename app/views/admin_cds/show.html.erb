@@ -1,30 +1,29 @@
+    <h1>商品詳細</h1>
+     <%= attachment_image_tag @cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
+    <h3>タイトル</h3>
+     <%= @cd.title %>
+    <h3>アーティスト</h3>
+     <% @cd.artists.each do |a| %>
+      <%= a.artist %>
+     <% end %>
+    <h3>曲名</h3>
+    <% @cd.discs.each do |fujita| %>
+    <% fujita.songs.each do |ena| %>
+     <%= ena.song %>
+    <% end %>
+    <% end %>
+    <h3>レーベル</h3>
+     <%= @cd.label %>
+    <h3>ジャンル</h3>
+     <%= @cd.genre %>
+    <h3>価格</h3>
+     <%= @cd.price %>
+    <h3>在庫</h3>
+     <%= @cd.stock %>
+    <% end %>
+    <h3>販売ステータス</h3>
+     <%= @cd.sales_status %>
 
-<h1>商品詳細</h1>
-  <%= attachment_image_tag @cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
 
-<h3>タイトル</h3>
-  <%= @cd.title %>
-<h3>アーティスト</h3>
-  <% @cd.artists.each do |artist| %>
-  <%= artist.artist %>
-  <% end %>
-<h3>曲名</h3>
-  <% @cd.songs.each do |song| %>
-  <%= song.song %>
-  <% end %>
-<h3>レーベル</h3>
-  <%= @cd.label %>
-<h3>ジャンル</h3>
-  <%= @cd.genre %>
-<h3>値段</h3>
-  <%= @cd.price %>
-<h4>消費税</h4>
-  <%= @cd.consumption_tax %>
-<h3>在庫</h3>
-  <%= @cd.stock %>
-<h3>販売ステータス</h3>
-  <%= @cd.sales_status %>
-
-
-<td><%= link_to "編集", edit_admin_cd_path(@cd), class: "btn btn-success btn-xs" %></td>
-<td><%= link_to "削除", admin_cd_path(@cd), method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-denger", class: "btn btn-danger btn-xs" %></td>
+    <td><%= link_to "編集", edit_admin_cd_path(@cd), class: "btn btn-success btn-xs" %></td>
+    <td><%= link_to "削除", admin_cd_path, model: @cd, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>

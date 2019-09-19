@@ -1,50 +1,42 @@
-<h1>CD一覧</h1>
+	<h1>CD一覧</h1>
 
-<p>CDタイトル検索</p>
-<table>
-	<%= search_form_for @q do |f| %>
-    <%= f.label :title_cont %>
-    <%= f.search_field :title_cont %>
-
-    <%= f.submit %>
-<% end %>
-</table>
+	<p>CDタイトル検索</p>
+	<table>
+		<%= search_form_for @q do |f| %>
+	      <%= f.label :title_cont %>
+	      <%= f.search_field :title_cont %>
+     	  <%= f.submit %>
+	    <% end %>
+	</table>
 
 <div class="center-cd">
- <% @cds.each do |cd| %>
-    <h4>ジャケット</h4>
-      <%= link_to admin_cd_path(cd.id) do %>
-        <%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
-      <% end %>
+  <% @cds.each do |cd| %>
+	<h4>ジャケット</h4>
+		<%= link_to admin_cd_path(cd.id) do %>
+		  <%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
+		<% end %>
 	<h4>タイトル</h4>
-	 <%= cd.title %>
+	  <td><%= link_to cd.title, admin_cd_path(cd.id) %></td>
 	<h4>アーティスト</h4>
-	<% cd.artists.each do |artist| %>
-	 <%= artist.artist %>
-	<% end %>
+	  <% cd.artists.each do |artist| %>
+	    <%= artist.artist %>
+	  <% end %>
+    <h4>入荷数量</h4>
+	  <% cd.arrivals.each do |arrival| %>
+	    <%= arrival.arrival_new %>
+	  <% end %>
 	<h4>レーベル</h4>
-	 <%= cd.label %>
+	   <%= cd.label %>
 	<h4>ジャンル</h4>
-	 <%= cd.genre %>
+	   <%= cd.genre %>
 	<h4>販売ステータス</h4>
-	 <%= cd.sales_status %>
+	   <%= cd.sales_status %>
 	<h4>値段</h4>
-	 <%= cd.price %>
+	   <%= cd.price %>
 	<h4>消費税</h4>
-	 <%= cd.consumption_tax %>
-	<h4>ディスク</h4>
-	 <% cd.discs.each do |disc| %>
-	  <%= disc.disc_name %>
-	  <%= disc.include %>
-	  <%= disc.disc_number %>
-	 <% disc.songs.each do |song| %>
-	  <%= song.song %>
-	  <%= song.songorder %>
-	 <% end %>
-	<% end %>
-	<%= link_to "CD詳細へ", admin_cd_path(cd.id) %>
+	   <%= cd.consumption_tax %>
+		 <%= link_to "詳細", admin_cd_path(cd.id) %>
 	<div class="between"></div>
-	<% end %>
-	<br>
-		<%= paginate(@cds) %>
+  <% end %>
+	<%= paginate(@cds) %>
 </div>

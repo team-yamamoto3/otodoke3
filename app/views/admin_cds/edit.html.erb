@@ -2,7 +2,7 @@
 
   <%= form_for(@cd, url: admin_cd_path, method: :patch) do |s| %>
     <div class="field">
-      <h4>アーティスト（二人まで登録可能）</h4>
+      <h4>アーティスト</h4>
         <%= s.fields_for :artists do |artist| %>
           <%= artist.text_field :artist %>
         <% end %>
@@ -10,6 +10,8 @@
         <%= s.text_field :label %>
       <h4>ジャンル</h4>
         <%= s.select :genre, @selectjenre %>
+      <h4>在庫になる予定</h4>
+        <%= s.number_field :stock %>
       <h4>販売ステータス</h4>
         <%= s.select :sales_status, @sales_status %>
       <h4>価格</h4>
