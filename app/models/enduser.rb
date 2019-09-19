@@ -9,6 +9,7 @@ class Enduser < ApplicationRecord
   has_many :carts
 
 
+
   validates :postal_code, presence: true
   validates :user_address, presence: true
   validates :user_tell, presence: true

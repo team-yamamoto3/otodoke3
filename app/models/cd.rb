@@ -16,6 +16,8 @@ class Cd < ApplicationRecord
   has_many :songs, dependent: :destroy
   accepts_nested_attributes_for :songs
   paginates_per 2
+
+  has_many :orders
   # attachment :jacket
 
   def self.search(search)
