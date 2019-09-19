@@ -3,12 +3,13 @@ class EndusersController < ApplicationController
 
 
   def show
-      @enduser = current_enduser
+      @enduser = Enduser.find(params[:id])
   end
 
   def edit
   	  @enduser = Enduser.find(params[:id])
       if @enduser == current_enduser
+      elsif admin_signed_in?
       else
         redirect_to enduser_path(current_enduser)
       end
