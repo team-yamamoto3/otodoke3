@@ -18,10 +18,8 @@
      <%= @cd.genre %>
     <h3>価格</h3>
      <%= @cd.price %>
-    <h3>在庫になる予定（今は入荷数量）</h3>
-    <% @cd.arrivals.each do |a| %>
-     <%= a.arrival_new %>
-    <% end %>
+    <h3>在庫</h3>
+     <%= @cd.stock %>
     <h3>販売ステータス</h3>
      <%= @cd.sales_status %>
 
