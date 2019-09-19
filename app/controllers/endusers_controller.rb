@@ -9,6 +9,7 @@ class EndusersController < ApplicationController
   def edit
   	  @enduser = Enduser.find(params[:id])
       if @enduser == current_enduser
+      elsif admin_signed_in?
       else
         redirect_to enduser_path(current_enduser)
       end
