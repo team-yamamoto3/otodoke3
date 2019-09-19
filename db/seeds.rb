@@ -59,5 +59,5 @@ Admin.create(email: "admin@example.com",password: "admin123")
 Receipt.create(created_at: now, order_status: 準備中, payment: 代引き, postage: 500, )
 
 # 配列でまとめて作成user
-endusers = Enduser.create([{first_name: "hanano", last_name: "hanako", user_tell: "0725-551-6969", postal_code: "551-1156" },
-  {first_name: "藤田", last_name: "恵名", user_tell: "0725-56-6565", postal_code: "551-3955", user_address: "アメリカ合衆国オハイオ州サーモンピンク市709"}])
+# endusers = Enduser.create([{first_name: "hanano", last_name: "hanako", user_tell: "0725-551-6969", postal_code: "551-1156", user_address: "マサラタウンにさよならバイバイオーキド博士研究所" },
+#   {first_name: "藤田", last_name: "恵名", user_tell: "0725-56-6565", postal_code: "551-3955", user_address: "アメリカ合衆国オハイオ州サーモンピンク市709"}])

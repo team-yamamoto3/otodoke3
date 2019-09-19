@@ -1,9 +1,7 @@
 class AdminCdsController < ApplicationController
-    # before_action :authenticate_admin!
-
   def index
+    @cds = Cd.all.includes(:artists)
     @q = Cd.ransack(params[:q])
-    @cds = @q.result(distinct: true)
     # @cds = Cd.all.includes(:artists, :discs, :songs, :arrivals)
     @cds = @q.result(distinct: true).page(params[:page]).per(3).reverse_order
   end
@@ -22,6 +20,7 @@ class AdminCdsController < ApplicationController
   def create
     @cd = Cd.new(cd_params)
     @cd.save
+    # リダイレクト先をpashで表示する
     redirect_to admin_cds_path
   end
 
@@ -29,12 +28,14 @@ class AdminCdsController < ApplicationController
     @cd = Cd.find(params[:id])
   end
 
+  def index
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true).page(params[:page]).per(5).reverse_order
+  end
 
   def edit
     @cd = Cd.find(params[:id])
-    @disc = @cd.discs.build
-    @song = @disc.songs.build
-    2.times {@cd.artists.build}
+    puts @cd.artists
     @sales_status = ["販売中", "販売停止中"]
     @selectjenre = ["J-Pop", "K-Pop", "洋楽", "邦楽", "アニメ", "R&B", "ロック", "ハードロック", "パンク",
        "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
@@ -42,10 +43,10 @@ class AdminCdsController < ApplicationController
 
   def update
   	@cd = Cd.find(params[:id])
-    @cd.update(cd_params)
-    if  @cd.save
-        redirect_to admin_cd_path(@cd)
+    if @cd.update(cd_params)
+      p @cd
         flash[:notice] = "You have updated user successfully."
+        redirect_to admin_cd_path(@cd)
     else
         flash[:notice] = "更新失敗しました。"
         render :edit
@@ -59,14 +60,14 @@ class AdminCdsController < ApplicationController
     redirect_to admin_cds_path
   end
 
-  def search
-  end
-
   private
   def cd_params
     params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label, :genre,
-        artists_attributes:[:artist],arrivals_attributes:[:arrival_new, :arrival_day],
+        artists_attributes:[:id, :artist],arrivals_attributes:[:arrival_new, :arrival_day],
         discs_attributes:[:id, :disc_name, :include, :disc_number, :_destroy,
         songs_attributes:[:id, :song, :songorder, :_destroy]])
+  end
+
+  def search
   end
 end
