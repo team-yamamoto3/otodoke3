@@ -10,14 +10,6 @@
 <% end %>
 </table>
 
-<div id="container">
-	<div id="theTarget">
-		<div class="image1"></div>
-		<div class="image2"></div>
-		<div class="image3"></div>
-	</div>
-</div>
-
 <div class="center-cd">
  <% @cds.each do |cd| %>
     <h4>ジャケット</h4>
@@ -54,4 +46,5 @@
 	<div class="between"></div>
 	<% end %>
 	<br>
+		<%= paginate(@cds) %>
 </div>
