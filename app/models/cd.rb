@@ -6,8 +6,12 @@ class Cd < ApplicationRecord
     carts.where(enduser_id: enduser.id).exists?
   end
 
+
+  has_many :arrivals
+
   has_many :arrivals, dependent: :destroy
   accepts_nested_attributes_for :arrivals
+
   has_many :artists, dependent: :destroy, inverse_of: :cd
   accepts_nested_attributes_for :artists
   attachment :jacket
