@@ -20,10 +20,8 @@
      <%= @cd.price %>
     <h3>在庫</h3>
      <%= @cd.stock %>
-    <% end %>
     <h3>販売ステータス</h3>
      <%= @cd.sales_status %>
-
 
     <td><%= link_to "編集", edit_admin_cd_path(@cd), class: "btn btn-success btn-xs" %></td>
     <td><%= link_to "削除", admin_cd_path, model: @cd, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>

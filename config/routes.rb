@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'cds#index'
-  resources :cds, only: [:index, :show, :create] do
+  resources :cds, only: [:index, :show, :create, :edit, :update] do
     collection do
       get 'thanks'
     end
