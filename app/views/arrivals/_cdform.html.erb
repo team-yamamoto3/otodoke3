@@ -1,4 +1,4 @@
-<%= form_with(model: cd, url: arrivals_path) do |s| %>
+<%= form_with(model: cd, url: admin_cds_path) do |s| %>
    <div class="field">
     <h4>アーティスト（二人まで登録可能）</h4>
     <%= s.fields_for :artists do |artist| %>

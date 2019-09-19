@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     # カート機能
     resource :carts, only:[:create, :destroy]
   end
-  resources :arrivals, only: [:new, :create, :index, :edit, :update]
+  resources :arrivals
   # get 'arrivals/new'
   # post '/arrivals/', to: 'arrivals#create'
   # get 'arrivals/index'

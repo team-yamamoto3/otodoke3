@@ -2,7 +2,7 @@ class ArrivalsController < ApplicationController
   # before_action :authenticate_admin!
 
   def index
-    @cds = Cd.all.includes(:artists, :discs, :songs)
+    @cds = Cd.all.includes(:artists, :discs, :songs, :arrivals)
   end
 
   def new
@@ -17,11 +17,23 @@ class ArrivalsController < ApplicationController
 
 
   def create
-    @cd = Cd.new(cd_params)
-    @cd.save
-    redirect_to cds_path
+    # @cd = Cd.new(cd_params)
+    # @cd.save
+    # redirect_to cds_path
   end
 
+  def show
+     @cd = Cd.find(params[:id])
+
+     # @cd = Cd.increment(:arrivals)
+  end
+
+  def edit
+  end
+
+  def destroy
+    
+  end
 
   private
   def cd_params
@@ -29,5 +41,8 @@ class ArrivalsController < ApplicationController
         artists_attributes:[:artist],
         discs_attributes:[:id, :disc_name, :include, :disc_number, :_destroy,
         songs_attributes:[:id, :song, :songorder, :_destroy]])
+  end
+  def arrival_params
+    params.require(:arrival).permit(:arrival_new)
   end
 end

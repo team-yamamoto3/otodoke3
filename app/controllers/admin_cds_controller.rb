@@ -1,11 +1,19 @@
 class AdminCdsController < ApplicationController
   def index
     @cds = Cd.all.includes(:artists)
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true)
+    # @cds = Cd.all.includes(:artists, :discs, :songs, :arrivals)
+    @cds = @q.result(distinct: true).page(params[:page]).per(3).reverse_order
   end
 
   def new
     @cd = Cd.new
     2.times {@cd.artists.build}
+    1.times {@cd.arrivals.build}
+    @sales_status = ["販売中", "販売停止中"]
+    @selectjenre = ["J-Pop", "K-Pop", "洋楽", "邦楽", "アニメ", "R&B", "ロック", "ハードロック", "パンク",
+       "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
   end
 
   def create
@@ -13,6 +21,7 @@ class AdminCdsController < ApplicationController
     @cd.save
     redirect_to 'cds/index'
     # リダイレクト先をpashで表示する
+    redirect_to admin_cds_path
   end
 
   def show
@@ -49,13 +58,14 @@ class AdminCdsController < ApplicationController
   def destroy
     @cd = Cd.find(params[:id])
     @cd.destroy
+    # flash[:notice] = "successfully"
     redirect_to admin_cds_path
   end
 
   private
   def cd_params
     params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label, :genre,
-        artists_attributes:[:artist],
+        artists_attributes:[:artist],arrivals_attributes:[:arrival_new, :arrival_day],
         discs_attributes:[:id, :disc_name, :include, :disc_number, :_destroy,
         songs_attributes:[:id, :song, :songorder, :_destroy]])
   end
