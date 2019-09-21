@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
   root 'cds#index'
+  # get '/cds/arrivals' => 'arrivals#index'
+  # get '/cds/:id/arrivals' => 'arrivals#create'
+  get '/cds/arrivals/history' => 'arrivals#history'
+  # get '/cds/:id/arrivals/new' => 'arrivals#new'
+  # get '/cds/:id/arrivals/:id' => 'arrivals#create'
   resources :cds, only: [:index, :show, :create] do
+    resources :arrivals do
+
+    end
     collection do
       get 'thanks'
     end
+
     # カート機能
     resource :carts, only:[:create, :destroy]
   end
-  resources :arrivals
-  # get 'arrivals/new'
+
+  # get '/arrivals/new', 'arrivals#new'
   # post '/arrivals/', to: 'arrivals#create'
   # get 'arrivals/index'
   devise_for :admins, controllers: {
