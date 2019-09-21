@@ -1,6 +1,6 @@
  <h1>商品入荷履歴</h1>
   <%= link_to '在庫確認へ', cd_arrivals_path(@cds) %>
-   <table>
+   <table class="table table-hover">
     <thead>
      <tr>
       <th>商品追加数</th>
@@ -20,3 +20,4 @@
      <% end %>
     </tbody>
    </table>
+   <%= paginate(@arrivals) %>

@@ -26,6 +26,7 @@ class AdminCdsController < ApplicationController
 
   def show
     @cd = Cd.find(params[:id])
+    @cds = Cd.all.includes(:artists, :discs, :songs, :arrival)
   end
 
   def index
