@@ -17,6 +17,8 @@ Cd.create!(
   [
     {
       title: '月が食べてしまった',
+      consumption_tax: 1.08,
+      stock: 50,
       genre: 'J-Pop',
       label: 'キングレコード',
       price: 1200,
@@ -24,6 +26,8 @@ Cd.create!(
     },
     {
       title: 'アビイ・ロード【50周年記念2CDエディション】＜期間限定盤＞',
+      consumption_tax: 1.08,
+      stock: 50,
       genre: '洋楽',
       label: 'ユニバーサルミュージック',
       price: 12800,
@@ -31,6 +35,8 @@ Cd.create!(
     },
     {
       title: 'Vampire ［CD+DVD］＜通常盤Type A/初回限定仕様＞',
+      consumption_tax: 1.08,
+      stock: 50,
       genre: 'K-Pop',
       label: 'ユニバーサルミュージック',
       price: 1555,
@@ -38,6 +44,8 @@ Cd.create!(
     },
     {
       title: '馬と鹿',
+      consumption_tax: 1.08,
+      stock: 50,
       genre: 'J-Pop',
       label: 'Sony Music',
       price: 1900,
@@ -45,6 +53,8 @@ Cd.create!(
     },
     {
       title: '色者',
+      consumption_tax: 1.08,
+      stock: 50,
       genre: 'J-Pop',
       label: 'キングレコード',
       price: 3300,
@@ -54,10 +64,9 @@ Cd.create!(
 
 
 #初期adminの作成
-Admin.create(email: "admin@example.com",password: "admin123")
+# Admin.create(email: "admin@example.com",password: "admin123")
 
 # 配列でまとめて作成user
+# endusers = Enduser.create([{first_name: "hanano", last_name: "hanako", user_tell: "0725-551-6969", postal_code: "551-1156", user_address: "マサラタウンにさよならバイバイオーキド博士研究所", email: "enduser@example.com",password: "hujitaena123" },
+#   {first_name: "藤田", last_name: "恵名", user_tell: "0725-56-6565", postal_code: "551-3955", user_address: "アメリカ合衆国オハイオ州サーモンピンク市709", email: "hujitaena@example.com",password: "hujitaena0930"}])
 
-# endusers = Enduser.create([{first_name: "hanano", last_name: "hanako", user_tell: "0725-551-6969", postal_code: "551-1156", user_address: "マサラタウンにさよならバイバイオーキド博士研究所" },
-
-#   {first_name: "藤田", last_name: "恵名", user_tell: "0725-56-6565", postal_code: "551-3955", user_address: "アメリカ合衆国オハイオ州サーモンピンク市709"}])

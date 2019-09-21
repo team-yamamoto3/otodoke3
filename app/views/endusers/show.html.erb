@@ -34,6 +34,10 @@
     </tbody>
 
   </table>
+        <%= link_to enduser_addresses_path(@enduser), class: 'btn-default' do %>
+          <%= '送付先情報一覧' %>
+        <% end %>
         <%= link_to edit_enduser_path(@enduser), class: 'btn-default' do %>
-        <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+          <%= 'お客様情報編集' %>
+          <button type="button" class="btn btn-default btn-block" ><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
         <% end %>

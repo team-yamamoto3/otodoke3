@@ -1,0 +1,25 @@
+<h2>お客様お送り先情報</h2>
+
+  <table class="table">
+    <tbody>
+      <% @addresses.each do |address| %>
+        <tr>
+  	      <th><p>お送り先住所</p></th>
+  	      <th><p class="postal_code"><%= address.postal_code %></p></th>
+        	<th><p class="user_address"><%= address.address %></p></th>
+        </tr>
+
+        <tr>
+        	  <th><p>お電話番号</p></th>
+        	  <th><p class="user_tell"><%= address.tell %></p></th>
+        </tr>
+          <%= link_to enduser_addresses_path, class: 'btn-default' do %>
+            <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+          <% end %>
+        <td><%= link_to "削除", enduser_addresses_path, model: @address, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
+      <% end %>
+    <div class="col-xs-3">
+      <%= render 'addresses/list', address: @address %>
+    </div>
+    </tbody>
+  </table>

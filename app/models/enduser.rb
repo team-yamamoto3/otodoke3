@@ -6,7 +6,7 @@ class Enduser < ApplicationRecord
 
   # カート機能 has_many
   has_many :carts
-
+  has_many :addresses
 
 
   validates :postal_code, presence: true
