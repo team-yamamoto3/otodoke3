@@ -27,11 +27,10 @@ Rails.application.routes.draw do
   passwords:     'endusers/passwords',
   registrations: 'endusers/registrations'
 }
-
   resources :endusers, only: [:edit, :show, :update] do
     resources :addresses, only: [:new, :index, :show, :create, :edit, :update, :destroy]
   end
-
+  
   resources :admin_cds do
     collection do
       get 'search'
