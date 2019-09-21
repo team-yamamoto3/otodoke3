@@ -1,5 +1,5 @@
- <h1>商品入荷履歴</h1>
-  <%= link_to '在庫確認へ', cd_arrivals_path(@cds) %>
+ <h1 class="center-cd htag">商品入荷履歴</h1>
+  <%= link_to '在庫確認へ', cd_arrivals_path(@cds), class: 'btn btn-primary submitbtn' %>
    <table class="table table-hover">
     <thead>
      <tr>
@@ -20,4 +20,4 @@
      <% end %>
     </tbody>
    </table>
-   <%= paginate(@arrivals) %>
+  <%= paginate(@arrivals) %>
