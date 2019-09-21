@@ -5,21 +5,15 @@ Rails.application.routes.draw do
   get '/cds/arrivals/history' => 'arrivals#history'
   # get '/cds/:id/arrivals/new' => 'arrivals#new'
   # get '/cds/:id/arrivals/:id' => 'arrivals#create'
-  resources :cds, only: [:index, :show, :create] do
-    resources :arrivals do
-
-    end
-    collection do
-      get 'thanks'
-    end
-
-    # カート機能
-    resource :carts, only:[:create, :destroy]
-  end
-
-  # get '/arrivals/new', 'arrivals#new'
-  # post '/arrivals/', to: 'arrivals#create'
-  # get 'arrivals/index'
+  resources :cds, only: [:index, :show, :create, :edit, :update] do
+   resources :arrivals do
+     end
+      # カート機能
+       resources :carts, only:[:create, :destroy, :update]
+        collection do
+         get 'thanks'
+        end
+       end
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -37,8 +31,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-
-
   get 'orders/index'
   get 'orders/show'
   get 'users/edit'
