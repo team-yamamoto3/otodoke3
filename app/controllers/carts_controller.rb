@@ -4,6 +4,8 @@ class CartsController < ApplicationController
   end
 
   def show
+    @carts = current_enduser.carts.all
+    @enduser = current_enduser
   end
 
   def create
@@ -29,6 +31,6 @@ class CartsController < ApplicationController
 
   private
   def cart_params
-  	params.require(:cart).permit(:cartnumber, :cd_id, :enduser_id, :cartnumber)
+  	params.require(:cart).permit(:cartnumber, :cd_id, :enduser_id, :cart)
   end
 end

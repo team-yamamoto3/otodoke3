@@ -1,11 +1,7 @@
-<h1>ユーザー編集画面</h1>
+<h1>送付先情報編集</h1>
 
-<%= form_for(@enduser) do |f| %>
+<%= form_for(@address) do |f| %>
   <div class="form-group has-icon">
-
-<!-- 送付先編集ページは保留 -->
-
-
 
   <!-- 郵便番号 -->
   <div class="field">
@@ -16,7 +12,7 @@
  <!-- 送付先住所 -->
 　<div class="field">
       <%= f.label :送付先住所 %><br />
-      <%= f.text_field :last_name, autofocus: true %>
+      <%= f.text_field :address, autofocus: true %>
   </div>
 
   <!-- 電話番号 -->
@@ -25,50 +21,8 @@
       <%= f.text_field :user_tell, autofocus: true %>
   </div>
 
-
   <div class="actions">
-    <%= f.submit "Update Enduser" %>
+      <%= s.submit "送付先情報更新" %>
   </div>
 
 <% end %>
-
-<h2>お客様情報</h2>
-
-  <table class="table">
-
-    <tbody>
-      <tr>
-        <th><p>name</p></th>
-        <th><p class="user_name"><%= @enduser.last_name %></p></th>
-          <th><p class="user_name"><%= @enduser.first_name %></p></th>
-          <th><p class="user_name"><%= @enduser.last_name_kana %></p></th>
-          <th><p class="user_name"><%= @enduser.first_name_kana %></p></th>
-      </tr>
-
-      <tr>
-        <th><p>郵便番号</p></th>
-        <th><p class="postal_code"><%= @enduser.postal_code %></p></th>
-      </tr>
-
-      <tr>
-          <th><p>住所</p></th>
-          <th><p class="user_address"><%= @enduser.user_address %></p></th>
-      </tr>
-
-      <tr>
-          <th><p>電話番号</p></th>
-          <th><p class="user_tell"><%= @enduser.user_tell %></p></th>
-      </tr>
-
-      <tr>
-          <th><p>メールアドレス</p></th>
-          <th><p class="user_email"><%= @enduser.email %></p></th>
-      </tr>
-
-    </tbody>
-
-  </table>
-        <%= link_to edit_enduser_path(@enduser), class: 'btn-default' do %>
-        <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
-        <% end %>
-

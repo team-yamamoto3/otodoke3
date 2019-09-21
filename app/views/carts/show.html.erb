@@ -1,0 +1,54 @@
+<h1>注文内容確認</h1>
+
+<% array = [] %>
+<% @carts.each do |cart| %>
+  <!-- total = 税込価格      totalcds = cdの数量を反映した時の金額  -->
+  <% total = cart.cd.price * cart.cd.consumption_tax %>
+  <p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p>
+  <%= cart.cd.artist_id %>
+  <% array << totalcd %>
+<% end %>
+
+<h2>送付先情報</h2>
+
+<table class="table">
+
+    <tbody>
+      <tr>
+	      <th><p>name</p></th>
+	      <th><p class="user_name"><%= @enduser.last_name %></p></th>
+          <th><p class="user_name"><%= @enduser.first_name %></p></th>
+          <th><p class="user_name"><%= @enduser.last_name_kana %></p></th>
+          <th><p class="user_name"><%= @enduser.first_name_kana %></p></th>
+      </tr>
+
+      <tr>
+	      <th><p>郵便番号</p></th>
+	      <th><p class="postal_code"><%= @enduser.postal_code %></p></th>
+      </tr>
+
+      <tr>
+      	  <th><p>住所</p></th>
+      	  <th><p class="user_address"><%= @enduser.user_address %></p></th>
+      </tr>
+
+      <tr>
+      	  <th><p>電話番号</p></th>
+      	  <th><p class="user_tell"><%= @enduser.user_tell %></p></th>
+      </tr>
+
+      <tr>
+      	  <th><p>メールアドレス</p></th>
+      	  <th><p class="user_email"><%= @enduser.email %></p></th>
+      </tr>
+
+    </tbody>
+
+  </table>
+        <%= link_to edit_enduser_path(@enduser), class: 'btn-default' do %>
+        <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+        <% end %>
+
+<h2>支払い方法</h2>
+
+  <%= array.sum %>
