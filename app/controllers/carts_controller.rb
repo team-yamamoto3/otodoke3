@@ -23,6 +23,7 @@ class CartsController < ApplicationController
   def update
     @cartnumber = Cart.find(params[:id])
     @cartnumber.update(cart_params)
+    redirect_to "/carts/index"
   end
 
 
