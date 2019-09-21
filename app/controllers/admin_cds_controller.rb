@@ -1,9 +1,8 @@
 class AdminCdsController < ApplicationController
   def index
-    @cds = Cd.all.includes(:artists)
-    @q = Cd.ransack(params[:q])
-    # @cds = Cd.all.includes(:artists, :discs, :songs, :arrivals)
-    @cds = @q.result(distinct: true).page(params[:page]).per(3).reverse_order
+      @q = Cd.ransack(params[:q])
+      # @cds = Cd.all.includes(:artists, :discs, :songs, :arrivals)
+      @cds = @q.result(distinct: true).page(params[:page]).per(3).reverse_order
   end
 
   def new

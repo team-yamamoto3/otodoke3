@@ -1,14 +1,24 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  # before_action :authenticate_user!
+  #before_action :authenticate!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+#def authenticate!
+  #if admin_signed_in?
+    #authenticate_admin!
+  #else
+    #authenticate_enduser!
+  #end
+#end
 
 # 検索機能
   def set_search
     @search = Article.ransack(params[:q])
     @search_articles = @search.result.page(params[:page])
   end
+
+
 
 private
 

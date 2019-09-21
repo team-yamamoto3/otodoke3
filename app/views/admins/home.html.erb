@@ -1,10 +1,22 @@
 <div class="container">
 	<h1>管理者用ホーム</h1>
 		<div class="row">
-			<h3><%= link_to "ユーザー情報編集", admins_index_path %></h3>
-			<h3><%= link_to "商品情報編集", admin_cds_path %></h3>
-			<h3><%= link_to "注文内容確認", orders_index_path %></h3>
-			<h3><%= link_to "新規商品追加",  new_admin_cd_path %></h3>
-			<h3><%= link_to "入荷履歴確認", admin_cds_path %></h3>
+			<table class="table table-striped">
+				<tr>
+					<td><%= link_to "ユーザー情報編集", admins_index_path %></td><td>ユーザー情報の検索、編集、削除が行えます。</td>
+				</tr>
+				<tr>
+					<td><%= link_to "商品情報編集", admin_cds_path %></td><td>商品の検索、編集、削除が行えます。</td>
+				</tr>
+				<tr>
+					<td><%= link_to "注文内容確認", orders_index_path %></td><td>注文内容の確認、ステータスの変更が行えます。</td>
+				</tr>
+				<tr>
+					<td><%= link_to "新規商品追加",  new_admin_cd_path %></td><td>新しく商品を追加できます。</td>
+				</tr>
+				<tr>
+					<td><%= link_to "入荷履歴確認", admin_cds_path %></td><td>入荷履歴を確認できます。</td>
+				</tr>
+			</table>
 		</div>
 </div>

@@ -3,10 +3,10 @@ class CdsController < ApplicationController
   # before_action :check_account
 
   def index
-    # @cds = Cd.all.includes(:artists, :discs, :songs)
-    # @cds = Cd.page(params[:page]).per(2)
-    @q = Cd.ransack(params[:q])
-    @cds = @q.result(distinct: true).page(params[:page]).per(2).reverse_order
+     # @cds = Cd.all.includes(:artists, :discs, :songs)
+     # @cds = Cd.page(params[:page]).per(2)
+      @q = Cd.ransack(params[:q])
+      @cds = @q.result(distinct: true).page(params[:page]).per(2).reverse_order
   end
 
   def new

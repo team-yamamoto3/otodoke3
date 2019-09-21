@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   registrations: 'endusers/registrations'
 }
 
-  resources :endusers, only: [:edit, :show, :update]
+  resources :endusers, only: [:edit, :show, :update, :destroy]
   resources :admin_cds do
     collection do
       get 'search'
