@@ -1,23 +1,19 @@
 Rails.application.routes.draw do
   root 'cds#index'
-
-  resources :cds, only: [:index, :show, :create] do
-    # カート機能
-    resources :carts, only:[:create, :destroy, :update]
-  end
-
+  # get '/cds/arrivals' => 'arrivals#index'
+  # get '/cds/:id/arrivals' => 'arrivals#create'
+  get '/cds/arrivals/history' => 'arrivals#history'
+  # get '/cds/:id/arrivals/new' => 'arrivals#new'
+  # get '/cds/:id/arrivals/:id' => 'arrivals#create'
   resources :cds, only: [:index, :show, :create, :edit, :update] do
-
-    collection do
-      get 'thanks'
-    end
-    # カート機能
-    resource :carts, only:[:create, :destroy]
-  end
-  resources :arrivals
-  # get 'arrivals/new'
-  # post '/arrivals/', to: 'arrivals#create'
-  # get 'arrivals/index'
+   resources :arrivals do
+     end
+      # カート機能
+       resources :carts, only:[:create, :destroy, :update]
+        collection do
+         get 'thanks'
+        end
+       end
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -35,8 +31,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-
-
   get 'orders/index'
   get 'orders/show'
   get 'users/edit'

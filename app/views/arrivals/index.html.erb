@@ -1,2 +1,20 @@
-<h1>Arrivals#index</h1>
-<p>Find me in app/views/arrivals/index.html.erb</p>
+<h1>在庫追加商品選択</h1>
+<%= link_to '商品入荷履歴へ', cds_arrivals_history_path %>
+<div class="center-cd">
+  <% @cds.each do |cd| %>
+  <h4>在庫</h4>
+  <%= link_to cd.stock,  new_cd_arrival_path(cd) %>
+   <h4>ジャケット</h4>
+    <%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
+   <h4>タイトル</h4>
+    <%= cd.title %>
+   <h4>アーティスト</h4>
+   <% cd.artists.each do |artist| %>
+    <%= artist.artist %>
+   <% end %>
+   <h4>販売ステータス</h4>
+    <%= cd.sales_status %>
+   <div class="between"></div>
+   <% end %>
+   <br>
+  </div>
