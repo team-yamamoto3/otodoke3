@@ -1,20 +1,30 @@
 <h1>在庫追加商品選択</h1>
-<%= link_to '商品入荷履歴へ', cds_arrivals_history_path %>
-<div class="center-cd">
-  <% @cds.each do |cd| %>
-  <h4>在庫</h4>
-  <%= link_to cd.stock,  new_cd_arrival_path(cd) %>
-   <h4>ジャケット</h4>
-    <%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
-   <h4>タイトル</h4>
-    <%= cd.title %>
-   <h4>アーティスト</h4>
-   <% cd.artists.each do |artist| %>
-    <%= artist.artist %>
-   <% end %>
-   <h4>販売ステータス</h4>
-    <%= cd.sales_status %>
-   <div class="between"></div>
-   <% end %>
-   <br>
-  </div>
+ <%= link_to '商品入荷履歴へ', cds_arrivals_history_path %>
+  <div class="center-cd">
+   <table class="table table-hover">
+    <thead>
+     <tr>
+      <th>在庫</th>
+      <th>ジャケット</th>
+      <th>タイトル</th>
+      <th>アーティスト</th>
+      <th>販売ステータス</th>
+     </tr>
+    </thead>
+    <tbody>
+     <% @cds.each do |cd| %>
+      <tr>
+       <td><%= link_to "#{cd.stock}枚",  new_cd_arrival_path(cd) %>
+       <br><%= link_to '既存在庫数編集', admin_cd_path(cd.id) %></td>
+       <td><%= attachment_image_tag cd, :jacket, :fill, 60, 60, fallback: "no_cd_image.png" %></td>
+       <td><%= cd.title %></td>
+       <td><% cd.artists.each do |artist| %>
+           <%= artist.artist %>
+           <% end %></td>
+       <td><%= cd.sales_status %></td>
+      </tr>
+     <% end %>
+    </tbody>
+   </table>
+  <br>
+ </div>

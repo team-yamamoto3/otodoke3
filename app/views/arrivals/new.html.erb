@@ -1,6 +1,6 @@
    <h1>CD在庫に入荷数追加</h1>
     <h4>在庫状況</h4>
-     <%= @cd.stock %>
+     <%= @cd.stock %>枚
       <%= form_for [@cd, @arrival], url:cd_arrivals_path(@cd.id), method: :post do |f| %>
        <h4>商品追加数量</h4>
         <%= f.number_field :arrival_new %>

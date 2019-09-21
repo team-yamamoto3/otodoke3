@@ -2,7 +2,7 @@ class ArrivalsController < ApplicationController
   # before_action :authenticate_admin!
 
   def history
-    @arrivals = Arrival.all
+    @arrivals = Arrival.page(params[:page]).per(10)
     @cds = Cd.all.includes(:artists, :discs, :songs, :arrival)
   end
 
@@ -24,11 +24,12 @@ class ArrivalsController < ApplicationController
     @arrival.save
     @cd.stock += @arrival.arrival_new
     @cd.save
-    redirect_to cd_arrivals_path(@cd)
+    # redirect_to cd_arrivals_path(@cd)
+    redirect_to admin_cd_path(@cd)
   end
 
   def show
-     @cd = Cd.find(params[:id])
+     @cd = Cd.find(params[:cd.id])
   end
 
   def edit

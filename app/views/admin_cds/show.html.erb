@@ -20,8 +20,12 @@
      <%= @cd.price %>
     <h3>在庫</h3>
      <%= @cd.stock %>
+     <br>
+     <%= link_to '入荷する', new_cd_arrival_path(@cd) %>
     <h3>販売ステータス</h3>
      <%= @cd.sales_status %>
 
     <td><%= link_to "編集", edit_admin_cd_path(@cd), class: "btn btn-success btn-xs" %></td>
     <td><%= link_to "削除", admin_cd_path, model: @cd, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
+    <%= link_to '商品入荷履歴へ', cds_arrivals_history_path %>
+    <%= link_to '別の商品の在庫を追加する', cd_arrivals_path(@cds) %>
