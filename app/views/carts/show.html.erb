@@ -1,9 +1,0 @@
-
-<h1>商品詳細</h1>
-<% @carts.each do |cart| %>
-<%= attachment_image_tag cart.cd , :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
-<%= cart.cd.title %>
-<p>¥<%= cart.cd.price%>（税込）</p>
-<%= cart.cd.artist_id %>
-
-<% end %>

@@ -25,6 +25,7 @@ class AdminCdsController < ApplicationController
 
   def show
     @cd = Cd.find(params[:id])
+    @cds = Cd.all.includes(:artists, :discs, :songs, :arrival)
   end
 
   def index
@@ -34,7 +35,6 @@ class AdminCdsController < ApplicationController
 
   def edit
     @cd = Cd.find(params[:id])
-    puts @cd.artists
     @sales_status = ["販売中", "販売停止中"]
     @selectjenre = ["J-Pop", "K-Pop", "洋楽", "邦楽", "アニメ", "R&B", "ロック", "ハードロック", "パンク",
        "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
@@ -62,7 +62,7 @@ class AdminCdsController < ApplicationController
   private
   def cd_params
     params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label, :genre,
-        artists_attributes:[:id, :artist],arrivals_attributes:[:arrival_new, :arrival_day],
+        artists_attributes:[:id, :artist],
         discs_attributes:[:id, :disc_name, :include, :disc_number, :_destroy,
         songs_attributes:[:id, :song, :songorder, :_destroy]])
   end

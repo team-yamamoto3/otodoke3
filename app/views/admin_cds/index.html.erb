@@ -1,12 +1,16 @@
 <div class="container">
 	<h1>CD一覧</h1>
-		<p>CDタイトル検索</p>
-			<%= search_form_for @q, url: admin_cds_path do |f| %>
-	     	<%= f.label :title_cont %>
-	      	<%= f.search_field :title_cont %>
-     	  	<%= f.submit %>
-	   		<% end %>
-</div>
+
+<%= link_to '在庫追加する', cd_arrivals_path(@cds) %>
+	<p>CDタイトル検索</p>
+	<table>
+		<%= search_form_for @q do |f| %>
+	      <%= f.label :title_cont %>
+	      <%= f.search_field :title_cont %>
+     	  <%= f.submit %>
+	    <% end %>
+	</table>
+
  <div class="center-cd">
 	<% @cds.each do |cd| %>
 	 <h4>ジャケット</h4>
