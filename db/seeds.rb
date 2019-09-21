@@ -64,7 +64,7 @@ Cd.create!(
 
 
 #初期adminの作成
-# Admin.create(email: "admin@example.com",password: "admin123")
+Admin.create(email: "admin@example.com",password: "admin123")
 
 # 配列でまとめて作成user
 # endusers = Enduser.create([{first_name: "hanano", last_name: "hanako", user_tell: "0725-551-6969", postal_code: "551-1156", user_address: "マサラタウンにさよならバイバイオーキド博士研究所", email: "enduser@example.com",password: "hujitaena123" },

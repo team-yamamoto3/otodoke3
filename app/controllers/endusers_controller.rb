@@ -1,5 +1,5 @@
 class EndusersController < ApplicationController
-# before_action :authenticate_user!
+#before_action :authenticate!
 
 
   def show
@@ -32,7 +32,11 @@ class EndusersController < ApplicationController
   def destroy
       Enduser.find(params[:id]).destroy
       flash[:success] = "Enduser deleted"
+    if enduser_signed_in?
       redirect_to cds_index_path
+    else
+      redirect_to home_path
+    end
   end
 
   private
