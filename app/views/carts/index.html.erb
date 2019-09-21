@@ -2,20 +2,15 @@
 
 
 <% @carts.each do |cart| %>
-<%= attachment_image_tag cart.cd , :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
-<%= cart.cd.title %>
-<% total = cart.cd.price * cart.cd.consumption_tax %>
-<p>¥<%= total.floor %>（税込）</p>
-<%= cart.cd.artist_id %>
-
-
-<%=form_for [cart.cd,cart], url: cd_cart_path(cart.cd.id,cart), method: :patch do |f| %>
-<%=f.number_field :cartnumber %>
-<%=f.submit "数量変更" %>
+  <%= attachment_image_tag cart.cd , :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
+  <%= cart.cd.title %>
+  <% total = cart.cd.price * cart.cd.consumption_tax %>
+  <p>¥<%= total.floor %>（税込）</p>
+  <%= cart.cd.artist_id %>
+	<%=form_for [cart.cd,cart], url: cd_cart_path(cart.cd.id,cart), method: :patch do |f| %>
+	  <%=f.number_field :cartnumber %>
+	  <%=f.submit "数量変更" %>
+	<% end %>
+  <%=link_to '削除', cd_cart_path(cart.cd.id, cart.id),method: :delete %>
+  <%=link_to '購入画面に移る', carts_show_path(cart.id) %>
 <% end %>
-
-
-<%=link_to '削除', cd_cart_path(cart.cd.id, cart.id),method: :delete %>
-
-<% end %>
-

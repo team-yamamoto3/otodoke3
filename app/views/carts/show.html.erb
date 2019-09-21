@@ -1,0 +1,5 @@
+<h1>注文内容確認</h1>
+
+<% @carts.each do |cart| %>
+  <%= @price = cart.cd.price * cart.cd.consumption_tax * cart.cartnumber %>
+<% end %>
