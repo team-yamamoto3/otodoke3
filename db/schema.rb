@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2019_09_22_054516) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "tell"
@@ -143,6 +144,9 @@
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "enduser_id"
+    t.string "house_number"
+    t.text "house"
+    t.string "phone"
   end
 
   create_table "songs", force: :cascade do |t|
