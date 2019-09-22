@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   registrations: 'endusers/registrations'
 }
   resources :endusers, only: [:edit, :show, :update] do
-    resources :addresses, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+    resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
   end
   
   resources :admin_cds do
