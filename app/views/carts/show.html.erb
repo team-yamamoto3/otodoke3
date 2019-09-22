@@ -11,12 +11,15 @@
     <%= form.label :payment, '代引き', {value: :daibiki, style: "display: inline-block;"} %>
     <%= form.hidden_field :order_status %>
 
+
+
   <h4>配送先選択</h4>
-  <h4>既存の登録先住所</h4>
+  <h4>既存の登録先住所（hidden_fieldで住所送る）</h4>
   <%= current_enduser.user_address %>
-    <%# <%= form.text_area :user_address, :placeholder => "#{current_enduser.user_address}" %> %>
-    <br>
-    <%= submit_tag %>
+  <%= form.hidden_field :house_number, :value => @enduser.postal_code %>
+  <%= form.hidden_field :house, :value => @enduser.user_address %>
+  <%= form.hidden_field :phone, :value => @enduser.user_tell %>
+  <%# <%= form.text_area :user_address, :placeholder => "#{current_enduser.user_address}" %> %>
 
   <h3>注文内容</h3>
 
@@ -36,18 +39,8 @@
   <h2>注文内容合計</h2>
   <p style="color: #e82357e3; font-weight: bold; font-size: 30px;">¥<%= array.sum + 500 %>円!!!!!!</p>
   <% end %>
-
-
-<h1>注文内容確認</h1>
-
-<% array = [] %>
-<% @carts.each do |cart| %>
-  <!-- total = 税込価格      totalcds = cdの数量を反映した時の金額  -->
-  <% total = cart.cd.price * cart.cd.consumption_tax %>
-  <p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p>
-  <%= cart.cd.artist_id %>
-  <% array << totalcd %>
-<% end %>
+  <br>
+  <%= submit_tag %>
 
 <h2>送付先情報</h2>
 
@@ -88,8 +81,3 @@
         <%= link_to edit_enduser_path(@enduser), class: 'btn-default' do %>
         <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
         <% end %>
-
-<h2>支払い方法</h2>
-
-  <%= array.sum %>
-
