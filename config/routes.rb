@@ -9,7 +9,7 @@ Rails.application.routes.draw do
    resources :arrivals do
      end
       # カート機能
-       resources :carts, only:[:create, :destroy, :update]
+       resources :carts, only:[:show, :create, :destroy, :update]
         collection do
          get 'thanks'
         end
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   get 'users/edit'
   # get 'admin_cds/search', as: 'cds_search'
   get 'carts/index'
-  get 'carts/show'
+  # get 'carts/show'
   get 'admins/home', as: 'home'
   get 'admins/index'
   # For detailss on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
