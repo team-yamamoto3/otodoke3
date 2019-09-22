@@ -1,6 +1,5 @@
-#検索機能はできていないです
 class AdminsController < ApplicationController
-	before_action :authenticate_admin!
+	#before_action :authenticate!
 	def home
 	end
 

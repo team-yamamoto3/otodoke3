@@ -1,12 +1,11 @@
-
-  <% if flash[:buyerror] %>
+　<% if flash[:buyerror] %>
    <p><%= flash[:buyerror] %></p>
   <% end %>
   <% if flash[:saveerror] %>
    <p><%= flash[:saveerror] %></p>
   <% end %>
 
-  <h1>カート一覧</h1>
+ <h1>カート一覧</h1>
    <% array = [] %>
     <% @carts.each do |cart| %>
      <%= attachment_image_tag cart.cd , :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
@@ -22,5 +21,6 @@
        <% end %>
       <%=link_to '削除', cd_cart_path(cart.cd.id, cart.id),method: :delete %>
      <% end %>
+
      <%= link_to '購入手続きに進む',  cd_cart_path(@carts, @cds) %>
     <%= array.sum %>

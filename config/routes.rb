@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/cds/arrivals/history' => 'arrivals#history'
   # get '/cds/:id/arrivals/new' => 'arrivals#new'
   # get '/cds/:id/arrivals/:id' => 'arrivals#create'
+
+  get 'carts/index'
+  get 'carts/show'
   resources :cds, only: [:index, :show, :create, :edit, :update] do
    resources :arrivals do
      end
@@ -24,19 +27,22 @@ Rails.application.routes.draw do
   passwords:     'endusers/passwords',
   registrations: 'endusers/registrations'
 }
-
-  resources :endusers, only: [:edit, :show, :update]
+  resources :endusers, only: [:edit, :show, :update] do
+    resources :addresses, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+  end
+  
   resources :admin_cds do
     collection do
       get 'search'
     end
   end
+
+
   get 'orders/index'
   get 'orders/show'
   get 'users/edit'
   # get 'admin_cds/search', as: 'cds_search'
   get 'carts/index'
-  # get 'carts/show'
   get 'admins/home', as: 'home'
   get 'admins/index'
   # For detailss on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

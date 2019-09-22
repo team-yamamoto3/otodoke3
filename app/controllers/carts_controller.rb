@@ -5,6 +5,7 @@ class CartsController < ApplicationController
   end
 
   def show
+
     # @cart = Cart.find(params[:id])
     # @cart.enduser_id = current_enduser.id
     # @cd.cd_id = @cd.id
@@ -36,7 +37,6 @@ class CartsController < ApplicationController
     # 購入枚数減らす。0枚なら返す。その後セーブ
     # カート内デストロイ
     # 住所登録後セーブ（後で）
-
   end
 
   def create
@@ -62,7 +62,7 @@ class CartsController < ApplicationController
 
   private
   def cart_params
-  	params.require(:cart).permit(:cartnumber, :cd_id, :enduser_id, :cartnumber)
+  	params.require(:cart).permit(:cartnumber, :cd_id, :enduser_id, :cart)
   end
   def receipts_params
   	params.require(:receipt).permit(:order_status, :payment, :postage, :sum_price)
