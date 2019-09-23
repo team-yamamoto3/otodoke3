@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root 'cds#index'
+  post '/receipts/' => 'receipts#create'
   # get '/cds/arrivals' => 'arrivals#index'
   # get '/cds/:id/arrivals' => 'arrivals#create'
   get '/cds/arrivals/history' => 'arrivals#history'
   # get '/cds/:id/arrivals/new' => 'arrivals#new'
   # get '/cds/:id/arrivals/:id' => 'arrivals#create'
-
   get 'carts/index'
   get 'carts/show'
   resources :cds, only: [:index, :show, :create, :edit, :update] do
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :endusers, only: [:edit, :show, :update] do
     resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
   end
-  
+
   resources :admin_cds do
     collection do
       get 'search'
