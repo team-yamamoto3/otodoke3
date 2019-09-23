@@ -1,2 +1,19 @@
- <h1>新規商品追加画面</h1>
-  <%= render 'cdform', cd: @cd %>
+
+ <div class="container">
+  <div class="row">
+   <div class="col-md-6 col-md-offset-3 center-cd">
+    <h1 class="htag">CD在庫に入荷数追加</h1>
+     <h4>在庫状況</h4>
+      <%= @cd.stock %>枚
+       <%= form_for [@cd, @arrival], url:cd_arrivals_path(@cd.id), method: :post do |f| %>
+        <h4>商品追加数量</h4>
+         <%= f.number_field :arrival_new %>
+        <h4>追加日時</h4>
+         <%= f.datetime_select :arrival_day %>
+        <br>
+         <%= f.submit '追加', class: 'btn btn-primary submitbtn' %>
+        <% end %>
+       </div>
+     <div class="col-md-3"></div>
+    </div>
+   </div>

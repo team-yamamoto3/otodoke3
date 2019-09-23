@@ -1,0 +1,28 @@
+<h1>送付先情報編集</h1>
+
+<%= form_with(model: @address, url: enduser_address_path, method: :patch) do |f| %>
+  <div class="form-group has-icon">
+
+  <!-- 郵便番号 -->
+  <div class="field">
+      <%= f.label :郵便番号 %><br />
+      <%= f.text_field :postal_code, autofocus: true %>
+  </div>
+
+ <!-- 送付先住所 -->
+　<div class="field">
+      <%= f.label :送付先住所 %><br />
+      <%= f.text_field :address, autofocus: true %>
+  </div>
+
+  <!-- 電話番号 -->
+  <div class="field">
+      <%= f.label :電話番号 %><br />
+      <%= f.text_field :user_tell, autofocus: true %>
+  </div>
+
+  <div class="actions">
+      <%= f.submit "送付先情報更新" %>
+  </div>
+
+<% end %>

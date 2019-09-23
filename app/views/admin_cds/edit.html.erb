@@ -1,53 +1,38 @@
 <h1>CD 編集画面</h1>
 
-<%= form_for(@cd, url:admin_cd_path(@cd), method: :patch) do |f| %>
+  <%= form_with(model: @cd, url: admin_cd_path, method: :patch) do |s| %>
+    <div class="field">
+      <h4>アーティスト</h4>
+        <%= s.fields_for :artists do |artist| %>
+          <%= artist.text_field :artist %>
+        <% end %>
+      <h4>レーベル</h4>
+        <%= s.text_field :label %>
+      <h4>ジャンル</h4>
+        <%= s.select :genre, @selectjenre %>
+      <h4>在庫</h4>
+        <%= s.number_field :stock %>
+      <h4>販売ステータス</h4>
+        <%= s.select :sales_status, @sales_status %>
+      <h4>価格</h4>
+        <%= s.number_field :price %>
+      <h4>タイトル</h4>
+        <%= s.text_field :title %>
+      <h4>ジャケット</h4>
+        <%= s.attachment_field :jacket %>
+    </div>
 
+    <div id="parents">
+      <%= s.fields_for :discs do |disc| %>
+        <%= render 'disc_fields', f: disc %>
+      <% end %>
+    </div>
+    <div id="links">
+      <%= link_to_add_association 'add disc', s, :discs %>
+    </div>
 
-　<div class="field">
-      <%= f.label :タイトル %><br />
-      <%= f.text_field :title, autofocus: true %>
-  </div>
+    <div class="actions">
+      <%= s.submit "CD情報更新" %>
+    </div>
 
-  <div class="field">
-      <%= f.label :アーティスト %><br />
-      <%= f.text_field :artists, autofocus: true %>
-  </div>
-
-  <div class="field">
-      <%= f.label :曲名 %><br />
-      <%= f.text_field :songs, autofocus: true %>
-  </div>
-
-  <div class="field">
-      <%= f.label :レーベル %><br />
-      <%= f.text_field :label, autofocus: true %>
-  </div>
-
-  <div class="field">
-      <%= f.label :ジャンル %><br />
-      <%= f.text_field :genre, autofocus: true %>
-  </div>
-
-  <div class="field">
-      <%= f.label :価格 %><br />
-      <%= f.text_field :price, autofocus: true %>
-  </div>
-
-  <div class="field">
-      <%= f.label :在庫 %><br />
-      <%= f.text_field :stock, autofocus: true %>
-  </div>
-
-  <div class="form-group">
-      <%= @cd.sales_status %>
-      <%= select_tag 'name', options_for_select({販売中: "販売中", 販売停止中: "販売停止中"}, 1) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "CD情報更新" %>
-  </div>
-
-<% end %>
-
-
-
+  <% end %>

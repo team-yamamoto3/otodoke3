@@ -1,30 +1,53 @@
 class ArrivalsController < ApplicationController
-  def new
-    @cd = Cd.new
-    @disc = @cd.discs.build
-    @song = @disc.songs.build
-    2.times {@cd.artists.build}
-    @sales_status = ["販売中", "販売停止中"]
-    @selectjenre = ["J-Pop", "K-Pop", "洋楽", "邦楽", "アニメ", "R&B", "ロック", "ハードロック", "パンク",
-       "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
-  end
+  # before_action :authenticate_admin!
 
-# これはarrivalsのテーブルにCDを保存しているためコメントアウト
-  def create
-    @cd = Cd.new(cd_params)
-    @cd.save
-    puts @cd.errors.full_messages
-    redirect_to cds_path
+  def history
+    @arrivals = Arrival.page(params[:page]).per(10)
+    @cds = Cd.all.includes(:artists, :discs, :songs, :arrival)
   end
 
   def index
+    @cds = Cd.all.includes(:artists, :discs, :songs, :arrivals)
+    @arrivals = Arrival.all
+  end
+
+  def new
+    @arrival = Arrival.new
+    @cd = Cd.find(params[:cd_id])
+  end
+
+  def create
+    @cd = Cd.find(params[:cd_id])
+    #current_adminだけが入荷できるようにするにはcurrent_admin.arrivals.new(arrival_params)?
+    @arrival = Arrival.new(arrival_params)
+    @arrival.cd_id = @cd.id
+    @arrival.save
+    @cd.stock += @arrival.arrival_new
+    @cd.save
+    # redirect_to cd_arrivals_path(@cd)
+    redirect_to admin_cd_path(@cd)
+  end
+
+  def show
+     @cd = Cd.find(params[:cd.id])
+  end
+
+  def edit
+    @cd = Cd.find(params[:cd_id])
+  end
+
+  def destroy
+
   end
 
   private
   def cd_params
     params.require(:cd).permit(:sales_status, :price, :consumption_tax, :stock, :title, :jacket, :label, :genre,
-        artists_attributes:[:artist],
+        artists_attributes:[:id, :artist],
         discs_attributes:[:id, :disc_name, :include, :disc_number, :_destroy,
         songs_attributes:[:id, :song, :songorder, :_destroy]])
+  end
+  def arrival_params
+    params.require(:arrival).permit(:arrival_new, :arrival_day)
   end
 end

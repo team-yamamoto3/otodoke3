@@ -1,9 +1,11 @@
-<%= form_with(model: cd, url: admin_cds_path) do |s| %>
+  <%= form_with(model: cd, url: admin_cds_path) do |s| %>
    <div class="field">
     <h4>アーティスト（二人まで登録可能）</h4>
     <%= s.fields_for :artists do |artist| %>
       <%= artist.text_field :artist %>
      <% end %>
+     <h4>在庫数量</h4>
+      <%= s.number_field :stock %>
     <h4>レーベル</h4>
      <%= s.text_field :label %>
     <h4>ジャンル</h4>
