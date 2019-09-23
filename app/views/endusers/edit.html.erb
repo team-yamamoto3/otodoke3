@@ -67,6 +67,12 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div> -->
 
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
   <div class="actions">
     <%= f.submit "Update Enduser" %>
   </div>
@@ -76,7 +82,6 @@
     <%= link_to "強制退会", enduser_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-denger", class: "btn btn-danger btn-xs" %>
   </div>
   <% end %>
-
 
 <% end %>
 
