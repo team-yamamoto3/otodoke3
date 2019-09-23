@@ -2,20 +2,22 @@
   <h1>注文内容を確認・変更する</h1>
 
   <h4>支払い方法の選択</h4>
-  <%= form_with(model: @receipts, local: true) do |form| %>
+  <%# @receipts, url: receipts_path(@receipt, @carts) %>
+  <%= form_with(model: Receipt, url: receipts_path, local: true) do |form| %>
     <%= form.radio_button :payment, :bank %>
     <%= form.label :payment, '銀行振込', {value: :bank, style: "display: inline-block;"} %>
     <%= form.radio_button :payment, :kurejittokado %>
     <%= form.label :payment, 'クレジットカード', {value: :kurejittokado, style: "display: inline-block;"} %>
-    <%= form.radio_button :payment, :daibiki %>
+    <%= form.radio_button :payment, :daibiki, :checked => @daibiki %>
     <%= form.label :payment, '代引き', {value: :daibiki, style: "display: inline-block;"} %>
-    <%= form.hidden_field :order_status %>
+    <%= form.hidden_field :order_status, :value => '準備中' %>
 
 
 
   <h4>配送先選択</h4>
   <h4>既存の登録先住所（hidden_fieldで住所送る）</h4>
   <%= current_enduser.user_address %>
+  <%= form.hidden_field :enduser_id, :value => @enduser.id %>
   <%= form.hidden_field :house_number, :value => @enduser.postal_code %>
   <%= form.hidden_field :house, :value => @enduser.user_address %>
   <%= form.hidden_field :phone, :value => @enduser.user_tell %>
@@ -31,16 +33,13 @@
   <% array << totalcd %>
   <% end %>
   <%= array.sum %>円
-  <%# <%= form.hidden_field :sum_price, value: @receipt.sum_price %> %>
-  <%# <%= hidden_field_tag :sum_price, @receipt.sum_prices %> %>
   <h4>配送料</h4>
-  <%= form.hidden_field :postage %>
   <p>500円</p>
   <h2>注文内容合計</h2>
-  <p style="color: #e82357e3; font-weight: bold; font-size: 30px;">¥<%= array.sum + 500 %>円!!!!!!</p>
-  <% end %>
+  <p style="color: #e82357e3; font-weight: bold; font-size: 30px;">¥<%= array.sum + 500 %>円!!!!</p>
   <br>
-  <%= submit_tag %>
+  <%= submit_tag '購入' %>
+  <% end %>
 
 <h2>送付先情報</h2>
 
