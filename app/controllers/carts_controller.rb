@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+
+
   def index
     @carts = current_enduser.carts.all
     @cds = Cd.all.includes(:artists, :discs, :songs)
@@ -17,11 +19,20 @@ class CartsController < ApplicationController
 
   def create
   	@cart = Cart.new(cart_params)
+    @cd = Cd.find(params[:cart][:cd_id])
+    carts = current_enduser.carts.all
     # binding.pry
   	@cart.enduser_id = current_enduser.id
-  	@cart.save
+    # 同じCDが入った時に数量のみが変更される
+    if @cd.cart_by?(current_enduser.id, @cd.id)
+      exist_cart = carts.find_by(cd_id: @cd.id)
+      new_number = exist_cart.cartnumber + 1
+      exist_cart.update(cartnumber: new_number)
+      redirect_to carts_index_path
+    else @cart.save
   	redirect_to carts_index_path
-   end
+    end
+  end
 
   def destroy
     cart = Cart.find(params[:id])
