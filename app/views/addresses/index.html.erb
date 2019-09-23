@@ -9,13 +9,13 @@
               <p class="postal_code"><%= address.postal_code %></p>
           </th>
         	<th><p>住所</p>
-              <p class="user_address"><%= address.address %></p>
+              <p class="address"><%= address.address %></p>
           </th>
         </tr>
 
         <tr>
         	  <th><p>お電話番号</p></th>
-        	  <th><p class="user_tell"><%= address.tell %></p></th>
+        	  <th><p class="tell"><%= address.tell %></p></th>
         </tr>
         <td><%= link_to edit_enduser_address_path(@enduser,address.id), class: 'btn-default' do %>
             <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
