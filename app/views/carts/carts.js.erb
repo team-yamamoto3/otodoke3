@@ -59,3 +59,16 @@ $(function () {
     $('.selectaddress').html('<%= j(render partial: "carts/enduser_subaddress", locals: {form: form, address: address}) %>');
   });
 });
+
+
+<!-- total = 税込価格      totalcds = cdの数量を反映した時の金額  -->
+<% total = cart.cd.price * cart.cd.consumption_tax %>
+<p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p>
+<br>
+
+<% @carts.each do |cart| %>
+<%=form_for [cart.cd,cart], url: cd_cart_path(cart.cd.id,cart), method: :patch do |f| %>
+<%=f.number_field :cartnumber %>
+<%=f.submit "数量変更" %>
+<% end %>
+<% end %>

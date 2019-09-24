@@ -16,6 +16,40 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ *{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ // カートindex内使用cssここから
+
+ .origin {
+   margin-top: 0;
+   color: #52bf57;
+  border-bottom: dashed 2px #52bf57;
+}
+
+.moneyfont{
+  font-size: 20px;
+}
+
+ .margin-bottom2{
+   margin-bottom: 80px;
+ }
+
+.margin-bottom{
+  margin-bottom: 30px;
+}
+.deletecartbtn{
+  margin-bottom: 20px;
+}
+.shoppingbtn{
+  width: 178px;
+}
+// カートindex内使用cssここまで
+
+
 .between{
   height:20px;
   background-color: #f71f657a;
