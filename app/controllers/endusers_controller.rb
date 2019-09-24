@@ -21,17 +21,15 @@ class EndusersController < ApplicationController
   def update
       @enduser = Enduser.find(params[:id])
       if @enduser.update(enduser_params)
-        flash[:notice] = "You have updated user successfully."
-        redirect_to enduser_path(@enduser.id)
+         redirect_to enduser_path(@enduser.id)
       else
-        flash[:notice] = "更新失敗しました。"
+        flash.now[:alert] = "正しく記入してください。"
       	render :edit
       end
   end
 
   def destroy
       Enduser.find(params[:id]).destroy
-      flash[:success] = "Enduser deleted"
     if enduser_signed_in?
       redirect_to cds_index_path
     else

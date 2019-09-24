@@ -13,54 +13,54 @@
 
 
 #CD情報
-Cd.create!(
-  [
-    {
-      title: '月が食べてしまった',
-      consumption_tax: 1.08,
-      stock: 50,
-      genre: 'J-Pop',
-      label: 'キングレコード',
-      price: 1200,
-      jacket: File.open("./app/assets/images/hujitaena2.jpeg")
-    },
-    {
-      title: 'アビイ・ロード【50周年記念2CDエディション】＜期間限定盤＞',
-      consumption_tax: 1.08,
-      stock: 50,
-      genre: '洋楽',
-      label: 'ユニバーサルミュージック',
-      price: 12800,
-      jacket: File.open("./app/assets/images/アヴィロード.jpg")
-    },
-    {
-      title: 'Vampire ［CD+DVD］＜通常盤Type A/初回限定仕様＞',
-      consumption_tax: 1.08,
-      stock: 50,
-      genre: 'K-Pop',
-      label: 'ユニバーサルミュージック',
-      price: 1555,
-      jacket: File.open("./app/assets/images/izone.jpeg")
-    },
-    {
-      title: '馬と鹿',
-      consumption_tax: 1.08,
-      stock: 50,
-      genre: 'J-Pop',
-      label: 'Sony Music',
-      price: 1900,
-      jacket: File.open("./app/assets/images/馬と鹿.jpeg")
-    },
-    {
-      title: '色者',
-      consumption_tax: 1.08,
-      stock: 50,
-      genre: 'J-Pop',
-      label: 'キングレコード',
-      price: 3300,
-      jacket: File.open("./app/assets/images/fujitaena1.jpeg")
-    }
-  ])
+# Cd.create!(
+#   [
+#     {
+#       title: '月が食べてしまった',
+#       consumption_tax: 1.08,
+#       stock: 50,
+#       genre: 'J-Pop',
+#       label: 'キングレコード',
+#       price: 1200,
+#       jacket: File.open("./app/assets/images/hujitaena2.jpeg")
+#     },
+#     {
+#       title: 'アビイ・ロード【50周年記念2CDエディション】＜期間限定盤＞',
+#       consumption_tax: 1.08,
+#       stock: 50,
+#       genre: '洋楽',
+#       label: 'ユニバーサルミュージック',
+#       price: 12800,
+#       jacket: File.open("./app/assets/images/アヴィロード.jpg")
+#     },
+#     {
+#       title: 'Vampire ［CD+DVD］＜通常盤Type A/初回限定仕様＞',
+#       consumption_tax: 1.08,
+#       stock: 50,
+#       genre: 'K-Pop',
+#       label: 'ユニバーサルミュージック',
+#       price: 1555,
+#       jacket: File.open("./app/assets/images/izone.jpeg")
+#     },
+#     {
+#       title: '馬と鹿',
+#       consumption_tax: 1.08,
+#       stock: 50,
+#       genre: 'J-Pop',
+#       label: 'Sony Music',
+#       price: 1900,
+#       jacket: File.open("./app/assets/images/馬と鹿.jpeg")
+#     },
+#     {
+#       title: '色者',
+#       consumption_tax: 1.08,
+#       stock: 50,
+#       genre: 'J-Pop',
+#       label: 'キングレコード',
+#       price: 3300,
+#       jacket: File.open("./app/assets/images/fujitaena1.jpeg")
+#     }
+#   ])
 
 
 #初期adminの作成

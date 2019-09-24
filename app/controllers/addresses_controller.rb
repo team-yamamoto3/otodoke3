@@ -33,9 +33,10 @@ class AddressesController < ApplicationController
 
   def update
       @address = Address.find(params[:id])
-      @address.update(address_params)
+      @address.update!(address_params)
+      @enduser = current_enduser
       if @address.save
-         redirect_to enduser_addresses_path(@address)
+         redirect_to enduser_addresses_path(@enduser)
          flash[:notice] = "You have edited address successfully"
       else
         render :edit

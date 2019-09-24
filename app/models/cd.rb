@@ -23,4 +23,9 @@ class Cd < ApplicationRecord
   	Cd.where(['content LIKE >', "%#{search}%"])
   end
 
+    def cart_by?(user_id, cd_id)
+      carts.where(enduser_id: user_id, cd_id: cd_id).exists?
+  # validates :sum_price, presence: true, allow_nil: true
+    end
+
 end

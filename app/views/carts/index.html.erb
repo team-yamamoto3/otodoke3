@@ -1,24 +1,34 @@
- <!-- 購入時売り切れてたら表示される -->
- <% if flash[:buyerror] %>
+　<!-- 購入時売り切れてたら表示される -->
+ 　<% if flash[:buyerror] %>
    <p><%= flash[:buyerror] %></p>
   <% end %>
-
- <h1>カート一覧</h1>
-   <% array = [] %>
-    <% @carts.each do |cart| %>
-     <%= attachment_image_tag cart.cd , :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
-      <%= cart.cd&.title %>
-     <!-- total = 税込価格      totalcds = cdの数量を反映した時の金額  -->
-    <% total = cart.cd&.price * cart.cd&.consumption_tax %>
-    <p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p>
-     <%= cart.cd&.artist_id %>
-      <% array << totalcd %>
-       <%=form_for [cart.cd,cart], url: cd_cart_path(cart.cd.id,cart), method: :patch do |f| %>
-        <%=f.number_field :cartnumber %>
-        <%=f.submit "数量変更" %>
-       <% end %>
-      <%=link_to '削除', cd_cart_path(cart.cd.id, cart.id),method: :delete %>
-     <% end %>
-
-     <%= link_to '購入手続きに進む',  carts_show_path %>
-    <%= array.sum %>
+　<h1>カート一覧</h1>
+　　<% array = [] %>
+　　　<% @carts.each do |cart| %>
+  　　　<%= attachment_image_tag cart.cd , :jacket, :fill, 200, 200, fallback: "no_cd_image.png" %>
+  　　　　<%= cart.cd.title %>
+  　　　　<br>
+  　　　　<% cart.cd.artists.each do |artist| %>
+    　　　<%= artist.artist %>
+  　　　<% end %>
+  　　　<!-- total = 税込価格      totalcds = cdの数量を反映した時の金額  -->
+  　　<% total = cart.cd.price * cart.cd.consumption_tax %>
+  　　　<p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p>
+  　　　　<% array << totalcd %>
+  　　　<%=form_for [cart.cd,cart], url: cd_cart_path(cart.cd.id,cart), method: :patch do |f| %>
+    　　　<%=f.number_field :cartnumber %>
+    　　　<%=f.submit "数量変更" %>
+  　　　　<% end %>
+  　　　<br>
+  　　<p><%=link_to '削除', cd_cart_path(cart.cd.id, cart.id),method: :delete %></p>
+  　<br>
+　<% end %>
+ <h4>合計金額　¥<%= array.sum %></h4>
+　<br>
+　　<a href="/carts/show" class="btn btn-danger btn-lg active">購入手続きへ</a>
+　　<a href="/" class="btn btn-default btn-lg active">ショッピングを続ける</a>
+　<% if flash[:alert] %>
+  <div class="alert alert-danger">
+  　<%= flash[:alert] %>
+  </div>
+　<% end %>
