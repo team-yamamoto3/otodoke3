@@ -15,6 +15,12 @@ class CartsController < ApplicationController
     @enduser = current_enduser
     @receipt =Receipt.new
     # @price = @cd.price * @cd.consumption_tax
+
+    # カートの中身が０の時、CDindex画面に遷移
+    if @carts.blank?
+       flash.now[:alert] = "カートに商品が御座いません。"
+       render :index
+    end
   end
 
   def create

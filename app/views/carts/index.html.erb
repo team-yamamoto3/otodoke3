@@ -10,32 +10,28 @@
 
 <% array = [] %>
 <% @carts.each do |cart| %>
-<%= attachment_image_tag cart.cd , :jacket, :fill, 200, 200, fallback: "no_cd_image.png" %>
-<%= cart.cd.title %>
-<br>
-<% cart.cd.artists.each do |artist| %>
- <%= artist.artist %>
+  <%= attachment_image_tag cart.cd , :jacket, :fill, 200, 200, fallback: "no_cd_image.png" %>
+  <%= cart.cd.title %>
+  <br>
+  <% cart.cd.artists.each do |artist| %>
+    <%= artist.artist %>
+  <% end %>
+  <!-- total = 税込価格      totalcds = cdの数量を反映した時の金額  -->
+  <% total = cart.cd.price * cart.cd.consumption_tax %>
+  <p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p>
+
+  <% array << totalcd %>
+
+  <%=form_for [cart.cd,cart], url: cd_cart_path(cart.cd.id,cart), method: :patch do |f| %>
+    <%=f.number_field :cartnumber %>
+    <%=f.submit "数量変更" %>
+  <% end %>
+
+  <br>
+
+  <p><%=link_to '削除', cd_cart_path(cart.cd.id, cart.id),method: :delete %></p>
+  <br><br>
 <% end %>
-<!-- total = 税込価格      totalcds = cdの数量を反映した時の金額  -->
-<% total = cart.cd.price * cart.cd.consumption_tax %>
-<p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p>
-
-
-<% array << totalcd %>
-
-
-<%=form_for [cart.cd,cart], url: cd_cart_path(cart.cd.id,cart), method: :patch do |f| %>
-<%=f.number_field :cartnumber %>
-<%=f.submit "数量変更" %>
-<% end %>
-
-<br>
-
-<p><%=link_to '削除', cd_cart_path(cart.cd.id, cart.id),method: :delete %></p>
-<br><br>
-
-<% end %>
-
 
  <h4>合計金額　¥<%= array.sum %></h4>
 <br>
@@ -48,5 +44,11 @@
   <% if flash[:saveerror] %>
    <p><%= flash[:saveerror] %></p>
   <% end %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
 
 

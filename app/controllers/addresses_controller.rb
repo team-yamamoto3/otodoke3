@@ -37,7 +37,7 @@ class AddressesController < ApplicationController
       @enduser = current_enduser
       if @address.save
          redirect_to enduser_addresses_path(@enduser)
-         flash[:notice] = "You have edited book successfully"
+         flash[:notice] = "You have edited address successfully"
       else
         render :edit
       end
