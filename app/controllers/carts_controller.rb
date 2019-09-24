@@ -1,6 +1,5 @@
 class CartsController < ApplicationController
 
-
   def index
     @carts = current_enduser.carts.all
     @cds = Cd.all.includes(:artists, :discs, :songs)
@@ -10,6 +9,7 @@ class CartsController < ApplicationController
     # @cart = Cart.find(params[:id])
     # @cart.enduser_id = current_enduser.id
     # @cd.cd_id = @cd.id
+    @addresses = Address.all #.order(created_at: :desc)
     @daibiki = true
     @carts = current_enduser.carts.all
     @enduser = current_enduser
