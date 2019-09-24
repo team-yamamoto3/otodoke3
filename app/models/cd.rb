@@ -27,5 +27,4 @@ class Cd < ApplicationRecord
       carts.where(enduser_id: user_id, cd_id: cd_id).exists?
   # validates :sum_price, presence: true, allow_nil: true
     end
-
 end
