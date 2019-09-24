@@ -1,4 +1,4 @@
-<div class="cintainer">
+<div class="container">
   <div class="row">
     <h2>お客様情報</h2>
       <table class="table table-striped">
@@ -45,7 +45,7 @@
         <table class="table table-striped">
           <tbody>
             <tr>
-              <th>購入日</th><th><%= receipt.created_at.strftime("%Y-%m-%d") %></th>
+              <th>購入日</th><th><%= link_to receipt.created_at.strftime("%Y-%m-%d"), history_path %></th>
             </tr>
             <% receipt.orders.each do |order| %>
             <tr>

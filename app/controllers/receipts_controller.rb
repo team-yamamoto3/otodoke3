@@ -7,13 +7,9 @@ class ReceiptsController < ApplicationController
     # カート内デストロイ
     # 住所登録後セーブ（後で）
     @carts = current_enduser.carts
-    @carts_a = Cart.find_by(enduser_id: current_enduser.id)
-    @order = Order.new
-    @order.order_number = @carts_a.cartnumber
-    @order.cd_id = @carts_a.cd_id
+    #binding.pry
     @receipt = Receipt.new(receipts_params)
-    @receipt.order_id = @order.id
-    @carts.each do |cart|
+        @carts.each do |cart|
       #カートから購入CDを一枚ずつ取り出し、買った枚数の方が多ければrender。
     if cart.cd.stock < cart.cartnumber
 
@@ -33,13 +29,19 @@ class ReceiptsController < ApplicationController
        totaled = total.floor * cart.cartnumber
        @receipt.sum_price = totaled
          # カート内デストロイ
-       cart.destroy
      end
     end
     #レシートセーブ。each分の中にかくと毎回セーブの挙動が起きるのでeach外でセーブ
         @receipt.save
-        @order.receipt_id = @receipt.id
-        @order.save
+        @carts.each do |cart|
+          @order = Order.new
+          @order.cd_id = cart.cd.id
+          @order.order_number = cart.cartnumber
+          @order.receipt_id = @receipt.id
+          @order.save
+          cart.destroy
+        end
+
         # @cart = current_enduser.carts
         #そしてサンクスへ
         redirect_to thanks_cds_path
