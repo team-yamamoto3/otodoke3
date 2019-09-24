@@ -76,12 +76,6 @@
 
     </tbody>
 
-<% if flash[:alert] %>
-  <div class="alert alert-danger">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
-
   </table>
         <%= link_to edit_enduser_path(@enduser), class: 'btn-default' do %>
         <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
