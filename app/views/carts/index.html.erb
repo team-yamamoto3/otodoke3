@@ -1,8 +1,6 @@
+ <!-- 購入時売り切れてたら表示される -->
  <% if flash[:buyerror] %>
    <p><%= flash[:buyerror] %></p>
-  <% end %>
-  <% if flash[:saveerror] %>
-   <p><%= flash[:saveerror] %></p>
   <% end %>
 
  <h1>カート一覧</h1>
@@ -22,5 +20,5 @@
       <%=link_to '削除', cd_cart_path(cart.cd.id, cart.id),method: :delete %>
      <% end %>
 
-     <%= link_to '購入手続きに進む',  cd_cart_path(@carts, @cds) %>
+     <%= link_to '購入手続きに進む',  carts_show_path %>
     <%= array.sum %>

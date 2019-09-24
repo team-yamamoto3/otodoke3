@@ -1,0 +1,72 @@
+  <h4>配送先選択</h4>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-8 col-md-offset-2 col-xs-6 col-xs-offset-3">
+      <h4>メイン登録先住所</h4>
+       <table  class="table">
+        <thead>
+         <tr>
+          <th>配送先</th>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>電話番号</th>
+         </tr>
+        </thead>
+       <tbody>
+        <tr>
+         <td><input type="radio" name="okurisaki" id="test" checked></td>
+         <td><%= current_enduser.postal_code %></td>
+         <td><%= current_enduser.user_address %></td>
+         <td><%= current_enduser.user_tell %></td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    <div class="col-md-3 col-xs-3"></div>
+   </div>
+  </div>
+    <!-- 住所選択したらselectaddressタグ内が変化する -->
+  <div class="selectaddress">
+   <%= form.hidden_field :house_number, :value => enduser.postal_code %>
+   <%= form.hidden_field :house, :value => enduser.user_address %>
+   <%= form.hidden_field :phone, :value => enduser.user_tell %>
+  </div>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-8 col-md-offset-2 col-xs-6 col-xs-offset-3">
+     <h4>サブ登録先住所</h4>
+      <table class="table">
+       <thead>
+        <tr>
+         <th>配送先</th>
+         <th>郵便番号</th>
+         <th>住所</th>
+         <th>電話番号</th>
+        </tr>
+       </thead>
+       <tbody>
+        <% @addresses.each do |address| %>
+         <tr>
+          <td><input type="radio" name="okurisaki" value="<%= address.id %>" class="<%= address.id %>"></td>
+          <td><p class="postal_code"><%= address.postal_code %></p></td>
+          <td><p class="user_address"><%= address.address %></p></td>
+          <td><p class="user_tell"><%= address.tell %></p></td>
+         </tr>
+         <!-- スクリプトタグ内の挙動→クリックした住所のHTMLをselectaddressタグ内に上書きする -->
+         <script>
+          $(function () {
+           $("#test").on('click', function() {
+            $('.selectaddress').html('<%= j(render partial: "carts/enduser_address", locals: {form: form, enduser: @enduser}) %>');
+             });
+              $(".<%= address.id %>").on('click', function() {
+               $('.selectaddress').html('<%= j(render partial: "carts/enduser_subaddress", locals: {form: form, address: address}) %>');
+              });
+             });
+            </script>
+           <% end %>
+          </tbody>
+         </table>
+        </div>
+       <div class="col-md-2 col-xs-3"></div>
+      </div>
+     </div>

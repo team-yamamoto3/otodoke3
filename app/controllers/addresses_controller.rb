@@ -10,7 +10,7 @@ class AddressesController < ApplicationController
       @addresses = Address.all.order(created_at: :desc)
       @enduser = current_enduser
       if @new_address.save
-         redirect_to enduser_addresses_path(@address)
+         redirect_to enduser_addresses_path(@enduser)
          flash[:notice] = "You have creatad address successfully."
       else
          render :index
@@ -36,7 +36,7 @@ class AddressesController < ApplicationController
       @address.update(address_params)
       if @address.save
          redirect_to enduser_addresses_path(@address)
-         flash[:notice] = "You have edited book successfully"
+         flash[:notice] = "You have edited address successfully"
       else
         render :edit
       end
