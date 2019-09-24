@@ -7,6 +7,7 @@ class Enduser < ApplicationRecord
   # カート機能 has_many
   has_many :carts
   has_many :addresses
+  has_many :receipts
   acts_as_paranoid
 
   validates :postal_code, presence: true

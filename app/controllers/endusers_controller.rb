@@ -1,9 +1,12 @@
 class EndusersController < ApplicationController
 #before_action :authenticate!
 
+  PER = 5
+
 
   def show
       @enduser = Enduser.find(params[:id])
+      @receipts = current_enduser.receipts.page(params[:page]).per(PER).reverse_order
   end
 
   def edit

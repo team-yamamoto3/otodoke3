@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
-	belongs_to :cds
-	belongs_to :receipts
+	belongs_to :cd
+	belongs_to :receipt
 end
