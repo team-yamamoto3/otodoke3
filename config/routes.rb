@@ -12,7 +12,7 @@ Rails.application.routes.draw do
    resources :arrivals do
      end
       # カート機能
-       resources :carts, only:[:show, :create, :destroy, :update]
+       resources :carts, only:[:create, :destroy, :update]
         collection do
          get 'thanks'
         end

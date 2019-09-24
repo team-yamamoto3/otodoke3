@@ -16,7 +16,7 @@
       <tr>
        <td><%= link_to "#{cd.stock}枚",  new_cd_arrival_path(cd) %>
        <br><%= link_to '既存在庫数編集', admin_cd_path(cd.id) %></td>
-       <td><%= attachment_image_tag cd, :jacket, :fill, 60, 60, fallback: "no_cd_image.png" %></td>
+       <td><%= attachment_image_tag cd, :jacket, :fill, 60, 60, fallback: "no_cd_image_fill60.png" %></td>
        <td><%= cd.title %></td>
        <td><% cd.artists.each do |artist| %>
            <%= artist.artist %>

@@ -5,8 +5,8 @@
      <tr>
       <th>商品追加数</th>
       <th>商品追加日時</th>
-      <th>CDのID</th>
-      <th>CDタイトル</th>
+      <th>タイトル</th>
+      <th>アーティスト</th>
      </tr>
     </thead>
     <tbody>
@@ -14,8 +14,12 @@
       <tr>
        <td><%= a.arrival_new %>枚追加</td>
        <td><%= a.arrival_day %></td>
-       <td>ID<%= a.cd_id %></td>
        <td><%= a.cd&.title %></td>
+       <td>
+        <% a.cd.artists.each do |artist| %>
+          <%= artist.artist %>
+        <% end %>
+        </td>
       </tr>
      <% end %>
     </tbody>
