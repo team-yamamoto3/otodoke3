@@ -45,8 +45,30 @@ class ReceiptsController < ApplicationController
         redirect_to thanks_cds_path
     end
 
+    def index
+      @receipts = Receipt.page(params[:page]).per(10)
+      @orders = Order.all
+    end
+
+    def show
+      @receipt = Receipt.find(params[:id])
+    end
+
+    def update
+      @receipt = Receipt.find(params[:id])
+      @receipt.update!(receipt_params)
+      if @receipt.save
+         redirect_to receipts_path
+      else
+        render :index
+      end
+    end
+
     private
     def receipts_params
     	params.require(:receipt).permit(:enduser_id, :payment, :order_status, :postage, :house_number, :house, :phone ,:order_id)
     end
-   end
+    def receipt_params
+      params.require(:receipt).permit(:order_status)
+    end
+  end

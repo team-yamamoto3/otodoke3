@@ -1,0 +1,70 @@
+<div class="container">
+<div class="row">
+  <h1>注文履歴一覧</h1>
+    <% @receipts.each do |receipt| %>
+      <table class="table table-striped">
+        <tbody>
+
+          <% receipt.orders.each do |order| %>
+            <tr>
+              <th>購入日</th>
+              <th>タイトル</th>
+              <th>アーティスト</th>
+              <th>CD単体価格</th>
+              <th>購入枚数</th>
+              <th>小計</th>
+              <th>送料</th>
+              <th>総計</th>
+            </tr>
+            <tr>
+              <th><%= receipt.created_at.strftime("%Y-%m-%d") %></th>
+              <th><%= order.cd.title %></th>
+              <th>
+              	<% order.cd.artists.each do |artist| %>
+                  <%= artist.artist %>
+                <% end %>
+              </th>
+              <th>¥<%= order.cd.price %></th>
+              <th><%= order.order_number %></th>
+              <th>¥<%= receipt.sum_price %></th>
+              <th>¥<%= receipt.postage %></th>
+              <th>¥<%= receipt.sum_price + receipt.postage %></th>
+            </tr>
+            <tr>
+              <th>購入者名</th>
+              <th>送付先</th>
+              <th>電話番号</th>
+            </tr>
+            <tr>
+              <th>
+              	<%= receipt.enduser.last_name %>
+              	<%= receipt.enduser.first_name %>
+              </th>
+              <th>
+              	<%= receipt.house_number %>
+              	<%= receipt.house %>
+              </th>
+              <th><%= receipt.phone %>
+            </tr>
+            <tr>
+              <th>配送状況</th>
+            </tr>
+            <tr>
+              <th><%= receipt.order_status %>
+              	<%= form_with(model: receipt,local: true) do |form| %>
+              	  <%= form.radio_button :order_status, :準備中 %>
+                    <%= form.label :order_status, '準備中', {value: :junbi, style: "display: inline-block;"} %>
+                  <%= form.radio_button :order_status, :出荷済み %>
+　　　　　　　　　　    <%= form.label :order_status, '出荷済み', {value: :shukka, style: "display: inline-block;"} %>
+                <%= form.submit "配送状況更新" %>
+                <% end %>
+              </th>
+            </tr>
+          <% end %>
+        </tbody>
+          <div class="actions">
+          </div>
+      </table>
+    <% end %>
+      <%= paginate @receipts %>
+</div>
