@@ -36,9 +36,17 @@
 		 <%= cd.price %>
 		<h4>消費税</h4>
 		 <%= cd.consumption_tax %>
+
+
 		<h4>在庫</h4>
-		 <%= cd.stock %>
-		<h4>ディスク</h4>
+		<% if cd.stock == 0 %>
+		<h4>売り切れ</h4>
+		<% else %>
+		<%= cd.stock %>
+        <% end %>
+
+
+        <h4>ディスク</h4>
 		 <% cd.discs.each do |disc| %>
 		  <%= disc.disc_name %>
 		  <%= disc.include %>
