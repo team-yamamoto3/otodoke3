@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # get '/cds/:id/arrivals/:id' => 'arrivals#create'
   get 'carts/index'
   get 'carts/show'
+  get 'endusers/history', as: 'history'
   resources :cds, only: [:index, :show, :create, :edit, :update] do
    resources :arrivals do
      end
