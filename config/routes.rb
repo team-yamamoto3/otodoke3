@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :receipts, only: [:index, :show, :edit, :update]
 
   get 'orders/index'
   get 'orders/show'
