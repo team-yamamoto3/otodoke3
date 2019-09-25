@@ -1,7 +1,10 @@
   <%= form_with(model: cd, url: admin_cds_path) do |s| %>
+   <%= render 'layouts/error_messages', model: s.object %>
    <div class="field">
     <h4>アーティスト（二人まで登録可能）</h4>
     <%= s.fields_for :artists do |artist| %>
+
+    <%= render 'layouts/error_messages', model: artist.object %>
       <%= artist.text_field :artist %>
      <% end %>
      <h4>在庫数量</h4>
@@ -23,6 +26,8 @@
    </div>
    <div id="parents">
     <%= s.fields_for :discs do |disc| %>
+
+    <%= render 'layouts/error_messages', model: disc.object %>
      <%= render 'disc_fields', f: disc %>
     <% end %>
    </div>
@@ -32,4 +37,7 @@
    <div class="actions">
      <%= s.submit 'CD追加' %>
    </div>
+   <% end %>
+   <% if flash[:admin_cds_error] %>
+   <p><%= flash[:admin_cds_error] %></p>
    <% end %>
