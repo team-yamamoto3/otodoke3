@@ -1,0 +1,74 @@
+
+<!-- 残骸たち -->
+   var number;
+$(function () {
+ number = $('#test:checked').val();
+ $("#test").on('click', function() {
+   if($('.selectaddress').html('<%= j(render partial: "carts/enduser_address", locals: { enduser: @enduser}) %>').val() == number) {
+   $(this).prop('checked', false);
+   number = 0;
+ } else {
+   number = $('.selectaddress').html('<%= j(render partial: "carts/enduser_address", locals: { enduser: @enduser}) %>').val();
+ }
+ });
+});
+
+
+<!-- var number;
+$(function(){
+    $('input').click(function(){
+        if($(this).val() == number) {
+            $(this).prop('checked', false);
+            number = 0;
+        } else {
+            number = $(this).val();
+        }
+    });
+}); -->
+
+<%= form.hidden_field :enduser_id, :value => @enduser.id %>
+<%= f.hidden_field :service, :value => "test" %>
+
+
+<%= hidden_field_tag :house_number, enduser.postal_code %>
+<%= hidden_field_tag :house, enduser.user_address %>
+<%= hidden_field_tag :phone, enduser.user_tell %>
+
+
+
+<%= hidden_field_tag :house_number, address.postal_code %>
+<%= hidden_field_tag :house, address.address %>
+<%= hidden_field_tag :phone, address.tell %>
+
+
+
+
+<%= form.hidden_field :house_number, :value => enduser.postal_code %>
+<%= form.hidden_field :house, :value => enduser.user_address %>
+<%= form.hidden_field :phone, :value => enduser.user_tell %>
+
+<%= form.hidden_field :house_number, :value => address.postal_code %>
+<%= form.hidden_field :house, :value => address.address %>
+<%= form.hidden_field :phone, :value => address.tell %>
+
+$(function () {
+  $("#test").on('click', function() {
+    $('.selectaddress').html('<%= j(render partial: "carts/enduser_address", locals: {form: form, enduser: @enduser}) %>');
+  });
+  $(".<%= address.id %>").on('click', function() {
+    $('.selectaddress').html('<%= j(render partial: "carts/enduser_subaddress", locals: {form: form, address: address}) %>');
+  });
+});
+
+
+<!-- total = 税込価格      totalcds = cdの数量を反映した時の金額  -->
+<% total = cart.cd.price * cart.cd.consumption_tax %>
+<p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p>
+<br>
+
+<% @carts.each do |cart| %>
+<%=form_for [cart.cd,cart], url: cd_cart_path(cart.cd.id,cart), method: :patch do |f| %>
+<%=f.number_field :cartnumber %>
+<%=f.submit "数量変更" %>
+<% end %>
+<% end %>

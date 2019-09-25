@@ -1,9 +1,17 @@
 class EndusersController < ApplicationController
 #before_action :authenticate!
 
+  PER = 3
+
 
   def show
-      @enduser = Enduser.find(params[:id])
+      @enduser = current_enduser
+      @receipts = current_enduser.receipts.page(params[:page]).per(PER).reverse_order
+  end
+
+  def history
+      @enduser = current_enduser
+      @receipts = current_enduser.receipts.page(params[:page]).per(PER).reverse_order
   end
 
   def edit
@@ -21,17 +29,15 @@ class EndusersController < ApplicationController
   def update
       @enduser = Enduser.find(params[:id])
       if @enduser.update(enduser_params)
-        flash[:notice] = "You have updated user successfully."
-        redirect_to enduser_path(@enduser.id)
+         redirect_to enduser_path(@enduser.id)
       else
-        flash[:notice] = "更新失敗しました。"
+        flash.now[:alert] = "正しく記入してください。"
       	render :edit
       end
   end
 
   def destroy
       Enduser.find(params[:id]).destroy
-      flash[:success] = "Enduser deleted"
     if enduser_signed_in?
       redirect_to cds_index_path
     else

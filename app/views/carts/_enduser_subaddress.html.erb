@@ -1,0 +1,4 @@
+<!-- address選択時にselectaddressタグ内に呼び出される -->
+<%= form.hidden_field :house_number, :value => address.postal_code %>
+<%= form.hidden_field :house, :value => address.address %>
+<%= form.hidden_field :phone, :value => address.tell %>

@@ -1,0 +1,43 @@
+<div class="container">
+	<h1>購入履歴詳細</h1>
+		<div class="row">
+			<% @receipts.each do |receipt| %>
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th>購入日</th><th><%= receipt.created_at.strftime("%Y-%m-%d") %></th>
+					</tr>
+					<% receipt.orders.each do |order| %>
+					<tr>
+						<th>商品タイトル</th><th><%= order.cd.title %></th>
+					</tr>
+					<tr>
+						<th>アーティスト</th><th>
+						<% order.cd.artists.each do |artist| %>
+							<%= artist.artist %>
+						<% end %>
+						</th>
+					</tr>
+					<tr>
+						<th>購入枚数</th><th><%= order.order_number %></th>
+					</tr>
+					<tr>
+						<th>金額</th><th><%= order.cd.price %></th>
+					</tr>
+					<% end %>
+					<tr>
+						<th>送料</th><th><%= receipt.postage %>
+					<tr>
+						<th>合計金額</th><th><%= receipt.sum_price %>
+					</tr>
+					<tr>
+						<th>送付先</th><th><%= receipt.house %></th>
+					</tr>
+					<tr>
+						<th>配送状況</th><th><%= receipt.order_status %></th>
+					</tr>
+				</tbody>
+			</table>
+			<% end %>
+		</div>
+</div>

@@ -28,10 +28,6 @@ class AdminCdsController < ApplicationController
     @cds = Cd.all.includes(:artists, :discs, :songs, :arrival)
   end
 
-  def index
-    @q = Cd.ransack(params[:q])
-    @cds = @q.result(distinct: true).page(params[:page]).per(5).reverse_order
-  end
 
   def edit
     @cd = Cd.find(params[:id])

@@ -38,14 +38,14 @@
                 <ul class="list-inline">
                   <li><%= link_to "ユーザー情報", admins_index_path %></li>
                   <li><%= link_to "商品情報", admin_cds_path %></li>
-                  <li><%= link_to "注文一覧", orders_index_path %></li>
+                  <li><%= link_to "注文一覧", receipts_path %></li>
                   <li><%= link_to "新規商品追加",  new_admin_cd_path %></li>
-                  <li><%= link_to "入荷履歴確認", admin_cds_path %></li>
+                  <li><%= link_to "入荷履歴確認", cds_arrivals_history_path %></li>
                   <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
                 </ul>
               <% else %>
                 <ul class="list-inline">
-                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + ' Home', root_path %>
+                  <li><%= link_to sanitize('<i class="glyphicon glyphicon-home"></i> ') + ' Home', cds_path %>
                   </li>
                   <li><%= link_to sanitize('<i class="glyphicon glyphicon-edit"></i> ') + ' sign up', new_enduser_registration_path %>
                   </li>
