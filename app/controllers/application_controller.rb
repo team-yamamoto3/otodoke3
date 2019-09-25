@@ -13,10 +13,24 @@ class ApplicationController < ActionController::Base
 #end
 
 # 検索機能
-  def set_search
-    @search = Article.ransack(params[:q])
-    @search_articles = @search.result.page(params[:page])
+
+  before_action :search
+
+
+  def search
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true).page(params[:page]).per(4).reverse_order
   end
+
+
+
+
+  # def set_search
+  #   @search = Artist.ransack(params[:q])
+  #   @search_artists = @search.result.page(params[:page])
+  # end
+
+
 
 
 
