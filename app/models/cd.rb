@@ -13,9 +13,17 @@ class Cd < ApplicationRecord
   accepts_nested_attributes_for :discs, allow_destroy: true
   has_many :songs, dependent: :destroy
   accepts_nested_attributes_for :songs
-  paginates_per 2
-
   has_many :orders
+  paginates_per 5
+
+  # validates
+  validates :sales_status, presence: true
+  validates :price, presence: true
+  validates :consumption_tax, presence: true
+  validates :stock, presence: true
+  validates :title, presence: true
+  validates :genre, presence: true
+  validates :label, presence: true
   # attachment :jacket
 
   def self.search(search)

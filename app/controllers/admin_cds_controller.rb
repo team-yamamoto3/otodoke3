@@ -18,9 +18,12 @@ class AdminCdsController < ApplicationController
 
   def create
     @cd = Cd.new(cd_params)
-    @cd.save
-    # リダイレクト先をpashで表示する
+    if @cd.save
     redirect_to admin_cds_path
+  else
+    flash[:admin_cds_error] = "ジャケット以外入力必須です。"
+    render 'admin_cds#new'
+  end
   end
 
   def show
