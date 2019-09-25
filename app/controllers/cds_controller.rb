@@ -6,7 +6,7 @@ class CdsController < ApplicationController
      # @cds = Cd.all.includes(:artists, :discs, :songs)
      # @cds = Cd.page(params[:page]).per(2)
       @q = Cd.ransack(params[:q])
-      @cds = @q.result(distinct: true).page(params[:page]).per(2).reverse_order
+      @cds = @q.result(distinct: true).page(params[:page]).per(4).reverse_order
   end
 
   def new
