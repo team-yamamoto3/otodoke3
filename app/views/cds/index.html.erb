@@ -18,47 +18,54 @@
 
  <div class="center-cd">
 	 <% @cds.each do |cd| %>
-	  <h4>ジャケット</h4>
-		 <%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
-		<h4>タイトル</h4>
-		 <%= cd.title %>
+		 <%= attachment_image_tag cd, :jacket, :fill, 200, 200, fallback: "no_cd_image.png" %><br>
+		<b><%= cd.title %></b>
 		<h4>アーティスト</h4>
 		<% cd.artists.each do |artist| %>
-		 <%= artist.artist %>
+		  <%= artist.artist %>
 		<% end %>
 		<h4>レーベル</h4>
-		 <%= cd.label %>
+		  <%= cd.label %>
 		<h4>ジャンル</h4>
-		 <%= cd.genre %>
-		<h4>販売ステータス</h4>
-		 <%= cd.sales_status %>
+		  <%= cd.genre %>
 		<h4>値段</h4>
-		 <%= cd.price %>
-		<h4>消費税</h4>
-		 <%= cd.consumption_tax %>
-
-
-		<h4>在庫</h4>
-		<% if cd.stock == 0 %>
-		<h4>売り切れ</h4>
-		<% else %>
-		<%= cd.stock %>
-        <% end %>
-
-
-        <h4>ディスク</h4>
-		 <% cd.discs.each do |disc| %>
-		  <%= disc.disc_name %>
-		  <%= disc.include %>
-		  <%= disc.disc_number %>
-		 <% disc.songs.each do |song| %>
-		  <%= song.song %>
-		  <%= song.songorder %>
-		 <% end %>
-		<% end %>
+		  <%= cd.price %>
+		<h4>販売ステータス</h4>
+		  <% if cd.stock == 0 %>
+		    <h4>売り切れ</h4>
+		  <% else %>
+		    <%= cd.sales_status %>
+          <% end %>
 		<%= link_to "CD詳細へ", cd_path(cd.id) %>
 		<div class="between"></div>
 		<% end %>
 		<br>
 		<%= paginate(@cds) %>
-   </div>
+	</div>
+
+<script>
+   $(document).ready(function () {
+  $("#theTarget").skippr({
+      // スライドショーの変化
+      transition : 'slide',
+      // 変化に係る時間(ミリ秒)
+      speed : 1000,
+      // easingの種類
+      easing : 'easeOutQuart',
+      // ナビゲーションの形
+      navType : 'block',
+      childrenElementType : 'div',
+      // ナビゲーション矢印の表示
+      arrows : true,
+      // スライドショーの自動再生
+      autoPlay : true,
+      // 自動再生時のスライド切替間隔
+      autoPlayDuration : 3000,
+      // キーボードの矢印キーによるスライド送りの設定
+      keyboardOnAlways : true,
+      // 一枚目のスライド表示時に戻る矢印を表示するかどうか
+      hidePrevious : false
+  });
+});
+</script>
+
