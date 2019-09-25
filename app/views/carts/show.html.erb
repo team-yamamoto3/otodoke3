@@ -1,6 +1,7 @@
   <div class="center-cd">
-   <h1 class="htag">注文内容を確認・変更する</h1>
-    <h4>支払い方法の選択</h4>
+   <h1 class="htag greenline payselect"><span>注文内容を確認・変更する</span></h1>
+    <h4 class="underbar payselect">支払い方法の選択</h4>
+    <div class="payselect">
     <%= form_with(model: Receipt, url: receipts_path, local: true) do |form| %>
      <%= form.radio_button :payment, :銀行 %>
      <%= form.label :payment, '銀行振込', {value: :bank, style: "display: inline-block;"} %>
@@ -8,25 +9,77 @@
      <%= form.label :payment, 'クレジットカード', {value: :kurejittokado, style: "display: inline-block;"} %>
      <%= form.radio_button :payment, :代引き, :checked => @daibiki %>
      <%= form.label :payment, '代引き', {value: :daibiki, style: "display: inline-block;"} %>
+    </div>
      <%= form.hidden_field :enduser_id, :value => @enduser.id %>
      <!-- このrenderで住所選択画面呼び出し（_address.html.erb） -->
      <%= render 'carts/address', {form: form, enduser: @enduser} %>
-      <h3>注文内容</h3>
-       <h4>小計</h4>
-        <% array = [] %>
-         <% @carts.each do |cart| %>
-          <%= cart.cd&.title %>
-           <% total = cart.cd&.price * cart.cd&.consumption_tax %>
-            <p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p>
-             <% array << totalcd %>
-            <% end %>
-           <%= array.sum %>円
-          <h4>配送料</h4>
-         <p>500円</p>
-        <h2>注文内容合計</h2>
-       <p style="color: #e82357e3; font-weight: bold; font-size: 30px;">¥<%= array.sum + 500 %>円</p>
-      <br>
-     <%= submit_tag '購入' %>
-     <%= link_to '購入をやめる', cds_path %>
-    <% end %>
-   </div>
+      <h4 class="underbar payselect">注文内容</h4>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 col-xs-6 col-xs-offset-3">
+            <div class="table-responsive">
+              <table class="table margin-bottom3">
+                <thead>
+                  <tr class="success">
+                    <th>注文内容</th>
+                    <th>小計</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @carts.each do |cart| %>
+                  <% total = cart.cd&.price * cart.cd&.consumption_tax %>
+                  <tr>
+                    <td><%= cart.cd&.title %></td>
+                    <td><p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-xs-3"></div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 center-cd relative">
+     <% array = [] %>
+      <% @carts.each do |cart| %>
+        <% total = cart.cd&.price * cart.cd&.consumption_tax %>
+         <%  totalcd = total.floor * cart.cartnumber %>
+          <% array << totalcd %>
+         <% end %>
+         <h4 class="htagmargin">小計</h4>
+        <p class="htagmargin absolute moneyfont">¥<%= array.sum %>円</p>
+    </div>
+
+    <div class="col-md-1 col-xs-1 center-cd relative">
+      <p class="relative lineheight">+</p>
+    </div>
+    <div class="col-md-2 col-xs-2 center-cd relative">
+      <h4 class="htagmargin">配送料</h4>
+     <p class="absolute htagmargin moneyfont">500円</p>
+    </div>
+    <div class="col-md-3 col-xs-3 center-cd relative">
+      <h2 class="htagmargin">注文内容合計</h2>
+      <% array = [] %>
+       <% @carts.each do |cart| %>
+         <% total = cart.cd&.price * cart.cd&.consumption_tax %>
+          <%  totalcd = total.floor * cart.cartnumber %>
+           <% array << totalcd %>
+          <% end %>
+     <p class="absolute"  style="color: #e82357e3; font-weight: bold; font-size: 30px;">¥<%= array.sum + 500 %>円</p>
+    </div>
+    <div class="col-md-3 col-xs-3"></div>
+  </div>
+</div>
+<div class="center-cd payselect">
+
+  <%= submit_tag '購入' %>
+  <%= link_to '購入をやめる', cds_path %>
+  <% end %>
+</div>
