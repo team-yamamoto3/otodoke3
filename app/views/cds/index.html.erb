@@ -1,12 +1,4 @@
-	<h1>CD一覧</h1>
-	 <h2>CDタイトル検索</h2>
-	<table>
-	  <%= search_form_for @q do |f| %>
-	    <%= f.label :title_cont %>
-	    <%= f.search_field :title_cont %>
-        <%= f.submit %>
-	  <% end %>
-    </table>
+
 
   <div id="container">
     <div id="theTarget">
@@ -16,32 +8,32 @@
 	</div>
   </div>
 
- <div class="center-cd">
-	 <% @cds.each do |cd| %>
-		 <%= attachment_image_tag cd, :jacket, :fill, 200, 200, fallback: "no_cd_image.png" %><br>
-		<b><%= cd.title %></b>
-		<h4>アーティスト</h4>
-		<% cd.artists.each do |artist| %>
-		  <%= artist.artist %>
-		<% end %>
-		<h4>レーベル</h4>
-		  <%= cd.label %>
-		<h4>ジャンル</h4>
-		  <%= cd.genre %>
-		<h4>値段</h4>
-		  <%= cd.price %>
-		<h4>販売ステータス</h4>
-		  <% if cd.stock == 0 %>
-		    <h4>売り切れ</h4>
-		  <% else %>
-		    <%= cd.sales_status %>
-          <% end %>
-		<%= link_to "CD詳細へ", cd_path(cd.id) %>
-		<div class="between"></div>
-		<% end %>
-		<br>
-		<%= paginate(@cds) %>
-	</div>
+ <div class="center-cd class=clearfix">
+    <% @cds.each do |cd| %>
+        <div class="center-table align=left">
+		    <table>
+			     <tr>
+					 <td>
+					 	<%= attachment_image_tag cd, :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %>
+					 </td>
+					<td><b><%= cd.title %></b></td>
+					<td><%= cd.label %></td>
+					  <td><h4>¥<%= cd.price %></h4></td>
+					<td height="15">
+					  <% if cd.stock == 0 %>
+					    <p>売り切れ</p>
+					  <% else %>
+					    <%= cd.sales_status %>
+					</td>
+			          <% end %>
+					<td><%= link_to "CD詳細へ", cd_path(cd.id) %></td>
+			    </tr>
+		    </table>
+		</div>
+	<% end %>
+ </div>
+		　　　　　　　　　　　　　<br>
+	<%= paginate(@cds) %>
 
 <script>
    $(document).ready(function () {
