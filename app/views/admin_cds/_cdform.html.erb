@@ -33,3 +33,6 @@
      <%= s.submit 'CD追加' %>
    </div>
    <% end %>
+   <% if flash[:admin_cds_error] %>
+   <p><%= flash[:admin_cds_error] %></p>
+   <% end %>
