@@ -14,6 +14,8 @@ class AdminCdsController < ApplicationController
     @sales_status = ["販売中", "販売停止中"]
     @selectjenre = ["J-Pop", "K-Pop", "洋楽", "邦楽", "アニメ", "R&B", "ロック", "ハードロック", "パンク",
        "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
   end
 
   def create
@@ -21,14 +23,16 @@ class AdminCdsController < ApplicationController
     if @cd.save
     redirect_to admin_cds_path
   else
-    flash[:admin_cds_error] = "ジャケット以外入力必須です。"
-    render 'admin_cds#new'
+    flash[:admin_cds_error] = "ジャケット以外に空欄があります。"
+    render 'admin_cds/new'
   end
   end
 
   def show
     @cd = Cd.find(params[:id])
     @cds = Cd.all.includes(:artists, :discs, :songs, :arrival)
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
   end
 
 
@@ -37,6 +41,8 @@ class AdminCdsController < ApplicationController
     @sales_status = ["販売中", "販売停止中"]
     @selectjenre = ["J-Pop", "K-Pop", "洋楽", "邦楽", "アニメ", "R&B", "ロック", "ハードロック", "パンク",
        "EDM", "ヒップホップ", "レゲエ", "ジャズ", "ハードコア", "クラシック", "演歌"]
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
   end
 
   def update

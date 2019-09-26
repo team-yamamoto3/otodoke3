@@ -18,14 +18,14 @@
         </tr>
        </thead>
        <tbody>
-         <tr>
+         <tr class="active">
           <td><input type="radio" name="okurisaki" id="test" checked></td>
           <td><%= current_enduser.postal_code %></td>
           <td><%= current_enduser.user_address %></td>
           <td><%= current_enduser.user_tell %></td>
          </tr>
         <% @addresses.each do |address| %>
-         <tr>
+         <tr class="active">
           <td><input type="radio" name="okurisaki" value="<%= address.id %>" class="<%= address.id %>"></td>
           <td><p class="postal_code"><%= address.postal_code %></p></td>
           <td><p class="user_address"><%= address.address %></p></td>
