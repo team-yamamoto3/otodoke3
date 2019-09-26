@@ -21,8 +21,8 @@ class AdminCdsController < ApplicationController
     if @cd.save
     redirect_to admin_cds_path
   else
-    flash[:admin_cds_error] = "ジャケット以外入力必須です。"
-    render 'admin_cds#new'
+    flash[:admin_cds_error] = "ジャケット以外に空欄があります。"
+    render 'admin_cds/new'
   end
   end
 

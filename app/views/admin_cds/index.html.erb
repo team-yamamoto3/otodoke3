@@ -1,48 +1,59 @@
-<div class="container">
-	<h1>CD一覧</h1>
-
-<%= link_to '在庫追加する', cd_arrivals_path(@cds) %>
-	<p>CDタイトル検索</p>
-	<table>
+<div class="width">
+	<h1 class="center-cd htag">CD一覧</h1>
+<div class="parent">
+	<%= link_to '在庫追加する', cd_arrivals_path(@cds), class: 'btn btn-primary' %>
+	<div class="arrivalbtn">
 		<%= search_form_for @q do |f| %>
-	      <%= f.label :title_cont %>
-	      <%= f.search_field :title_cont %>
-     	  <%= f.submit %>
-	    <% end %>
-	</table>
+		<%= f.label :'タイトル検索' %>
+		<%= f.search_field :title_cont %>
+		<%= f.submit '検索', class: 'btn btn-primary'  %>
+		<% end %>
+	</div>
+</div>
 
- <div class="center-cd">
-	<% @cds.each do |cd| %>
-	 <h4>ジャケット</h4>
-	<%= link_to admin_cd_path(cd.id) do %>
-	 <%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
-	<% end %>
 
-	<h4>タイトル</h4>
-	  <td><%= link_to cd.title, admin_cd_path(cd.id) %></td>
-	<h4>アーティスト</h4>
-	  <% cd.artists.each do |artist| %>
-	    <%= artist.artist %>
-	  <% end %>
-    <h4>入荷数量</h4>
-	  <% cd.arrivals.each do |arrival| %>
-	    <%= arrival.arrival_new %>
-	 <% end %>
-   <h4>在庫</h4>
-	   <%= cd.stock %>
-	  <h4>レーベル</h4>
-	   <%= cd.label %>
-	<h4>ジャンル</h4>
-	   <%= cd.genre %>
-	<h4>販売ステータス</h4>
-	   <%= cd.sales_status %>
-	<h4>値段</h4>
-	   <%= cd.price %>
-	<h4>消費税</h4>
-	   <%= cd.consumption_tax %>
 
-		 <%= link_to "詳細", admin_cd_path(cd.id) %>
-	  <div class="between"></div>
-	  <% end %>
-	 <%= paginate(@cds) %>
-  </div>
+<table class=" table-striped tablecenter">
+	<thead>
+		<tr>
+			<th class="center-cd">ジャケット</th>
+			<th class="center-cd">タイトル</th>
+			<th class="center-cd">アーティスト</th>
+			<th class="center-cd">レーベル</th>
+			<th class="center-cd">入荷数量</th>
+			<th class="center-cd">在庫</th>
+			<th class="center-cd">販売ステータス</th>
+			<th class="center-cd">価格</th>
+			<th class="center-cd">詳細</th>
+		</tr>
+	</thead>
+	<tbody>
+			<% @cds.each do |cd| %>
+		<tr>
+			<td class="center-cd tdwidth"><%= link_to admin_cd_path(cd.id) do %>
+			 <%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
+			<% end %></td>
+			<td class="center-cd tdwidth"><%= link_to cd.title, admin_cd_path(cd.id) %></td>
+			<td class="center-cd tdwidth"> <% cd.artists.each do |artist| %>
+	 	    <%= artist.artist %>
+	 	  <% end %></td>
+			<td class="center-cd tdwidth"><%= cd.label %></td>
+			<td class="center-cd tdwidth"><% cd.arrivals.each do |arrival| %>
+		    <%= arrival.arrival_new %>
+		 <% end %></td>
+			<td class="center-cd tdwidth"> <%= cd.stock %></td>
+			<td class="center-cd tdwidth"><%= cd.sales_status %></td>
+			<td class="center-cd tdwidth"><%= cd.price %></td>
+			<td class="center-cd tdwidth"> <%= link_to "詳細", admin_cd_path(cd.id) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<div class="center-cd">
+
+	<%= paginate(@cds) %>
+</div>
+
+
+
+</div>
