@@ -16,6 +16,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
  *{
    margin: 0;
    padding: 0;
@@ -24,18 +25,64 @@
 
  // カートindex内使用cssここから
 
+ .greenline {
+   position: relative;
+   text-align: center;
+ }
+ .greenline span {
+   position: relative;
+   z-index: 2;
+   display: inline-block;
+   margin: 0 2.5em;
+   padding: 0 1em;
+   background-color: #fff;
+   text-align: left;
+ }
+ .greenline::before {
+   position: absolute;
+   top: 50%;
+   z-index: 1;
+   content: '';
+   display: block;
+   width: 100%;
+   height: 1px;
+   background-color: #28da90;
+ }
+
  .origin {
    margin-top: 0;
    color: #52bf57;
   border-bottom: dashed 2px #52bf57;
 }
 
+.boxborder{
+    padding: 2.5em 1em;
+    margin: 2em 0;
+    color: #292a2b;
+    background: #ecf5e8;
+    border-bottom: solid 6px #b7deaa;
+    border-radius: 9px;
+}
+
 .moneyfont{
   font-size: 20px;
+}
+.moneyfont2{
+  font-size: 30px;
 }
 
  .margin-bottom2{
    margin-bottom: 80px;
+ }
+ .margin-bottom3{
+   margin-bottom: 50px;
+ }
+
+.height49{
+   height:49.5px;
+}
+ .height100{
+   height:100px;
  }
 
 .margin-bottom{
@@ -49,13 +96,57 @@
 }
 // カートindex内使用cssここまで
 
+// カートshow内使用cssここから
+.htagmargin{
+  margin: 0;
+}
+.relative{
+  position: relative;
+  height: 96px;
+}
+.absolute{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.lineheight{
+  line-height: 96px;
+}
+
+.underbar {
+	position: relative;
+	margin-bottom: 1em;
+	text-align: center;
+}
+.underbar:before {
+	content: '';
+	position: absolute;
+	bottom: -15px;
+	display: inline-block;
+	width: 5%;
+	height: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #73bd6adb;
+	border-radius: 2px;
+}
+.payselect{
+  margin: 50px 0;
+}
+
+// カートshow内使用cssここまで
 
 .between{
   height:20px;
   background-color: #f71f657a;
 }
+
+
 .center-cd{
   text-align: center;
+  margin-top:30px;
 }
 .htag{
   margin-bottom: 15px;
@@ -88,3 +179,30 @@ background-image: url(image3.jpg);
 background-size: cover;
 background-position: center;
 }
+
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.center-table{
+  display: inline-block;
+  margin-right: 20px;
+}
+
+td {
+  display: block;
+}
+
+.tr-float {
+  float: left;
+}
+
+
+.col-xs-4 {
+  margin-top: 2%;
+}
+
+

@@ -1,10 +1,22 @@
+
+
+
+ <% if flash[:buyerror] %>
+   <p><%= flash[:buyerror] %></p>
+  <% end %>
+  <% if flash[:saveerror] %>
+   <p><%= flash[:saveerror] %></p>
+  <% end %>
+
+
+
   <!-- 購入時売り切れてたら表示される -->
    <% if flash[:buyerror] %>
-    <p><%= flash[:buyerror] %></p>
+    <p class="moneyfont2"><%= flash[:buyerror] %></p>
    <% end %>
    <div class="container">
-    <div class="row">
-     <h1 class="center-cd margin-bottom2">カート一覧</h1>
+     <h2 class="center-cd margin-bottom2 greenline"><span>ショッピングカート</span></h2>
+    <div class="row boxborder">
     <div class="col-md-2 col-xs-2">
      <% @carts.each do |cart| %>
       <%= attachment_image_tag cart.cd , :jacket, :fill, 100, 100, fallback: "no_cd_image_fill100.png", class: 'margin-bottom' %>
@@ -13,25 +25,27 @@
    </div>
    <div class="col-md-2 col-xs-2">
     <% @carts.each do |cart| %>
-     <h4 class="origin">アーティスト</h4>
+    <h4 class="origin">アーティスト</h4>
       <% cart.cd.artists.each do |artist| %>
+      <div class="height49">
        <%= artist.artist %>
+       </div>
       <% end %>
-     <div class="margin-bottom2"></div>
     <% end %>
    </div>
    <div class="col-md-2 col-xs-2">
     <% @carts.each do |cart| %>
-     <h4 class="origin">タイトル</h4>
+    <div class="height100 margin-bottom">
+      <h4 class="origin">タイトル</h4>
       <%= cart.cd.title %>
-       <div class="margin-bottom2"></div>
+    </div>
       <% end %>
      </div>
      <div class="col-md-3 col-xs-3">
       <% @carts.each do |cart| %>
        <!-- total = 税込価格      totalcds = cdの数量を反映した時の金額  -->
         <% total = cart.cd.price * cart.cd.consumption_tax %>
-         <p class="moneyfont">小計¥<%=  totalcd = total.floor * cart.cartnumber %>円</p>
+      <p class="moneyfont">小計¥<%=  totalcd = total.floor * cart.cartnumber %>円</p>
           <%=form_for [cart.cd,cart], url: cd_cart_path(cart.cd.id,cart), method: :patch do |f| %>
            <%=f.number_field :cartnumber %>
            <%=f.submit "数量変更", class: 'btn btn-success' %>
@@ -39,6 +53,7 @@
          <% end %>
         <% end %>
        </div>
+
       <div class="col-md-2 col-xs-2">
       <% array = [] %>
        <% @carts.each do |cart| %>
@@ -46,7 +61,7 @@
          <%  totalcd = total.floor * cart.cartnumber %>
           <% array << totalcd %>
          <% end %>
-        <h4 class="origin">合計金額¥<%= array.sum %></h4>
+        <h4 class="origin">合計金額<br><span class="moneyfont2">¥<%= array.sum %></span></h4>
        <br>
         <a href="/carts/show" class="btn btn-danger btn-lg active margin-bottom">購入手続きへ進む</a>
         <a href="/" class="btn btn-default active shoppingbtn">ショッピングを続ける</a>
@@ -56,6 +71,6 @@
         </div>
        <% end %>
       </div>
-      <div class="col-md-1 col-xs-1"></div>
      </div>
     </div>
+
