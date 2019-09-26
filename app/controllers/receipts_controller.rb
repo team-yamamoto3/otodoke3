@@ -23,9 +23,8 @@ class ReceiptsController < ApplicationController
        cart.cd.stock > cart.cartnumber
        cart.cd.stock -= cart.cartnumber
        cart.save #いる？
-       cart.cd.sales_status
-       binding.pry
-       cart.cd.save #在庫減らしたので、この段階でデータ保存
+       #在庫減らしたので、この段階でデータ保存
+       cart.cd.save
        # 購入金額計算して合計金額カラムに代入
        total = cart.cd&.price * cart.cd&.consumption_tax
        totaled = total.floor * cart.cartnumber
