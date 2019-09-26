@@ -1,40 +1,54 @@
 
-<h1>商品詳細</h1>
-<%= attachment_image_tag @cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <%= attachment_image_tag @cd, :jacket, :fill, 400, 400, fallback: "no_cd_image.png" %>
+      <br>
+      <br>
+      <b><%= @cd.title %></b><br><br>
+      <% @cd.artists.each do |artist| %>
+       <%= artist.artist %>
+      <% end %>
+      <br>
+      <br>
+      <p>レーベル : <%= @cd.label %></p>
+      <p>ジャンル : <%= @cd.genre %></p>
+      
+      
+        <% @cd.discs.each do |disc| %>
+        <p>ディスク名 : <%= disc.disc_name %></p>
+        <p>ディスク番号 : <%= disc.include %></p>
+        <p>ディスク枚数 : <%= disc.disc_number %></p>
+      <% disc.songs.each do |song| %>
+        <p>曲名 : <%= song.song %></p>
+        <p>曲順 : <%= song.songorder %><p>
+      <% end %>
+      <% end %>
+      <% if @cd.stock == 0 %>
+        <h1>売り切れ</h1>
+      <% else %>
+        <%= @cd.sales_status %>
+      <% end %>
+      <br><br>
+      <button class="btn btn-default">
+        <%= link_to "他のCDを探す", root_path %>
+      </button>
+    </div>
+
+    <div class="col-xs-4">
+      <h3>¥<%= @price.floor %>（税込）</h3>
+      <%=form_for @cart, url: cd_carts_path(@cd.id)  do |f| %>
+        <%= f.hidden_field :cartnumber, value: 1 %>
+        <%= f.hidden_field :cd_id, value: @cd.id %>
+        <%= f.submit 'カートに入れる', class:"btn btn-success btn-lg"%>
+      <% end %>
+      <br>
 
 
-<h3>¥<%= @price.floor %>（税込）</h3>
-<h4>タイトル</h4>
-  <%= @cd.title %>
 
-<h4>アーティスト</h4>
-<% @cd.artists.each do |artist| %>
- <%= artist.artist %>
-<% end %>
-<h4>レーベル</h4>
-  <%= @cd.label %>
-<h4>ジャンル</h4>
-  <%= @cd.genre %>
-<h4>販売ステータス</h4>
-  <% if @cd.stock == 0 %>
-  <h4>売り切れ</h4>
-  <% else %>
-  <%= @cd.sales_status %>
-<% end %>
-<h4>ディスク</h4>
-  <% @cd.discs.each do |disc| %>
-  <%= disc.disc_name %>
-  <%= disc.include %>
-  <%= disc.disc_number %>
-<% disc.songs.each do |song| %>
-  <%= song.song %>
-  <%= song.songorder %>
-<% end %>
-<% end %>
+    </div>
+  </div>
+</div>
 
-<%=form_for @cart, url: cd_carts_path(@cd.id)  do |f| %>
-<%= f.hidden_field :cartnumber, value: 1 %>
-<%= f.hidden_field :cd_id, value: @cd.id %>
-<%= f.submit 'カートに入れる' %>
-<% end %>
+
 
