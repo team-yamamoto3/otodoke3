@@ -6,6 +6,8 @@ class AdminCdsController < ApplicationController
   end
 
   def new
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true)
     @cd = Cd.new
     @disc = @cd.discs.build
     @song = @disc.songs.build
@@ -28,11 +30,15 @@ class AdminCdsController < ApplicationController
 
   def show
     @cd = Cd.find(params[:id])
-    @cds = Cd.all.includes(:artists, :discs, :songs, :arrival)
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true).page(params[:page]).per(3).reverse_orderå
+    # @cds = Cd.all.includes(:artists, :discs, :songs, :arrival)
   end
 
 
   def edit
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true)
     @cd = Cd.find(params[:id])
     @sales_status = ["販売中", "販売停止中"]
     @selectjenre = ["J-Pop", "K-Pop", "洋楽", "邦楽", "アニメ", "R&B", "ロック", "ハードロック", "パンク",
