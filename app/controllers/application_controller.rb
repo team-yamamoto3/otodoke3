@@ -17,16 +17,16 @@ class ApplicationController < ActionController::Base
 
   def search
     @q = Cd.ransack(params[:q])
-    @cds = @q.result(distinct: true).page(params[:page]).per(4).reverse_order
+    @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
   end
 
 
 
 
-  # def set_search
-  #   @search = Artist.ransack(params[:q])
-  #   @search_artists = @search.result.page(params[:page])
-  # end
+  def set_search
+    @search = Artist.ransack(params[:q])
+    @search_artists = @search.result.page(params[:page])
+  end
 
 
 
