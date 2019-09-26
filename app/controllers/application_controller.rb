@@ -12,10 +12,8 @@ class ApplicationController < ActionController::Base
   #end
 #end
 
-# 検索機能
-
+# 検索機能を一番最初に動かしてエラーを防ぐ
   before_action :search
-
 
   def search
     @q = Cd.ransack(params[:q])
