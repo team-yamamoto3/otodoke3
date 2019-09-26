@@ -16,6 +16,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
  *{
    margin: 0;
    padding: 0;
@@ -310,3 +311,29 @@ background-image: url(image3.jpg);
 background-size: cover;
 background-position: center;
 }
+ 
+// やばくなったら書き換えるとこ
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.center-table{
+  display: inline-block;
+  margin-right: 20px;
+}
+
+td {
+  display: block;
+}
+
+.tr-float {
+  float: left;
+}
+
+
+.col-xs-4 {
+  margin-top: 2%;
+}
+// やばくなったら書き換えるとこ
