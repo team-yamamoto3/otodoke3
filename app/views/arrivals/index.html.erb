@@ -1,34 +1,34 @@
-  <div class="width">
-   <h1 class="center-cd htag">在庫追加商品選択</h1>
-    <div class="parent">
-     <%= link_to '商品入荷履歴へ', cds_arrivals_history_path, class: 'btn btn-primary submitbtn' %>
-     <%= link_to 'CD一覧へ戻る', admin_cds_path, class: 'btn btn-primary submitbtn arrivalbtn' %>
-    </div>
-     <div class="center-cd">
-      <table class="table table-hover">
-       <thead>
-        <tr>
-         <th class="center-cd">在庫</th>
-         <th class="center-cd">ジャケット</th>
-         <th class="center-cd">タイトル</th>
-         <th class="center-cd">アーティスト</th>
-         <th class="center-cd">販売ステータス</th>
-        </tr>
-       </thead>
-      <tbody>
-       <% @cds.each do |cd| %>
-        <tr>
-         <td><%= link_to "#{cd.stock}枚",  new_cd_arrival_path(cd) %>
-         <br><%= link_to '既存在庫数編集', admin_cd_path(cd.id) %></td>
-         <td><%= attachment_image_tag cd, :jacket, :fill, 60, 60, fallback: "no_cd_image_fill60.png" %></td>
-         <td><%= cd.title %></td>
-         <td><% cd.artists.each do |artist| %>
-             <%= artist.artist %>
-             <% end %></td>
-         <td><%= cd.sales_status %></td>
-        </tr>
-       <% end %>
-      </tbody>
-     </table>
-    </div>
-   </div>
+<h1 class="center-cd htag">在庫追加商品選択</h1>
+ <%= link_to '商品入荷履歴へ', cds_arrivals_history_path, class: 'btn btn-primary submitbtn' %>
+  <div class="center-cd">
+   <table class="table table-hover">
+    <thead>
+     <tr>
+      <th class="center-cd">在庫</th>
+      <th class="center-cd">ジャケット</th>
+      <th class="center-cd">タイトル</th>
+      <th class="center-cd">アーティスト</th>
+      <th class="center-cd">販売ステータス</th>
+     </tr>
+    </thead>
+    <tbody>
+     <% @cds.each do |cd| %>
+       <tr>
+         <td class="td-box">
+            <%= link_to "#{cd.stock}枚",  new_cd_arrival_path(cd) %>
+            <br><%= link_to '既存在庫数編集', admin_cd_path(cd.id) %>
+         </td>
+         <td class="td-box"><%= attachment_image_tag cd, :jacket, :fill, 60, 60, fallback: "no_cd_image_fill60.png" %>
+         </td>
+         <td class="td-box"><%= cd.title %></td>
+         <td class="td-box"><% cd.artists.each do |artist| %>
+          <%= artist.artist %>
+          <% end %>
+         </td>
+         <td class="td-box"><%= cd.sales_status %></td>
+       </tr>
+     <% end %>
+    </tbody>
+   </table>
+  <br>
+ </div>

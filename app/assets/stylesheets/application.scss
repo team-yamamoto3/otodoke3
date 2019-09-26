@@ -357,7 +357,6 @@ background-size: cover;
 background-position: center;
 }
 
-// やばくなったら書き換えるとこ
 .clearfix:after {
   content: "";
   display: block;
@@ -369,16 +368,24 @@ background-position: center;
   margin-right: 20px;
 }
 
-// td {
-//   display: block;
-// }
-//
-// .tr-float {
-//   float: left;
-// }
 
-
-.col-xs-4 {
-  margin-top: 2%;
+.td-box {
+  display: block;
 }
+
+.tr-float {
+  float: left;
+}
+
+ul li a{
+    color: #ffffff;
+}
+
 // やばくなったら書き換えるとこ
+
+// .col-xs-4 {
+//   margin-top: 2%;
+// }
+
+// やばくなったら書き換えるとこ
+
