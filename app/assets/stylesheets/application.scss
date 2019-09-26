@@ -245,6 +245,7 @@
    justify-content: space-around;
    margin-top: 60px;
    margin-bottom: 60px;
+   height: 48px;
 }
 
 // arrivalshistory内使用cssここから
@@ -270,11 +271,55 @@
 }
 
 // arrivalshistory内使用cssここまで
-.between{
-  height:20px;
-  background-color: #f71f657a;
+
+
+// enduseredit内使用cssここから
+
+.sketchborder {
+  background-color: #6dde6d1f;
+  border: 2px dashed #97a7a1;
+  border-radius: 8px;
+  box-shadow: 0 0 0 4px #a6cc93;
+  color: black;
+  margin: 2em 0;
+  padding: 2em;
 }
 
+.long{
+  width: 100%;
+  height: 30px;
+  border-radius: 6px;
+}
+
+.labelname{
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.btncenter{
+  margin:20px auto 0;
+  width: 146px;
+}
+
+.btn-square-pop {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background:#098640;
+  border-bottom: solid 2px #03d200;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-square-pop:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+// enduseredit内使用cssここまで
 
 .center-cd{
   text-align: center;
@@ -311,8 +356,7 @@ background-image: url(image3.jpg);
 background-size: cover;
 background-position: center;
 }
- 
-// やばくなったら書き換えるとこ
+
 .clearfix:after {
   content: "";
   display: block;
@@ -324,6 +368,7 @@ background-position: center;
   margin-right: 20px;
 }
 
+
 .td-box {
   display: block;
 }
@@ -332,12 +377,15 @@ background-position: center;
   float: left;
 }
 
-
-.col-xs-4 {
-  margin-top: 2%;
-}
-
 ul li a{
     color: #ffffff;
 }
+
+// やばくなったら書き換えるとこ
+
+// .col-xs-4 {
+//   margin-top: 2%;
+// }
+
+// やばくなったら書き換えるとこ
 
