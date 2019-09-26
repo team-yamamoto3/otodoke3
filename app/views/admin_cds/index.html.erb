@@ -1,37 +1,37 @@
 <div class="container">
-	<h1>CD一覧</h1>
-
-<div class="parent">
-	<%= link_to '在庫追加する', cd_arrivals_path(@cds), class: 'btn btn-primary' %>
-	<div class="arrivalbtn">
-		<%= search_form_for @q do |f| %>
-		<%= f.label :'タイトル検索' %>
-		<%= f.search_field :title_cont %>
-		<%= f.submit '検索', class: 'btn btn-primary'  %>
-		<% end %>
-	</div>
+  <div class="parent">
+    <h1>CD一覧</h1>
+		<%= link_to '在庫追加する', cd_arrivals_path(@cds), class: 'btn btn-primary' %>
+			<%= search_form_for(@q, url:admin_cds_path) do |f| %>
+			  <%= f.label :'タイトル検索' %>
+			  <%= f.search_field :title_cont %>
+			  <%= f.submit '検索', class: 'btn btn-primary'  %>
+			<% end %>
+  </div>
 </div>
 
-<div class="center-cd class=clearfix">
+		<div class="center-cd class=clearfix">
     <% @cds.each do |cd| %>
-        <div class="center-table align=left">
+      <div class="center-table align=left">
 		    <table>
 			     <tr>
-					 <td><%= link_to admin_cd_path(cd.id) do %>
-					 	<%= attachment_image_tag cd, :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %>
-					 	<% end %>
-					 </td>
-					<td><b><%= link_to cd.title, admin_cd_path(cd.id) %></b></td>
-					<td><%= cd.label %></td>
-					  <td><h4>¥<%= cd.price %></h4></td>
-					<td height="15">
+					 <td class="td-box"><%= link_to admin_cds_path(cd.id) do %>
+              <%= attachment_image_tag cd, :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %>
+            <% end %>
+        </td>
+					<td class="td-box"><b><%= link_to cd.title, admin_cd_path(cd.id) %></b></td>
+					<td class="td-box"><%= cd.label %></td>
+					<td class="td-box"><h4>¥<%= cd.price %></h4></td>
+					<td class="td-box" height="15">
 					  <% if cd.stock == 0 %>
 					    <p>売り切れ</p>
 					  <% else %>
 					    <%= cd.sales_status %>
+            <% end %>
 					</td>
-			          <% end %>
-					<td><%= link_to "CD詳細へ", admin_cd_path(cd.id) %></td>
+      </div>
+
+					<td class="td-box"><%= link_to "CD詳細へ", admin_cd_path(cd.id) %></td>
 			    </tr>
 		    </table>
 		</div>

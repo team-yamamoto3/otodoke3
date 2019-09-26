@@ -311,7 +311,7 @@ background-image: url(image3.jpg);
 background-size: cover;
 background-position: center;
 }
- 
+
 // やばくなったら書き換えるとこ
 .clearfix:after {
   content: "";
@@ -341,3 +341,6 @@ ul li a{
     color: #ffffff;
 }
 
+h1 {
+  color: #ffffff;
+}
