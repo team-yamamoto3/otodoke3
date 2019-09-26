@@ -12,6 +12,11 @@ class EndusersController < ApplicationController
   def history
       @enduser = current_enduser
       @receipts = current_enduser.receipts.page(params[:page]).per(PER).reverse_order
+      #@orders = @receipts.orders
+      #@cds = @orders.cds
+      #@cd_price = @cds.price
+      #@cd_consumption_tax = @cds.consumption_tax
+      #@price = @cd_prce * @cd_consumption_tax
   end
 
   def edit

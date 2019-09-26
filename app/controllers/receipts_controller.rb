@@ -9,6 +9,7 @@ class ReceiptsController < ApplicationController
     @carts = current_enduser.carts
     #binding.pry
     @receipt = Receipt.new(receipts_params)
+    totaled = 0 #変数を初期化（＋＝するため)
         @carts.each do |cart|
       #カートから購入CDを一枚ずつ取り出し、買った枚数の方が多ければrender。
     if cart.cd.stock < cart.cartnumber
@@ -26,8 +27,8 @@ class ReceiptsController < ApplicationController
        cart.cd.save #在庫減らしたので、この段階でデータ保存
        # 購入金額計算して合計金額カラムに代入
        total = cart.cd&.price * cart.cd&.consumption_tax
-       totaled = total.floor * cart.cartnumber
-       @receipt.sum_price = totaled
+       totaled +=  total.floor * cart.car # +=で購入商品を足していく
+       @receipt.sum_price = totaled + 500 #送料分を足してカラムに保存
          # カート内デストロイ
      end
     end
