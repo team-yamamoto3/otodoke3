@@ -1,4 +1,17 @@
 class AdminCdsController < ApplicationController
+
+  before_action :search
+
+  def search
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
+  end
+
+  # def set_search
+  #   @search = Artist.ransack(params[:q])
+  #   @search_artists = @search.result.page(params[:page])
+  # end
+
   def index
       @q = Cd.ransack(params[:q])
       # @cds = Cd.all.includes(:artists, :discs, :songs, :arrivals)
@@ -78,6 +91,4 @@ class AdminCdsController < ApplicationController
         songs_attributes:[:id, :song, :songorder, :_destroy]])
   end
 
-  def search
-  end
 end
