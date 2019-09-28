@@ -1,5 +1,7 @@
+<div class="container">
 <% if flash[:admin_cds_error] %>
  <p class="moneyfont2"><%= flash[:admin_cds_error] %></p>
 <% end %>
 <h1>新規商品追加画面</h1>
  <%= render 'cdform', cd: @cd %>
+</div>

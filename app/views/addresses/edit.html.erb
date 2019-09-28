@@ -1,7 +1,7 @@
 <div class="container">
   <div style="padding: 30px; margin-top: 20px; margin-bottom: 10px; border: 1px solid #3cb371; border-radius: 10px; text-align:center; background-color:#f5f5f5;">
     <h1 style="margin-bottom:20px;">送付先情報編集</h1>
-      <%= form_with(model: @address, url: enduser_address_path, method: :patch) do |f| %>
+      <%= form_for(@address,url: {controller: "addresses", action: "update"}) do |f| %>
       <div class="form-group has-icon">
 
       <!-- 郵便番号 -->
