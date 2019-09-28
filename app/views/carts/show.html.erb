@@ -12,6 +12,7 @@
       </span>
      <!-- このrenderで住所選択画面呼び出し（_address.html.erb） -->
      <%= render 'carts/address', {form: form, enduser: @enduser} %>
+      <%= link_to '配送先住所編集・新規配送先住所先登録', enduser_addresses_path(@enduser), class: 'btn btn-default changecolor' %>
       <h4 class="underbar payselect">注文内容</h4>
       <div class="container">
         <div class="row">

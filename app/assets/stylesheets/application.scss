@@ -133,6 +133,12 @@
 .payselect{
   margin: 50px 0;
 }
+.changecolor{
+  border-radius: 50px;
+}
+.changecolor:hover{
+  background-color: #8afbb780;
+}
 
 .simple_square_btn6 {
 	display: block;
@@ -321,6 +327,68 @@
 
 // enduseredit内使用cssここまで
 
+
+// CDindex内使用cssここから
+
+.scriptcontain{
+  height: 500px;
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.slideshow{
+  margin: 80px auto 304px;
+}
+
+.wrap{
+  width: 1440px;
+  margin: 100px auto;
+  height: 750px;
+  background: url("hujitaenamoon.jpg") no-repeat center center / cover;
+  background-attachment: fixed;
+}
+
+.bigboss{
+  width: 1200px;
+  margin:70px auto;
+}
+
+.slidebox{
+  float: left;
+  height: 450px;
+  width: 250px;
+  margin: 20px 25px 20px 25px;
+  background-color: #fff;
+  box-shadow: 1px 1px 2px #8fda86;
+
+  border-radius: 50%;
+  transition: all 0.6s ease 0s;
+}
+
+.slidebox:hover {
+  cursor: pointer;
+  transform: scale(1.1, 1.1);
+}
+
+.indexitem{
+  text-align: center;
+  margin: 10px auto;
+}
+
+
+// CDsindex内使用cssここまで
+
+
+// CDshow内使用cssここから
+
+.highlow{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+// CDshow内使用cssここまで
+
+
 .center-cd{
   text-align: center;
   margin-top:30px;
@@ -332,14 +400,6 @@
   margin-top:15px;
   margin-bottom:15px;
 }
-
-#container{
-  height: 500px;
-  width: 50%;
-  display: block;
-  margin: 0 auto;
-}
-
 
 .image1 {
 background-image: url(image1.jpg);
@@ -363,14 +423,11 @@ background-position: center;
   clear: both;
 }
 
-.center-table{
-  display: inline-block;
+.center-tablecds{
+  display: flex;
   margin-right: 20px;
-}
-
-
-.td-box {
-  display: block;
+  // height: 400px;
+  width: 250px;
 }
 
 .tr-float {
@@ -381,13 +438,24 @@ ul li a{
     color: #ffffff;
 }
 
-h1 {
-  color: #ffffff;
-}
 
 // やばくなったら書き換えるとこ
+
+// .td-box {
+//   display: block;
+// }
 
 // .col-xs-4 {
 //   margin-top: 2%;
 // }
+
+// .asobi{
+//   display: flex;
+// }
+//
+// .nagano{
+//   font-size: 500px;
+// }
+
+// やばくなったら書き換えるとこ
 

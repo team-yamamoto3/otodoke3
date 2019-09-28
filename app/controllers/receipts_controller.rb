@@ -1,22 +1,13 @@
 class ReceiptsController < ApplicationController
   before_action :authenticate!
   def create
-    #商品購入時
-    # addressの輸出先指定（まだ）
-    # 購入枚数減らす。0枚以下なら返す。その後セーブ
-    # カート内デストロイ
-    # 住所登録後セーブ（後で）
     @carts = current_enduser.carts
-    #binding.pry
     @receipt = Receipt.new(receipts_params)
     totaled = 0 #変数を初期化（＋＝するため)
         @carts.each do |cart|
       #カートから購入CDを一枚ずつ取り出し、買った枚数の方が多ければrender。
     if cart.cd.stock < cart.cartnumber
-
        flash[:buyerror] = "SORRY SOLD! #{cart.cd.title}"
-       #同じ数ならおけ？
-       # render "carts/index"
        redirect_to carts_index_path
        return
     else
@@ -41,11 +32,10 @@ class ReceiptsController < ApplicationController
           @order.order_number = cart.cartnumber
           @order.receipt_id = @receipt.id
           @order.save
+          # カート内デストロイ
           cart.destroy
         end
-
         # @cart = current_enduser.carts
-        #そしてサンクスへ
         redirect_to thanks_cds_path
     end
 
