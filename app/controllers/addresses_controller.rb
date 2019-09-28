@@ -6,7 +6,7 @@ class AddressesController < ApplicationController
 
   def create
   	  @new_address = Address.new(address_params)
-  	  @new_address.enduser_id = Enduser.find(params[id]).id
+  	  @new_address.enduser_id = Enduser.find(params[:id])
       @addresses = Address.all.order(created_at: :desc)
       @enduser = Enduser.find(params[:id])
       if @new_address.save

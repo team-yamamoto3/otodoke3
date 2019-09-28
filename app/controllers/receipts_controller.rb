@@ -1,5 +1,6 @@
 class ReceiptsController < ApplicationController
   before_action :authenticate!
+  
   def create
     @carts = current_enduser.carts
     @receipt = Receipt.new(receipts_params)

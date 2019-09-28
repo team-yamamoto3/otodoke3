@@ -133,12 +133,37 @@ $(function () {
   </tbody>
 </table>
 
+藤田恵名用
+@hujitaena1 = Cd.find(35)
+@hujitaena2 = Cd.find(66)
+@hujitaena3 = Cd.find(67)
 
+<h1 class="center-cd fontfamily"><p>New Single</p></h1>
+ <div class="hujita-all">
+   <div class="hujita1 center-cd"><%= attachment_image_tag @hujitaena1, :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %>
+   <br><strong><%= @hujitaena1.title %></strong></div>
+   <div class="hujita2 center-cd"><%= attachment_image_tag @hujitaena2, :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %>
+   <br><strong><%= @hujitaena2.title %></strong></div>
+   <div class="hujita3 center-cd"><%= attachment_image_tag @hujitaena3, :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %>
+   <br><strong><%= @hujitaena3.title %></strong></div>
+ </div>
+藤田恵名用
 
-    <h1>藤田恵名New Single</h1>
+// 管理者ログイン
+// Admin.create(email: "admin@example.com",password: "admin123")
 
-     <div class="hujita-all">
-       <div class="hujita1"><%= attachment_image_tag @hujitaena(id.35), :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %></div>
-       <div class="hujita1"><%= attachment_image_tag @hujitaena(66), :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %></div>
+// userログイン
+// 山本皇帝（やまもとかいざー）
+// 551-1515
+// 大阪市浪速区元町エスレジデンスなんばブリエ
+// 09015151515
+// yamamotokaiza@gmail.com
+// パス 69696969
 
-     </div>
+// ログイン
+// 藤田恵名（ふじたえな）
+// 555-4646
+// 北九州市南九州町東郡1-2-1
+// 0903475621
+// hujitaena@ezweb.ne.jp
+// 89898989

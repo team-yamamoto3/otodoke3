@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 }
   resources :endusers, only: [:edit, :show, :update]
     get 'endusers/:id/addresses', to: 'addresses#index', as: 'enduser_addresses'
+    # post 'endusers/:id/addresses' => 'addresses#create'
     #resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
   #end
 
