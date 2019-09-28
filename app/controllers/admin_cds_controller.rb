@@ -1,4 +1,5 @@
 class AdminCdsController < ApplicationController
+  before_action :authenticate!
 
   before_action :search
 

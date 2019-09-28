@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-
+  before_action :authenticate!
   def index
     @carts = current_enduser.carts.all
     @cds = Cd.all.includes(:artists, :discs, :songs)
