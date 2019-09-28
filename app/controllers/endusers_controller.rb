@@ -46,7 +46,7 @@ before_action :authenticate!
     if enduser_signed_in?
       redirect_to cds_index_path
     else
-      redirect_to home_path
+      redirect_to admins_index_path
     end
   end
 

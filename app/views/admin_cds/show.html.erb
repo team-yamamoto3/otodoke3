@@ -1,3 +1,4 @@
+<div class="container">
     <h1>商品詳細</h1>
      <%= attachment_image_tag @cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
     <h3>タイトル</h3>
@@ -29,3 +30,4 @@
     <td><%= link_to "削除", admin_cd_path, model: @cd, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
     <%= link_to '商品入荷履歴へ', cds_arrivals_history_path %>
     <%= link_to '別の商品の在庫を追加する', cd_arrivals_path(@cds) %>
+</div>

@@ -14,11 +14,6 @@ end
 # 検索機能を一番最初に動かしてエラーを防ぐ
   before_action :search
 
-  def search
-    @q = Cd.ransack(params[:q])
-    @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
-  end
-
   # def set_search
   #   @search = Artist.ransack(params[:q])
   #   @search_artists = @search.result.page(params[:page])
@@ -48,4 +43,9 @@ private
    def configure_permitted_parameters
      devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :email, :user_tell, :user_address, :postal_code,:last_name_kana,:first_name_kana])
    end
+
+  def search
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
+  end
 end
