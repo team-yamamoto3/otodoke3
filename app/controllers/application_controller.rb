@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @search = Artist.ransack(params[:q])
-    @search_artists = @search.result.page(params[:page])
+    @search_artists = @search.result.page(params[:page]).per(10).reverse_order
   end
 
 
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 private
 
   def storable_location?
-    request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
   end
 
   # ログインご画面についてはまた考える

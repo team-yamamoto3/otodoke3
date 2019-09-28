@@ -61,7 +61,84 @@ $(function () {
 });
 
 
-<div class="center-cd payselect st">
-  <%= form.submit '購入', class: 'simple_square_btn6' %>
-  <%= link_to '購入をやめる', cds_path, class: 'simple_square_btn4' %>
+
+
+<div class="container">
+ <div class="row">
+  <div class="col-xs-8">
+   <%= attachment_image_tag @cd, :jacket, :fill, 400, 400, fallback: "no_cd_image.png" %>
+    <br>
+    <br>
+    <b style="font-size:35px;"><%= @cd.title %></b><br><br>
+     <% @cd.artists.each do |artist| %>
+      <%= artist.artist %>
+     <% end %>
+    <br>
+    <br>
+     <p style="font-size:20px;">レーベル : <%= @cd.label %></p>
+      <p style="font-size:20px;">ジャンル : <%= @cd.genre %></p>
+       <% @cd.discs.each do |disc| %>
+        <p style="font-size:20px;">ディスク名 : <%= disc.disc_name %></p>
+        <p style="font-size:20px;">ディスク番号 : <%= disc.include %></p>
+        <p style="font-size:20px;">ディスク枚数 : <%= disc.disc_number %></p>
+       <% disc.songs.each do |song| %>
+        <p style="font-size:20px;">曲名 : <%= song.song %></p>
+        <p style="font-size:20px;">曲順 : <%= song.songorder %><p>
+       <% end %>
+      <% end %>
+       <% if @cd.stock == 0 %>
+        <h1>売り切れ</h1>
+       <% else %>
+        <%= @cd.sales_status %>
+       <% end %>
+      <br><br>
+     <button class="btn btn-default">
+    <%= link_to "他のCDを探す", root_path %>
+   </button>
+  </div>
+  <div class="col-xs-4">
+   <h3>¥<%= @price.floor %>（税込）</h3>
+    <%=form_for @cart, url: cd_carts_path(@cd.id)  do |f| %>
+     <%= f.hidden_field :cartnumber, value: 1 %>
+     <%= f.hidden_field :cd_id, value: @cd.id %>
+     <%= f.submit 'カートに入れる', class:"btn btn-success btn-lg"%>
+    <% end %>
+   <br>
+  </div>
+ </div>
 </div>
+
+
+<table class="table-hover">
+  <thead>
+    <tr>
+      <th>ディスク名</th>
+      <th>ディスク番号</th>
+      <th>ディスク枚数</th>
+      <th>曲名</th>
+      <th>曲順</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @cd.discs.each do |disc| %>
+      <td><%= disc.disc_name %></td>
+      <td><%= disc.include %></td>
+      <% disc.songs.each do |song| %>
+      <td><%= song.song %></td>
+      <td><%= song.songorder %></td>
+    </tr>
+    <% end %>
+   <% end %>
+  </tbody>
+</table>
+
+
+
+    <h1>藤田恵名New Single</h1>
+
+     <div class="hujita-all">
+       <div class="hujita1"><%= attachment_image_tag @hujitaena(id.35), :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %></div>
+       <div class="hujita1"><%= attachment_image_tag @hujitaena(66), :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %></div>
+
+     </div>

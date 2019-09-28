@@ -1,54 +1,63 @@
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-8">
+   <div class="container highlow">
+    <div class="row">
+     <div class="col-md-5">
       <%= attachment_image_tag @cd, :jacket, :fill, 400, 400, fallback: "no_cd_image.png" %>
-      <br>
-      <br>
-      <b><%= @cd.title %></b><br><br>
-      <% @cd.artists.each do |artist| %>
+     </div>
+    <div class="col-md-5">
+      <div class="margin-bottom">
+        <b style="font-size:35px;"><%= @cd.title %></b>
+      </div>
+     <br>
+     <div class="margin-bottom moneyfont2">
+       <% @cd.artists.each do |artist| %>
        <%= artist.artist %>
-      <% end %>
-      <br>
-      <br>
-      <p>レーベル : <%= @cd.label %></p>
-      <p>ジャンル : <%= @cd.genre %></p>
-      
-      
-        <% @cd.discs.each do |disc| %>
-        <p>ディスク名 : <%= disc.disc_name %></p>
-        <p>ディスク番号 : <%= disc.include %></p>
-        <p>ディスク枚数 : <%= disc.disc_number %></p>
-      <% disc.songs.each do |song| %>
-        <p>曲名 : <%= song.song %></p>
-        <p>曲順 : <%= song.songorder %><p>
-      <% end %>
-      <% end %>
-      <% if @cd.stock == 0 %>
-        <h1>売り切れ</h1>
-      <% else %>
-        <%= @cd.sales_status %>
-      <% end %>
-      <br><br>
-      <button class="btn btn-default">
-        <%= link_to "他のCDを探す", root_path %>
-      </button>
+       <% end %>
+     </div>
+      <p style="font-size:20px;">ジャンル : <%= @cd.genre %></p>
+       <p style="font-size:20px;">レーベル : <%= @cd.label %></p>
+        <% if @cd.stock == 0 %>
+         <h1>売り切れ</h1>
+        <% else %>
+         <%= @cd.sales_status %>
+        <% end %>
+       </div>
+      <div class="col-md-2">
+        <h3>¥<%= @price.floor %>（税込）</h3>
+         <%=form_for @cart, url: cd_carts_path(@cd.id)  do |f| %>
+          <%= f.hidden_field :cartnumber, value: 1 %>
+          <%= f.hidden_field :cd_id, value: @cd.id %>
+          <%= f.submit 'カートに入れる', class:"btn btn-success btn-lg"%>
+         <% end %>
+         </div>
+     </div>
+   </div>
+   <div class="container">
+     <div class="row">
+       <div class="col-md-8 col-md-offset-2">
+         <div class="table-responsive">
+           <table class="table margin-bottom3">
+             <thead>
+               <tr class="success">
+                 <th class="center-cd">ディスクナンバー</th>
+                 <th class="center-cd">曲名</th>
+                 <th class="center-cd">曲名</th>
+               </tr>
+             </thead>
+             <tbody>
+               <% @cd.discs.each do |disc| %>
+                <% disc.songs.each do |song| %>
+               <tr class="active">
+                 <td class="center-cd"><p><%= disc.include %></p></td>
+                 <td class="center-cd"><p style="font-size:20px;"><%= song.songorder %><p></td>
+                 <td class="center-cd"><p style="font-size:20px;"><%= song.song %></p></td>
+               </tr>
+               <% end %>
+              <% end %>
+             </tbody>
+           </table>
+         </div>
+         <%= link_to "他のCDを探す", root_path, class: 'btn btn-default' %>
+       </div>
+      <div class="col-md-2"></div>
+     </div>
     </div>
-
-    <div class="col-xs-4">
-      <h3>¥<%= @price.floor %>（税込）</h3>
-      <%=form_for @cart, url: cd_carts_path(@cd.id)  do |f| %>
-        <%= f.hidden_field :cartnumber, value: 1 %>
-        <%= f.hidden_field :cd_id, value: @cd.id %>
-        <%= f.submit 'カートに入れる', class:"btn btn-success btn-lg"%>
-      <% end %>
-      <br>
-
-
-
-    </div>
-  </div>
-</div>
-
-
-

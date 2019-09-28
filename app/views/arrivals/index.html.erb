@@ -14,18 +14,18 @@
     <tbody>
      <% @cds.each do |cd| %>
        <tr>
-         <td class="td-box">
+         <td>
             <%= link_to "#{cd.stock}枚",  new_cd_arrival_path(cd) %>
             <br><%= link_to '既存在庫数編集', admin_cd_path(cd.id) %>
          </td>
-         <td class="td-box"><%= attachment_image_tag cd, :jacket, :fill, 60, 60, fallback: "no_cd_image_fill60.png" %>
+         <td><%= attachment_image_tag cd, :jacket, :fill, 60, 60, fallback: "no_cd_image_fill60.png" %>
          </td>
-         <td class="td-box"><%= cd.title %></td>
-         <td class="td-box"><% cd.artists.each do |artist| %>
+         <td><%= cd.title %></td>
+         <td><% cd.artists.each do |artist| %>
           <%= artist.artist %>
           <% end %>
          </td>
-         <td class="td-box"><%= cd.sales_status %></td>
+         <td><%= cd.sales_status %></td>
        </tr>
      <% end %>
     </tbody>

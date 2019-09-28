@@ -32,7 +32,7 @@ class Cd < ApplicationRecord
     def carted_by?(enduser)
       carts.where(enduser_id: enduser.id).exists?
     end
-    
+
     def cart_by?(user_id, cd_id)
       carts.where(enduser_id: user_id, cd_id: cd_id).exists?
   # validates :sum_price, presence: true, allow_nil: true

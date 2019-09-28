@@ -1,67 +1,74 @@
-
-<script>
+  <script>
    $(document).ready(function () {
-  $("#theTarget").skippr({
-      // スライドショーの変化
+    $("#theTarget").skippr({
+     // スライドショーの変化
       transition : 'slide',
-      // 変化に係る時間(ミリ秒)
+     // 変化に係る時間(ミリ秒)
       speed : 1000,
-      // easingの種類
+     // easingの種類
       easing : 'easeOutQuart',
-      // ナビゲーションの形
+     // ナビゲーションの形
       navType : 'block',
       childrenElementType : 'div',
-      // ナビゲーション矢印の表示
+     // ナビゲーション矢印の表示
       arrows : true,
-      // スライドショーの自動再生
+     // スライドショーの自動再生
       autoPlay : true,
-      // 自動再生時のスライド切替間隔
+     // 自動再生時のスライド切替間隔
       autoPlayDuration : 3000,
-      // キーボードの矢印キーによるスライド送りの設定
+     // キーボードの矢印キーによるスライド送りの設定
       keyboardOnAlways : true,
-      // 一枚目のスライド表示時に戻る矢印を表示するかどうか
+     // 一枚目のスライド表示時に戻る矢印を表示するかどうか
       hidePrevious : false
-  });
-});
-</script>
-
-  <div id="container">
-    <div id="theTarget">
+     });
+    });
+   </script>
+    <div class="container  scriptcontain slideshow">
+     <div id="theTarget">
       <div class="image1"></div>
       <div class="image2"></div>
       <div class="image3"></div>
+     </div>
     </div>
-  </div>
-
-
- <div class="center-cd class=clearfix">
+    <!-- 藤田恵名 -->
+    <div class="center-cd">
+      <h1>藤田恵名特集</h1>
+    </div>
+   <div class="wrap"></div>
+    <!-- ここからスライドショー下 -->
+   <div class="bigboss">
     <% @cds.each do |cd| %>
-      <div class="center-table align=left">
-		    <table>
-			     <tr>
-					 <td class="td-box">
-					 	<%= attachment_image_tag cd, :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %>
-					 </td>
-					<td class="td-box"><b><%= cd.title %></b></td>
-					<td class="td-box"><%= cd.label %></td>
-					<td class="td-box"><h4>¥<%= cd.price %></h4></td>
-					<td class="td-box" height="15">
-					  <% if cd.stock == 0 %>
-					    <p>売り切れ</p>
-					  <% else %>
-					    <%= cd.sales_status %>
-            <% end %>
-					</td>
+     <div class="loopbox">
+      <div class="slidebox clearfix">
+       <%= link_to cd_path(cd.id) do %>
+  		  <div class="indexitem">
+         <%= attachment_image_tag cd, :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %>
+        </div>
+       <div class="indexitem">
+        <strong><%= cd.title %></strong>
+       </div>
+      <div class="indexitem">
+       <%= cd.label %>
       </div>
-
-					<td class="td-box"><%= link_to "CD詳細へ", cd_path(cd.id) %></td>
-			    </tr>
-		    </table>
-		</div>
-	<% end %>
+     <div class="indexitem">
+      <%= cd.price %>
+     </div>
+    <div class="indexitem">
+     <% if cd.stock == 0 %>
+      <p>売り切れ</p>
+     <% else %>
+      <%= cd.sales_status %>
+     <% end %>
+    </div>
+     <div class="indexitem">
+      <%= link_to "CD詳細へ", cd_path(cd.id) %>
+     </div>
+    <% end %>
+   </div>
+  <% end %>
  </div>
-		　　　　　　　　　　　　　<br>
-	<%= paginate(@cds) %>
-
-
-
+</div>
+ <br>
+  <div class="center-cd moneyfont">
+   <%= paginate(@cds) %>
+  </div>
