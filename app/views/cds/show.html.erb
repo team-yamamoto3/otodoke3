@@ -36,7 +36,7 @@
     </div>
 
     <div class="col-xs-4">
-      <h3>¥<%= @price.floor %>（税込）</h3>
+      <h4>¥<%= @price.floor %>（税込）</h4>
       <%=form_for @cart, url: cd_carts_path(@cd.id)  do |f| %>
         <%= f.hidden_field :cartnumber, value: 1 %>
         <%= f.hidden_field :cd_id, value: @cd.id %>
