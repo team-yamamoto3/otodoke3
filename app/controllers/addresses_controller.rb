@@ -1,14 +1,14 @@
 class AddressesController < ApplicationController
-
+  before_action :authenticate!
   def new
   	  @new_address = Address.new
   end
 
   def create
   	  @new_address = Address.new(address_params)
-  	  @new_address.enduser_id = current_enduser.id
+  	  @new_address.enduser_id = Enduser.find(params[id]).id
       @addresses = Address.all.order(created_at: :desc)
-      @enduser = current_enduser
+      @enduser = Enduser.find(params[:id])
       if @new_address.save
          redirect_to enduser_addresses_path(@enduser)
          flash[:notice] = "You have creatad address successfully."
@@ -20,8 +20,8 @@ class AddressesController < ApplicationController
 
   def index
   	  @new_address = Address.new
-  	  @addresses = current_enduser.addresses.all
-      @enduser = current_enduser
+  	  @addresses = Enduser.find(params[:id]).addresses.all
+      @enduser = Enduser.find(params[:id])
   end
 
   def show
@@ -29,13 +29,13 @@ class AddressesController < ApplicationController
 
   def edit
       @address = Address.find(params[:id])
-      @enduser = current_enduser
+      @enduser = Enduser.find(params[:id])
   end
 
   def update
       @address = Address.find(params[:id])
       @address.update!(address_params)
-      @enduser = current_enduser
+      @enduser = Enduser.find(params[:id])
       if @address.save
          redirect_to enduser_addresses_path(@enduser)
          flash[:notice] = "You have edited address successfully"

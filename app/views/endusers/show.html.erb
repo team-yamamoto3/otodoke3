@@ -1,33 +1,34 @@
 <div class="container">
   <div class="row">
+    <div style="padding: 10px; margin-top: 20px; margin-bottom: 10px; border: 1px solid #3cb371; border-radius: 10px;">
     <h2>お客様情報</h2>
       <table class="table table-striped">
         <tbody>
-          <tr>
+          <tr style="background-color:#f5f5f5">
 	         <th><p>氏名</p></th>
-	           <th><p class="user_name"><%= @enduser.last_name %></p></th>
-              <th><p class="user_name"><%= @enduser.first_name %></p></th>
+	           <th><%= @enduser.last_name %></th>
+              <th><%= @enduser.first_name %></th>
           </tr>
-          <tr>
-            <th><p>氏名(かな)</p></th>
-            <th><p class="user_name"><%= @enduser.last_name_kana %></p></th>
-            <th><p class="user_name"><%= @enduser.first_name_kana %></p></th>
+          <tr style="background-color:#f5f5f5">
+            <th>氏名(かな)</th>
+            <th><%= @enduser.last_name_kana %></th>
+            <th><%= @enduser.first_name_kana %></th>
           </tr>
-          <tr>
-	          <th><p>郵便番号</p></th>
-	          <th><p class="postal_code"><%= @enduser.postal_code %></p></th>
+          <tr style="background-color:#f5f5f5">
+	          <th>郵便番号</th>
+	          <th><%= @enduser.postal_code %></th><th></th>
           </tr>
-          <tr>
-      	    <th><p>住所</p></th>
-      	    <th><p class="user_address"><%= @enduser.user_address %></p></th>
+          <tr style="background-color:#f5f5f5">
+      	    <th>住所</th>
+      	    <th><%= @enduser.user_address %></th><th></th>
           </tr>
-          <tr>
-      	   <th><p>電話番号</p></th>
-      	   <th><p class="user_tell"><%= @enduser.user_tell %></p></th>
+          <tr style="background-color:#f5f5f5">
+      	   <th>電話番号</th>
+      	   <th><%= @enduser.user_tell %></th><th></th>
           </tr>
-          <tr>
-      	   <th><p>メールアドレス</p></th>
-      	   <th><p class="user_email"><%= @enduser.email %></p></th>
+          <tr style="background-color:#f5f5f5">
+      	   <th>メールアドレス</th>
+      	   <th><%= @enduser.email %></th><th></th>
           </tr>
         </tbody>
       </table>
@@ -40,15 +41,16 @@
         <% end %>
   </div>
   <div class="row">
+    <div style="padding: 10px; margin-top: 20px; margin-bottom: 10px; border: 1px solid #3cb371; border-radius: 10px;">
     <h2>購入履歴</h2>
       <% @receipts.each do |receipt| %>
         <table class="table table-striped">
           <tbody>
-            <tr>
+            <tr style="background-color:#f5f5f5">
               <th>購入日</th><th><%= link_to receipt.created_at.strftime("%Y-%m-%d"), history_path %></th>
             </tr>
             <% receipt.orders.each do |order| %>
-            <tr>
+            <tr style="background-color:#f5f5f5">
               <th>タイトル</th><th><%= order.cd.title %></th>
             </tr>
             <% end %>
@@ -56,5 +58,6 @@
         </table>
       <% end %>
       <%= paginate @receipts %>
+    </div>
   </div>
 </div>

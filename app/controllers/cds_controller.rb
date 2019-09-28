@@ -1,5 +1,5 @@
 class CdsController < ApplicationController
-  # before_action :authenticate_user!, except:[:index, :show, :search, :thanks]
+  before_action :authenticate!, except:[:index, :show, :search]
   # before_action :check_account
 
   def index

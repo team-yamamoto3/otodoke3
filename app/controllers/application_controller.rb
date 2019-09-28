@@ -3,14 +3,13 @@ class ApplicationController < ActionController::Base
   #before_action :authenticate!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-
-#def authenticate!
-  #if admin_signed_in?
-    #authenticate_admin!
-  #else
-    #authenticate_enduser!
-  #end
-#end
+def authenticate!
+  if admin_signed_in?
+    authenticate_admin!
+  else
+    authenticate_enduser!
+  end
+end
 
 # 検索機能を一番最初に動かしてエラーを防ぐ
   before_action :search
@@ -20,17 +19,10 @@ class ApplicationController < ActionController::Base
     @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
   end
 
-
-
-
-  def set_search
-    @search = Artist.ransack(params[:q])
-    @search_artists = @search.result.page(params[:page]).per(10).reverse_order
-  end
-
-
-
-
+  # def set_search
+  #   @search = Artist.ransack(params[:q])
+  #   @search_artists = @search.result.page(params[:page])
+  # end
 
 private
 
@@ -51,7 +43,6 @@ private
 	def after_sign_out_path_for(resource)
       cds_path
   end
-
 
   protected
    def configure_permitted_parameters

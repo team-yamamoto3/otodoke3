@@ -1,10 +1,11 @@
 class ReceiptsController < ApplicationController
-
+  before_action :authenticate!
   def create
-     @carts = current_enduser.carts
-     @receipt = Receipt.new(receipts_params)
-      @carts.each do |cart|
-    #カートから購入CDを一枚ずつ取り出し、買った枚数の方が多ければrender。
+    @carts = current_enduser.carts
+    @receipt = Receipt.new(receipts_params)
+    totaled = 0 #変数を初期化（＋＝するため)
+        @carts.each do |cart|
+      #カートから購入CDを一枚ずつ取り出し、買った枚数の方が多ければrender。
     if cart.cd.stock < cart.cartnumber
        flash[:buyerror] = "SORRY SOLD! #{cart.cd.title}"
        redirect_to carts_index_path
@@ -14,12 +15,13 @@ class ReceiptsController < ApplicationController
        cart.cd.stock > cart.cartnumber
        cart.cd.stock -= cart.cartnumber
        cart.save #いる？
-       #在庫減らしたので、この段階でデータ保存
-       cart.cd.save
+       cart.cd.sales_status
+       cart.cd.save #在庫減らしたので、この段階でデータ保存
        # 購入金額計算して合計金額カラムに代入
        total = cart.cd&.price * cart.cd&.consumption_tax
-       totaled = total.floor * cart.cartnumber
-       @receipt.sum_price = totaled
+       totaled +=  total.floor * cart.cartnumber # +=で購入商品を足していく
+       @receipt.sum_price = totaled + 500 #送料分を足してカラムに保存
+         # カート内デストロイ
      end
     end
     #レシートセーブ。each分の中にかくと毎回セーブの挙動が起きるのでeach外でセーブ
