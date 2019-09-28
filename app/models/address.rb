@@ -6,7 +6,7 @@ class Address < ApplicationRecord
 	validates :address, presence: true
 
 	def check
-		if enduser && enduser.addresses.count > 3
+		if enduser.addresses.count >= 3
 			errors.add(:enduser, "3つまで")
 		end
 	end

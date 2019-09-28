@@ -45,10 +45,11 @@ class AddressesController < ApplicationController
   end
 
   def destroy
+      @enduser = Enduser.find(params[:enduser_id])
   	  @address = Address.find(params[:id])
       @address.destroy
       # flash[:notice] = "successfully"
-      redirect_to enduser_addresses_path
+      redirect_to enduser_addresses_path(@enduser.id)
   end
 private
     def address_params
