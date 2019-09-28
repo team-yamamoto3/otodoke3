@@ -20,11 +20,15 @@ class ArrivalsController < ApplicationController
     #current_adminだけが入荷できるようにするにはcurrent_admin.arrivals.new(arrival_params)?
     @arrival = Arrival.new(arrival_params)
     @arrival.cd_id = @cd.id
-    @arrival.save
+    if @arrival.save
     @cd.stock += @arrival.arrival_new
     @cd.save
     # redirect_to cd_arrivals_path(@cd)
     redirect_to admin_cd_path(@cd)
+  else
+    flash[:blankerror] = "空欄があります。"
+    render 'arrivals/new'
+  end
   end
 
   def show

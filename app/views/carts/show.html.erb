@@ -1,37 +1,33 @@
-
-     <h1 class="htag greenline payselect"><span>注文内容を確認・変更する</span></h1>
-     <h4 class="underbar payselect">支払い方法の選択</h4>
-<span class="center-cd">
-     <%= form_with(model: Receipt, url: receipts_path, local: true) do |form| %>
-     <%= form.radio_button :payment, :銀行 %>
-     <%= form.label :payment, '銀行振込', {value: :bank, style: "display: inline-block;"} %>
-     <%= form.radio_button :payment, :クレジットカード %>
-     <%= form.label :payment, 'クレジットカード', {value: :kurejittokado, style: "display: inline-block;"} %>
-     <%= form.radio_button :payment, :代引き, :checked => @daibiki %>
-     <%= form.label :payment, '代引き', {value: :daibiki, style: "display: inline-block;"} %>
-     <%= form.hidden_field :enduser_id, :value => @enduser.id %>
-
-</span>
-
-
+   <h1 class="htag greenline payselect"><span>注文内容を確認・変更する</span></h1>
+    <h4 class="underbar payselect">支払い方法の選択</h4>
+     <span class="center-cd">
+      <%= form_with(model: Receipt, url: receipts_path, local: true) do |form| %>
+       <%= form.radio_button :payment, :銀行 %>
+       <%= form.label :payment, '銀行振込', {value: :bank, style: "display: inline-block;"} %>
+       <%= form.radio_button :payment, :クレジットカード %>
+       <%= form.label :payment, 'クレジットカード', {value: :kurejittokado, style: "display: inline-block;"} %>
+       <%= form.radio_button :payment, :代引き, :checked => @daibiki %>
+       <%= form.label :payment, '代引き', {value: :daibiki, style: "display: inline-block;"} %>
+       <%= form.hidden_field :enduser_id, :value => @enduser.id %>
+      </span>
      <!-- このrenderで住所選択画面呼び出し（_address.html.erb） -->
      <%= render 'carts/address', {form: form, enduser: @enduser} %>
       <h4 class="underbar payselect">注文内容</h4>
       <div class="container">
         <div class="row">
-          <div class="col-md-8 col-md-offset-2 col-xs-6 col-xs-offset-3">
+          <div class="col-md-8 col-md-offset-2">
             <div class="table-responsive">
               <table class="table margin-bottom3">
                 <thead>
                   <tr class="success">
-                    <th>注文内容</th>
-                    <th>小計</th>
+                    <th class="center-cd">注文内容</th>
+                    <th class="center-cd">小計</th>
                   </tr>
                 </thead>
                 <tbody>
                   <% @carts.each do |cart| %>
                   <% total = cart.cd&.price * cart.cd&.consumption_tax %>
-                  <tr>
+                  <tr class="active">
                     <td><%= cart.cd&.title %></td>
                     <td><p>¥<%=  totalcd = total.floor * cart.cartnumber %>（税込）</p></td>
                   </tr>
@@ -40,12 +36,9 @@
               </table>
             </div>
           </div>
-         <div class="col-md-2 col-xs-3"></div>
+         <div class="col-md-2"></div>
         </div>
        </div>
-
-
-      <!-- ここより上エラー -->
      <div class="container">
       <div class="row">
        <div class="col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 center-cd relative">
@@ -59,14 +52,14 @@
            <p class="htagmargin absolute moneyfont">¥<%= array.sum %>円</p>
           </div>
          <div class="col-md-1 col-xs-1 center-cd relative">
-          <p class="relative lineheight">+</p>
+          <p class="absolute moneyfont2">+</p>
          </div>
         <div class="col-md-2 col-xs-2 center-cd relative">
          <h4 class="htagmargin">配送料</h4>
           <p class="absolute htagmargin moneyfont">500円</p>
          </div>
         <div class="col-md-3 col-xs-3 center-cd relative">
-         <h2 class="htagmargin">注文内容合計</h2>
+         <h4 class="htagmargin">注文内容合計</h4>
           <% array = [] %>
            <% @carts.each do |cart| %>
             <% total = cart.cd&.price * cart.cd&.consumption_tax %>
@@ -78,8 +71,13 @@
           <div class="col-md-2 col-xs-2"></div>
          </div>
         </div>
-       <div class="center-cd payselect">
-        <%= form.submit '購入' %>
-        <%= link_to '購入をやめる', cds_path %>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 ajast">
+              <%= form.submit '購入', class: 'simple_square_btn6' %>
+              <%= link_to '購入をやめる', cds_path, class: 'simple_square_btn4' %>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
         </div>
        <% end %>

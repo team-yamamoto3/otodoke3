@@ -1,48 +1,41 @@
 <div class="container">
-	<h1>CD一覧</h1>
-
-<%= link_to '在庫追加する', cd_arrivals_path(@cds) %>
-	<p>CDタイトル検索</p>
-	<table>
-		<%= search_form_for @q do |f| %>
-	      <%= f.label :title_cont %>
-	      <%= f.search_field :title_cont %>
-     	  <%= f.submit %>
-	    <% end %>
-	</table>
-
- <div class="center-cd">
-	<% @cds.each do |cd| %>
-	 <h4>ジャケット</h4>
-	<%= link_to admin_cd_path(cd.id) do %>
-	 <%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
-	<% end %>
-
-	<h4>タイトル</h4>
-	  <td><%= link_to cd.title, admin_cd_path(cd.id) %></td>
-	<h4>アーティスト</h4>
-	  <% cd.artists.each do |artist| %>
-	    <%= artist.artist %>
-	  <% end %>
-    <h4>入荷数量</h4>
-	  <% cd.arrivals.each do |arrival| %>
-	    <%= arrival.arrival_new %>
-	 <% end %>
-   <h4>在庫</h4>
-	   <%= cd.stock %>
-	  <h4>レーベル</h4>
-	   <%= cd.label %>
-	<h4>ジャンル</h4>
-	   <%= cd.genre %>
-	<h4>販売ステータス</h4>
-	   <%= cd.sales_status %>
-	<h4>値段</h4>
-	   <%= cd.price %>
-	<h4>消費税</h4>
-	   <%= cd.consumption_tax %>
-
-		 <%= link_to "詳細", admin_cd_path(cd.id) %>
-	  <div class="between"></div>
-	  <% end %>
-	 <%= paginate(@cds) %>
+  <div class="parent">
+    <h1>CD一覧</h1>
+		<%= link_to '在庫追加する', cd_arrivals_path(@cds), class: 'btn btn-primary' %>
+			<%= search_form_for(@q, url:admin_cds_path) do |f| %>
+			  <%= f.label :'タイトル検索' %>
+			  <%= f.search_field :title_cont %>
+			  <%= f.submit '検索', class: 'btn btn-primary'  %>
+			<% end %>
   </div>
+</div>
+
+		<div class="center-cd class=clearfix">
+    <% @cds.each do |cd| %>
+      <div class="center-table align=left">
+		    <table>
+			     <tr>
+					 <td class="td-box"><%= link_to admin_cds_path(cd.id) do %>
+              <%= attachment_image_tag cd, :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %>
+            <% end %>
+        </td>
+					<td class="td-box"><b><%= link_to cd.title, admin_cd_path(cd.id) %></b></td>
+					<td class="td-box"><%= cd.label %></td>
+					<td class="td-box"><h4>¥<%= cd.price %></h4></td>
+					<td class="td-box" height="15">
+					  <% if cd.stock == 0 %>
+					    <p>売り切れ</p>
+					  <% else %>
+					    <%= cd.sales_status %>
+            <% end %>
+					</td>
+      </div>
+
+					<td class="td-box"><%= link_to "CD詳細へ", admin_cd_path(cd.id) %></td>
+			    </tr>
+		    </table>
+		</div>
+	<% end %>
+ </div>
+		　　　　　　　　　　　　　<br>
+	<%= paginate(@cds) %>

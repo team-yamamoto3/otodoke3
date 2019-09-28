@@ -1,4 +1,6 @@
+
 <table>
+
   <h2>送付先情報登録(３つまで)</h2>
   <%= form_for(@new_address, url: enduser_addresses_path) do |f| %>
     <h4>送付先住所</h4>
@@ -21,5 +23,7 @@
     <%= f.submit '送付先新規作成', :class => 'btn btn-primary' %>
     </div>
   <% end %>
-
+  <% if flash[:frauderror] %>
+   <p class="moneyfont2"><%= flash[:frauderror] %></p>
+  <% end %>
 </table>

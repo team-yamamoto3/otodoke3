@@ -17,7 +17,7 @@ end
 
   def search
     @q = Cd.ransack(params[:q])
-    @cds = @q.result(distinct: true).page(params[:page]).per(4).reverse_order
+    @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
   end
 
 
@@ -35,7 +35,7 @@ end
 private
 
   def storable_location?
-    request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
   end
 
   # ログインご画面についてはまた考える

@@ -13,6 +13,7 @@ class AddressesController < ApplicationController
          redirect_to enduser_addresses_path(@enduser)
          flash[:notice] = "You have creatad address successfully."
       else
+         flash[:frauderror] = "正しく記入してください。"
          render :index
       end
   end

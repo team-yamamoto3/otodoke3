@@ -111,9 +111,6 @@
   right: 0;
   margin: auto;
 }
-.lineheight{
-  line-height: 96px;
-}
 
 .underbar {
 	position: relative;
@@ -132,17 +129,197 @@
 	background-color: #73bd6adb;
 	border-radius: 2px;
 }
+
 .payselect{
   margin: 50px 0;
 }
 
-// カートshow内使用cssここまで
-
-.between{
-  height:20px;
-  background-color: #f71f657a;
+.simple_square_btn6 {
+	display: block;
+	position: relative;
+	width: 160px;
+	padding: 0.8em;
+	text-align: center;
+	text-decoration: none;
+	color: #1B1B1B;
+	background: #76d27d59;
+        border-radius: 30px;
+	border:1px solid #1B1B1B;
+	 -webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.simple_square_btn6:hover {
+	 cursor: pointer;
+	 text-decoration: none;
+	-webkit-animation: simple_square_btn6 0.5s both;
+	-moz-animation: simple_square_btn6 0.5s both;
+	        animation: simple_square_btn6 0.5s both;
+}
+@-webkit-keyframes simple_square_btn6 {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@-moz-keyframes simple_square_btn6 {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@keyframes simple_square_btn6 {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
 }
 
+.simple_square_btn4 {
+	display: block;
+	position: relative;
+	width: 160px;
+	padding: 0.8em;
+	text-align: center;
+	text-decoration: none;
+	color: #1B1B1B;
+	background: #d0cccc3b;
+	border-radius: 30px;
+	border:1px solid #1B1B1B;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.simple_square_btn4:hover {
+	 cursor: pointer;
+	 text-decoration: none;
+	-webkit-animation: simple_square_btn4 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	-moz-animation: simple_square_btn4 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: simple_square_btn4 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes simple_square_btn4{
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.85);
+            transform: scale(0.85);
+  }
+}
+@-moz-keyframes simple_square_btn4{
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.85);
+            transform: scale(0.85);
+  }
+}
+@keyframes simple_square_btn4 {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.85);
+            transform: scale(0.85);
+  }
+}
+
+.ajast{
+   display: flex;
+   justify-content: space-around;
+   margin-top: 60px;
+   margin-bottom: 60px;
+   height: 48px;
+}
+
+// arrivalshistory内使用cssここから
+
+.tablecenter{
+  margin: 80px auto;
+}
+
+.width{
+  width:1200px;
+  margin: 0 auto;
+}
+.parent{
+  position: relative;
+}
+.arrivalbtn{
+  position: absolute;
+  right: 0;
+}
+
+.tdwidth{
+  width:112.5px;
+}
+
+// arrivalshistory内使用cssここまで
+
+
+// enduseredit内使用cssここから
+
+.sketchborder {
+  background-color: #6dde6d1f;
+  border: 2px dashed #97a7a1;
+  border-radius: 8px;
+  box-shadow: 0 0 0 4px #a6cc93;
+  color: black;
+  margin: 2em 0;
+  padding: 2em;
+}
+
+.long{
+  width: 100%;
+  height: 30px;
+  border-radius: 6px;
+}
+
+.labelname{
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.btncenter{
+  margin:20px auto 0;
+  width: 146px;
+}
+
+.btn-square-pop {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background:#098640;
+  border-bottom: solid 2px #03d200;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-square-pop:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+// enduseredit内使用cssここまで
 
 .center-cd{
   text-align: center;
@@ -180,7 +357,6 @@ background-size: cover;
 background-position: center;
 }
 
-
 .clearfix:after {
   content: "";
   display: block;
@@ -192,7 +368,8 @@ background-position: center;
   margin-right: 20px;
 }
 
-td {
+
+.td-box {
   display: block;
 }
 
@@ -200,9 +377,17 @@ td {
   float: left;
 }
 
-
-.col-xs-4 {
-  margin-top: 2%;
+ul li a{
+    color: #ffffff;
 }
 
+h1 {
+  color: #ffffff;
+}
+
+// やばくなったら書き換えるとこ
+
+// .col-xs-4 {
+//   margin-top: 2%;
+// }
 
