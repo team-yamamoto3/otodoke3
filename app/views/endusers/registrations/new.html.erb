@@ -70,7 +70,7 @@
       <div style="margin-bottom: 10px;">
         <%= f.label :パスワード %>
         <% if @minimum_password_length %>
-        <em>(最小<%= @minimum_password_length %>文字)</em>
+        <em>(最少<%= @minimum_password_length %>文字)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
