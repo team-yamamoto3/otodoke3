@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-	#before_action :authenticate!
+	before_action :authenticate!
 	def home
 	end
 
