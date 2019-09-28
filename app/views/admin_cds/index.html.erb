@@ -3,7 +3,7 @@
 		<div class="parent">
 		 <%= link_to '在庫追加する', cd_arrivals_path(@cds), class: 'btn btn-primary' %>
 		  <div class="arrivalbtn">
-		   <%= search_form_for @q do |f| %>
+		   <%= search_form_for(@q, url:admin_cds_path) do |f| %>
 		    <%= f.label :'タイトル検索' %>
 		    <%= f.search_field :title_cont %>
 		    <%= f.submit '検索', class: 'btn btn-primary'  %>
@@ -31,7 +31,7 @@
 			  <%= attachment_image_tag cd, :jacket, :fill, 300, 300, fallback: "no_cd_image.png" %>
 			 <% end %></td>
 			 <td class="center-cd tdwidth"><%= link_to cd.title, admin_cd_path(cd.id) %></td>
-			 <td class="center-cd tdwidth"> <% cd.artists.each do |artist| %>
+			 <td class="center-cd tdwidth"> <% cd.artists.each do |artist| %><br>
 			  <%= artist.artist %>
 			 <% end %></td>
 			 <td class="center-cd tdwidth"><%= cd.label %></td>

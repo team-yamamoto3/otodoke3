@@ -3,10 +3,10 @@ class AdminCdsController < ApplicationController
 
   before_action :search
 
-  def search
-    @q = Cd.ransack(params[:q])
-    @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
-  end
+  # def search
+  #   @q = Cd.ransack(params[:q])
+  #   @cds = @q.result(distinct: true).page(params[:page]).per(10).reverse_order
+  # end
 
   # def set_search
   #   @search = Artist.ransack(params[:q])

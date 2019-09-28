@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   passwords:     'endusers/passwords',
   registrations: 'endusers/registrations'
 }
-  resources :endusers, only: [:edit, :show, :update]
+  resources :endusers, only: [:edit, :show, :update, :destroy]
     get 'endusers/:id/addresses', to: 'addresses#index', as: 'enduser_addresses'
     #resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
   #end
