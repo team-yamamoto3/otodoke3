@@ -6,11 +6,11 @@ class AddressesController < ApplicationController
 
   def create
   	  @new_address = Address.new(address_params)
-  	  @new_address.enduser_id = Enduser.find(params[id]).id
+  	  @new_address.enduser_id = Enduser.find(params[:enduser_id]).id
       @addresses = Address.all.order(created_at: :desc)
-      @enduser = Enduser.find(params[:id])
+      @enduser = Enduser.find(params[:enduser_id])
       if @new_address.save
-         redirect_to enduser_addresses_path(@enduser)
+         redirect_to enduser_addresses_path(@enduser.id, @new_address.id)
          flash[:notice] = "You have creatad address successfully."
       else
          flash[:frauderror] = "正しく記入してください。"
@@ -28,16 +28,16 @@ class AddressesController < ApplicationController
   end
 
   def edit
+      @enduser = Enduser.find(params[:enduser_id])
       @address = Address.find(params[:id])
-      @enduser = Enduser.find(params[:id])
   end
 
   def update
       @address = Address.find(params[:id])
       @address.update!(address_params)
-      @enduser = Enduser.find(params[:id])
+      @enduser = Enduser.find(params[:enduser_id])
       if @address.save
-         redirect_to enduser_addresses_path(@enduser)
+         redirect_to enduser_addresses_path(@enduser.id)
          flash[:notice] = "You have edited address successfully"
       else
         render :edit
