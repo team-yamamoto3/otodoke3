@@ -23,6 +23,10 @@
    box-sizing: border-box;
  }
 
+ .logocolor{
+   color: #fff;
+ }
+
  // カートindex内使用cssここから
 
  .greenline {
@@ -342,11 +346,37 @@
 }
 
 .wrap{
-  width: 1440px;
+  width: 100%;
   margin: 100px auto;
-  height: 750px;
+  height: 680px;
   background: url("hujitaenamoon.jpg") no-repeat center center / cover;
   background-attachment: fixed;
+}
+
+.fontfamily{
+   font-family: "源ノ角ゴシック" "Noto Sans JP", Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+   color: linear-gradient(90deg,blue 0%,blue 50%,red 50%,red 100%);
+
+   width: 250px;
+   margin-left: auto;
+   margin-right: auto;
+   // background: linear-gradient(#4cde6bbf 50%, #ffffff 50%);
+}
+.fontfamily p {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(#d327f39e 50%, #4cde6bbf 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  border-bottom: 1px solid black;
+}
+
+
+.hujita-all{
+  display: flex;
+  justify-content: space-around;
+  margin: 100px 0;
 }
 
 .bigboss{
@@ -458,4 +488,3 @@ ul li a{
 // }
 
 // やばくなったら書き換えるとこ
-

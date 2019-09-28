@@ -32,14 +32,16 @@
     </div>
     <!-- 藤田恵名 -->
     <div class="center-cd">
-      <h1>藤田恵名特集</h1>
+      <h1 class="fontfamily"><p>藤田恵名特集</p></h1>
     </div>
    <div class="wrap"></div>
+    <!-- 藤田恵名用 -->
     <!-- ここからスライドショー下 -->
+  <h1 class="fontfamily center-cd"><p>ALL CDS</p></h1>
    <div class="bigboss">
     <% @cds.each do |cd| %>
-     <div class="loopbox">
-      <div class="slidebox clearfix">
+     <div class="loopbox clearfix">
+      <div class="slidebox">
        <%= link_to cd_path(cd.id) do %>
   		  <div class="indexitem">
          <%= attachment_image_tag cd, :jacket, :fill, 250, 250, fallback: "no_cd_image_fill250.png" %>
@@ -72,4 +74,3 @@
   <div class="center-cd moneyfont">
    <%= paginate(@cds) %>
   </div>
-
