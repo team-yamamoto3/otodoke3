@@ -5,8 +5,8 @@ class EndusersController < ApplicationController
 
 
   def show
-      @enduser = Enduser.find(params[:id])
-      @receipts = Enduser.find(params[:id]).receipts.page(params[:page]).per(PER).reverse_order
+      @enduser = current_enduser
+      @receipts = current_enduser.receipts.page(params[:page]).per(PER).reverse_order
   end
 
   def history
