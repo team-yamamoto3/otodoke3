@@ -28,8 +28,13 @@ Rails.application.routes.draw do
   passwords:     'endusers/passwords',
   registrations: 'endusers/registrations'
 }
-  resources :endusers, only: [:edit, :show, :update, :destroy]
-    get 'endusers/:id/addresses', to: 'addresses#index', as: 'enduser_addresses'
+  resources :endusers, only: [:edit, :show, :update]
+  
+  get 'endusers/:id/addresses', to: 'addresses#index', as: 'enduser_addresses'
+  get 'endusers/:enduser_id/addresses/:id/edit', to: 'addresses#edit', as: 'edit_enduser_address'
+  delete 'endusers/:enduser_id/address/:id/destroy', to: 'addresses#destroy', as: 'enduser_address'
+  post 'endusers/:enduser_id/addresses', to: 'addresses#create', as: 'create_enduser_addresses'
+  patch 'endusers/:enduser_id/addresses/:id/update', to: 'addresses#update', as: 'update_enduser_addresses'
     #resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
   #end
 

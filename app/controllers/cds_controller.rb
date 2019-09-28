@@ -6,6 +6,7 @@ class CdsController < ApplicationController
      # @cds = Cd.all.includes(:artists, :discs, :songs)
      @cds = Cd.page(params[:page]).per(12).reverse_order
      # @hujitaena = Cd.find([35, 66, 67])
+
   end
 
   def new
