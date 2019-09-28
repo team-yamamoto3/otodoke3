@@ -2,43 +2,45 @@
 	<h1>購入履歴詳細</h1>
 		<div class="row">
 			<% @receipts.each do |receipt| %>
+			<div style="padding: 10px; margin-top: 20px; margin-bottom: 10px; border: 1px solid #3cb371; border-radius: 10px;">
 			<table class="table table-striped">
 				<tbody>
-					<tr class="success">
+					<tr style="background-color:#f5f5f5">
 						<th>購入日</th><th><%= receipt.created_at.strftime("%Y-%m-%d") %></th>
 					</tr>
 					<% receipt.orders.each do |order| %>
-					<tr class="success">
+					<tr style="background-color:#f5f5f5">
 						<th>商品タイトル</th><th><%= order.cd.title %></th>
 					</tr>
-					<tr class="success">
+					<tr style="background-color:#f5f5f5">
 						<th>アーティスト</th><th>
 						<% order.cd.artists.each do |artist| %>
 							<%= artist.artist %>
 						<% end %>
 						</th>
 					</tr>
-					<tr class="success">
+					<tr style="background-color:#f5f5f5">
 						<th>購入枚数</th><th><%= order.order_number %></th>
 					</tr>
-					<tr class="success">
+					<tr style="background-color:#f5f5f5">
 						<th>金額</th><th><%= order.cd.price * order.cd.consumption_tax %></th>
 					</tr>
 					<% end %>
-					<tr class="success">
+					<tr style="background-color:#f5f5f5">
 						<th>送料</th><th><%= receipt.postage %></th>
 					</tr>
-					<tr class="success">
+					<tr style="background-color:#f5f5f5">
 						<th>合計金額</th><th><%= receipt.sum_price %></th>
 					</tr>
-					<tr class="success"r>
+					<tr style="background-color:#f5f5f5">
 						<th>送付先</th><th><%= receipt.house %></th>
 					</tr>
-					<tr class="success">
+					<tr style="background-color:#f5f5f5">
 						<th>配送状況</th><th><%= receipt.order_status %></th>
 					</tr>
 				</tbody>
 			</table>
+			</div>
 			<% end %>
 			<%= paginate @receipts %>
 		</div>

@@ -4,13 +4,13 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 
-#def authenticate!
-  #if admin_signed_in?
-    #authenticate_admin!
-  #else
-    #authenticate_enduser!
-  #end
-#end
+def authenticate!
+  if admin_signed_in?
+    authenticate_admin!
+  else
+    authenticate_enduser!
+  end
+end
 
 # 検索機能を一番最初に動かしてエラーを防ぐ
   before_action :search

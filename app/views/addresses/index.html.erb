@@ -1,32 +1,32 @@
-<h2>お客様お送り先情報</h2>
+<div class="container">
+  <div style="margin-bottom: 30px;"></div>
+  <div style="padding: 40px; margin-top: 20px; margin-bottom: 10px; border: 1px solid #3cb371; border-radius: 10px; text-align:center;">
+      <div class="row">
+        <table class="table table-striped">
+          <tbody>
+            <% @addresses.each do |address| %>
+              <tr style="background-color:#f5f5f5">
+        	      <th>郵便番号</th><th><%= address.postal_code %></th>
+              </tr>
+              <tr style="background-color:#f5f5f5">
+              	<th>住所</th><th><%= address.address %></th>
+              </tr>
+              <tr style="background-color:#f5f5f5">
+              	  <th>電話番号</th><th><%= address.tell %></th>
+              </tr>
+              <th><%= link_to edit_enduser_address_path(@enduser,address.id), class: 'btn-default' do %>
+                  <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+                <% end %>
+              </th>
+              <th><%= link_to "削除", enduser_address_path(@enduser,address.id), model: @address, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-md" %></th>
+            <% end %>
 
-  <table class="table">
-    <tbody>
-      <% @addresses.each do |address| %>
-        <tr>
-  	      <th><p>お送り先</p></th>
-  	      <th><p>郵便番号</p>
-              <p class="postal_code"><%= address.postal_code %></p>
-          </th>
-        	<th><p>住所</p>
-              <p class="address"><%= address.address %></p>
-          </th>
-        </tr>
+            <div class="field">
+              <%= render 'addresses/list', address: @address %>
+            </div>
 
-        <tr>
-        	  <th><p>お電話番号</p></th>
-        	  <th><p class="tell"><%= address.tell %></p></th>
-        </tr>
-        <td><%= link_to edit_enduser_address_path(@enduser,address.id), class: 'btn-default' do %>
-            <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
-          <% end %>
-        </td>
-        <td><%= link_to "削除", enduser_address_path(@enduser,address.id), model: @address, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %></td>
-      <% end %>
-
-    <div class="col-xs-3">
-      <%= render 'addresses/list', address: @address %>
-    </div>
-
-    </tbody>
-  </table>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

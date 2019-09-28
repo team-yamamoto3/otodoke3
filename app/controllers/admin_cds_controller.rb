@@ -1,4 +1,5 @@
 class AdminCdsController < ApplicationController
+  before_action :authenticate!
   def index
       @q = Cd.ransack(params[:q])
       # @cds = Cd.all.includes(:artists, :discs, :songs, :arrivals)

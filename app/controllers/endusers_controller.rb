@@ -1,17 +1,17 @@
 class EndusersController < ApplicationController
-#before_action :authenticate!
+before_action :authenticate!
 
   PER = 3
 
 
   def show
-      @enduser = current_enduser
-      @receipts = current_enduser.receipts.page(params[:page]).per(PER).reverse_order
+      @enduser = Enduser.find(params[:id])
+      @receipts = @enduser.receipts.page(params[:page]).per(PER).reverse_order
   end
 
   def history
-      @enduser = current_enduser
-      @receipts = current_enduser.receipts.page(params[:page]).per(PER).reverse_order
+      @enduser = Enduser.find(params[:id])
+      @receipts = @enduser.receipts.page(params[:page]).per(PER).reverse_order
       #@orders = @receipts.orders
       #@cds = @orders.cds
       #@cd_price = @cds.price

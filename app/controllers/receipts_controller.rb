@@ -1,5 +1,5 @@
 class ReceiptsController < ApplicationController
-
+  before_action :authenticate!
   def create
     #商品購入時
     # addressの輸出先指定（まだ）
@@ -25,11 +25,10 @@ class ReceiptsController < ApplicationController
        cart.cd.stock -= cart.cartnumber
        cart.save #いる？
        cart.cd.sales_status
-       binding.pry
        cart.cd.save #在庫減らしたので、この段階でデータ保存
        # 購入金額計算して合計金額カラムに代入
        total = cart.cd&.price * cart.cd&.consumption_tax
-       totaled +=  total.floor * cart.car # +=で購入商品を足していく
+       totaled +=  total.floor * cart.cartnumber # +=で購入商品を足していく
        @receipt.sum_price = totaled + 500 #送料分を足してカラムに保存
          # カート内デストロイ
      end

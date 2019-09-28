@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+before_action :authenticate!
   def index
   	@orders = Order.all
   	@cd = Cd.find(params[:id])

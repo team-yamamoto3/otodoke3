@@ -1,28 +1,37 @@
-<h1>送付先情報編集</h1>
+<div class="container">
+  <div style="padding: 30px; margin-top: 20px; margin-bottom: 10px; border: 1px solid #3cb371; border-radius: 10px; text-align:center; background-color:#f5f5f5;">
+    <h1 style="margin-bottom:20px;">送付先情報編集</h1>
+      <%= form_with(model: @address, url: enduser_address_path, method: :patch) do |f| %>
+      <div class="form-group has-icon">
 
-<%= form_with(model: @address, url: enduser_address_path, method: :patch) do |f| %>
-  <div class="form-group has-icon">
+      <!-- 郵便番号 -->
+      <div class="field">
+        <div style="margin-bottom:10px">
+          <%= f.label :郵便番号 %><br />
+          <%= f.text_field :postal_code, autofocus: true %>
+        </div>
+      </div>
 
-  <!-- 郵便番号 -->
-  <div class="field">
-      <%= f.label :郵便番号 %><br />
-      <%= f.text_field :postal_code, autofocus: true %>
+     <!-- 送付先住所 -->
+     <div class="field">
+        <div style="margin-bottom:10px">
+          <%= f.label :送付先住所 %><br />
+          <%= f.text_field :address, autofocus: true %>
+        </div>
+      </div>
+
+      <!-- 電話番号 -->
+      <div class="field">
+          <%= f.label :電話番号 %><br />
+          <%= f.text_field :tell, autofocus: true %>
+      </div>
+
+      <div class="actions">
+        <div style="margin-top:20px">
+          <%= f.submit "送付先情報更新" %>
+        </div>
+      </div>
+
+    <% end %>
   </div>
-
- <!-- 送付先住所 -->
- <div class="field">
-      <%= f.label :送付先住所 %><br />
-      <%= f.text_field :address, autofocus: true %>
-  </div>
-
-  <!-- 電話番号 -->
-  <div class="field">
-      <%= f.label :電話番号 %><br />
-      <%= f.text_field :tell, autofocus: true %>
-  </div>
-
-  <div class="actions">
-      <%= f.submit "送付先情報更新" %>
-  </div>
-
-<% end %>
+</div>

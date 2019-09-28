@@ -1,6 +1,5 @@
 class ArrivalsController < ApplicationController
-  # before_action :authenticate_admin!
-
+   before_action :authenticate_admin!
   def history
     @arrivals = Arrival.page(params[:page]).per(10)
     @cds = Cd.all.includes(:artists, :discs, :songs, :arrival)

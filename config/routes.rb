@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # get '/cds/:id/arrivals/:id' => 'arrivals#create'
   get 'carts/index'
   get 'carts/show'
-  get 'endusers/history', as: 'history'
+  get 'endusers/:id/history', to: 'endusers#history', as: 'history'
   resources :cds, only: [:index, :show, :create, :edit, :update] do
    resources :arrivals do
      end
@@ -28,9 +28,10 @@ Rails.application.routes.draw do
   passwords:     'endusers/passwords',
   registrations: 'endusers/registrations'
 }
-  resources :endusers, only: [:edit, :show, :update] do
-    resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
-  end
+  resources :endusers, only: [:edit, :show, :update]
+    get 'endusers/:id/addresses', to: 'addresses#index', as: 'enduser_addresses'
+    #resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
+  #end
 
   resources :admin_cds do
     collection do
