@@ -4,8 +4,7 @@ class CdsController < ApplicationController
 
   def index
      # @cds = Cd.all.includes(:artists, :discs, :songs)
-     @cds = Cd.page(params[:page]).per(12).reverse_order
-     @hujitaena = Cd.find([35, 66, 67])
+     @cds = @q.result(distinct: true) .page(params[:page]).per(12).reverse_order
   end
 
   def new
